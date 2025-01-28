@@ -1,8 +1,11 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
-// import SideNav from '@/Components/templates/SideNav';
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import { Head } from "@inertiajs/react";
+import { usePage } from "@inertiajs/react";
 
 export default function Dashboard() {
+    const { auth } = usePage().props;
+    const role = auth.role_title ? auth.role_title : "";
+    const roleID = auth.role_id ? auth.role_id : "";
     return (
         <AuthenticatedLayout
             header={
@@ -18,6 +21,7 @@ export default function Dashboard() {
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         <div className="p-6 text-gray-900">
                             You're logged in!
+                            <p>your role is { role }</p>
                         </div>
                     </div>
                 </div>

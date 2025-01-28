@@ -4,6 +4,9 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Illuminate\Support\Facades\DB;
+use App\Models\Role;
+
 
 class HandleInertiaRequests extends Middleware
 {
@@ -29,10 +32,15 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+
+        $role_id = $request->user()->role_id;
+
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+                'role_id'=>$role_id,
+                'role_title'=>Role::find($role_id)?->title,
             ],
         ];
     }
