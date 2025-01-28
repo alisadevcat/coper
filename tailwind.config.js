@@ -12,9 +12,6 @@ export default {
 
     theme: {
         extend: {
-            fontFamily: {
-                sans: ["Figtree", ...defaultTheme.fontFamily.sans],
-            },
             colors: {
                 error: "#ff1183",
                 warning: "#ff8933",
