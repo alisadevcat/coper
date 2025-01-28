@@ -19,22 +19,22 @@ class PermissionSeeder extends Seeder
         DB::table('permissions')->insert(
             [
                 'id' => 1,
-                'title' => 'create.user',
+                'title' => 'create_user',
                 'description' => 'Admin role',
             ],
             [
                 'id' => 2,
-                'title' => 'edit.user',
+                'title' => 'edit_user',
                 'description' => 'Edit user',
             ],
             [
                 'id' => 3,
-                'title' => 'delete-user',
+                'title' => 'delete_user',
                 'description' => 'Delete user',
             ],
             [
                 'id' => 4,
-                'title' => 'view-dashboard',
+                'title' => 'view_dashboard',
                 'description' => 'View Dashboard',
             ],
 
