@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 
 class RoleSeeder extends Seeder
@@ -16,32 +17,43 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('roles')->insert(
+        $now = Carbon::now();
+        DB::table('roles')->insert([
             [
                 'id' => 1,
                 'title' => 'Admin',
                 'description' => 'Admin role',
+                'created_at' => $now,
+                'updated_at' => $now
             ],
             [
                 'id' => 2,
                 'title' => 'User',
                 'description' => 'User role',
+                'created_at' => $now,
+                'updated_at' => $now
             ],
             [
                 'id' => 3,
                 'title' => 'Lender',
                 'description' => 'Lender role',
+                'created_at' => $now,
+                'updated_at' => $now
             ],
             [
                 'id' => 4,
                 'title' => 'Borrower',
                 'description' => 'Borrower role',
+                'created_at' => $now,
+                'updated_at' => $now
             ],
             [
                 'id' => 5,
                 'title' => 'Manager',
                 'description' => 'Borrower role',
-            ],
+                'created_at' => $now,
+                'updated_at' => $now
+            ],]
         );
     }
 }
