@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->smallInteger('role_id')->default(2)->nullable();
+            $table->unsignedSmallInteger('role_id')->default(2);
             $table->foreign('role_id')
                 ->references('id')
                 ->on('roles')
-                ->onDelete('set null');
+                ->onDelete('cascade');
         });
     }
 
