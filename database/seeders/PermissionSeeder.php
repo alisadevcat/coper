@@ -21,28 +21,32 @@ class PermissionSeeder extends Seeder
             [
                 [
                     'id' => 1,
-                    'title' => 'create_user',
+                    'title' => 'Create User',
+                    'slug' => 'create_user',
                     'description' => 'Admin role',
                     'created_at' => $now,
                     'updated_at' => $now
                 ],
                 [
                     'id' => 2,
-                    'title' => 'edit_user',
+                    'title' => 'Edit User',
+                    'slug' => 'edit_user',
                     'description' => 'Edit user',
                     'created_at' => $now,
                     'updated_at' => $now
                 ],
                 [
                     'id' => 3,
-                    'title' => 'delete_user',
+                    'title' => 'Delete User',
+                    'slug' => 'delete_user',
                     'description' => 'Delete user',
                     'created_at' => $now,
                     'updated_at' => $now
                 ],
                 [
                     'id' => 4,
-                    'title' => 'view_dashboard',
+                    'title' => 'View Dashboard',
+                    'slug' => 'view_dashboard',
                     'description' => 'View Dashboard',
                     'created_at' => $now,
                     'updated_at' => $now

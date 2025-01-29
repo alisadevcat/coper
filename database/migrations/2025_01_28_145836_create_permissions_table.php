@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('title')->unique();
-            $table->string('slug')->nullable();
+            $table->string('slug')->unique();
             $table->tinyText('description')->nullable();
             $table->timestamps();
         });
