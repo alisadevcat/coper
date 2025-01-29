@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('roles', function (Blueprint $table) {
             $table->smallIncrements('id');
             $table->string('title')->unique();
+            $table->string('slug')->nullable();
             $table->tinyText('description')->nullable();
             $table->timestamps();
         });
