@@ -8,6 +8,7 @@ import LenderDashBoard from "./DashBoardTypes/LenderDashBoard";
 export default function Dashboard() {
     const { auth } = usePage().props;
     const roleID = auth.role_id ? auth.role_id : "";
+    const role =  auth.role_title ? auth.role_title : "";
 
     return (
         <AuthenticatedLayout
