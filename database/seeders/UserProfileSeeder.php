@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class UserProfileSeeder extends Seeder
@@ -18,8 +19,6 @@ class UserProfileSeeder extends Seeder
         DB::table('user_profiles')->insert([
             [
                 'user_id' => 1,
-                'first_name' => 'Alice',
-                'last_name' => 'Ivanova',
                 'phone' => '+8200000888888',
                 'address' => '123 Main Street, Cityville',
                 'birth_date' => '1990-01-01',
@@ -29,8 +28,6 @@ class UserProfileSeeder extends Seeder
             ],
             [
                 'user_id' => 2,
-                'first_name' => 'Ann',
-                'last_name' => 'Petrova',
                 'phone' => '+7200000888888',
                 'address' => '456 Maple Avenue, Townsville',
                 'birth_date' => '1985-05-15',
@@ -40,8 +37,6 @@ class UserProfileSeeder extends Seeder
             ],
             [
                 'user_id' => 3,
-                'first_name' => 'Ivan',
-                'last_name' => 'Smith',
                 'phone' => '+9200000888888',
                 'address' => '789 Oak Lane, Villagetown',
                 'birth_date' => '1992-08-20',

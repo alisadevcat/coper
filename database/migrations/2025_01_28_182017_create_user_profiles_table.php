@@ -12,19 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_profiles', function (Blueprint $table) {
-            $table->bigIncrements('user_id');
-            $table->string('first_name', 50);
-            $table->string('last_name', 50);
+            $table->id();
             $table->string('phone', 20)->nullable();
             $table->text('address')->nullable();
             $table->text('bank_account')->nullable();
-            $table->date('date_of_birth')->nullable();
+            $table->date('birth_date')->nullable();
             $table->timestamps();
-            $table->foreign('user_id')
-                  ->references('id')
-                  ->on('users')
-                  ->onDelete('cascade');
-
+            $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');
         });
     }
 
