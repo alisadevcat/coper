@@ -1,0 +1,13 @@
+.avatar {
+  @apply inline-block relative bg-gray-400 dark:bg-gray-600 text-gray-100;
+}
+.avatar-circle {
+  @apply rounded-full;
+}
+
+.avatar-img {
+  @apply block w-full h-full object-cover;
+}
+
+
+

@@ -24,7 +24,6 @@ class UserSeeder extends Seeder
                 'last_name' => Str::random(10),
                 'email' => Str::random(10) . '@example.com',
                 'password' => Hash::make('password'),
-                'role_id'=>1,
                 'created_at' => $now,
                 'updated_at' => $now
             ],
@@ -34,7 +33,6 @@ class UserSeeder extends Seeder
                 'last_name' => Str::random(10),
                 'email' => Str::random(10) . '@example.com',
                 'password' => Hash::make('password'),
-                'role_id'=>3,
                 'created_at' => $now,
                 'updated_at' => $now
             ],
@@ -44,7 +42,6 @@ class UserSeeder extends Seeder
                 'last_name' => Str::random(10),
                 'email' => Str::random(10) . '@example.com',
                 'password' => Hash::make('password'),
-                'role_id'=>4,
                 'created_at' => $now,
                 'updated_at' => $now
             ]]

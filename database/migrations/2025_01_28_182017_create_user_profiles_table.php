@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_profiles', function (Blueprint $table) {
-             $table->id();
-            $table->enum('gender', ['male', 'female', 'other']);
-            $table->text('address');
-            $table->date('birth_date');
-            $table->string('phone');
+            $table->id();
+            $table->enum('gender', ['male', 'female', 'other'])->default('male');
+            $table->text('address')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('phone')->nullable();
             $table->string('crypto_wallet')->nullable();
             $table->string('bank_account_number')->nullable();
             $table->string('iban')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('job_title')->nullable();
             $table->text('purpose')->nullable();
             $table->text('additional_info')->nullable();
-            $table->enum('status', ['pending', 'verified', 'rejected'])->default('pending');
+            $table->enum('status', ['pending', 'verified', 'rejected', 'not verified'])->default('not verified');
             $table->text('rejection_reason')->nullable();
             $table->timestamps();
             $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');

@@ -32,12 +32,14 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        // print_r(array_reduce(Role::whereIn('slug', ['borrower', 'lender'])->get(), callBackFunction, []));
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
-                'role_id' => $request->user()?->role_id ? $request->user()->role_id : 2,
-                'role_title' => Role::find($request->user()?->role_id)?->title ? Role::find($request->user()?->role_id)?->title : 'User',
+                'role_id' =>  2,
+                'role_title' =>'User',
+                'roles_options'=> Role::whereIn('slug', ['borrower', 'lender'])->get()
             ],
         ];
     }

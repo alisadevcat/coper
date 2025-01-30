@@ -23,6 +23,7 @@ class RoleSeeder extends Seeder
                 'id' => 1,
                 'title' => 'Admin',
                 'slug'=>'admin',
+                'label'=>'I want to admin',
                 'description' => 'Admin role',
                 'created_at' => $now,
                 'updated_at' => $now
@@ -31,6 +32,7 @@ class RoleSeeder extends Seeder
                 'id' => 2,
                 'title' => 'User',
                 'slug'=>'user',
+                'label'=>'I want to use',
                 'description' => 'User role',
                 'created_at' => $now,
                 'updated_at' => $now
@@ -39,6 +41,7 @@ class RoleSeeder extends Seeder
                 'id' => 3,
                 'title' => 'Lender',
                 'slug'=>'lender',
+                'label'=>'I want to lend',
                 'description' => 'Lender role',
                 'created_at' => $now,
                 'updated_at' => $now
@@ -47,6 +50,7 @@ class RoleSeeder extends Seeder
                 'id' => 4,
                 'title' => 'Borrower',
                 'slug'=>'borrower',
+                'label'=>'I want to borrow',
                 'description' => 'Borrower role',
                 'created_at' => $now,
                 'updated_at' => $now
@@ -55,6 +59,7 @@ class RoleSeeder extends Seeder
                 'id' => 5,
                 'title' => 'Manager',
                 'slug'=>'manager',
+                'label'=>'I want to manage',
                 'description' => 'Manager role',
                 'created_at' => $now,
                 'updated_at' => $now

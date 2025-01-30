@@ -5,6 +5,8 @@ import TextInput from "@/Components/TextInput";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 import Select from "@/Components/Select";
+import { usePage } from "@inertiajs/react";
+import { formatRolesOptions } from "@/utils/helpers";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -24,10 +26,17 @@ export default function Register() {
         });
     };
 
+    const { auth } = usePage().props;
+
     const rolesOptions = [
         { label: "I want to borrow", value: 4, selected: true },
         { label: "I want to lend", value: 3 },
     ];
+
+    // const rolesOptions1 = auth.roles_options ? formatRolesOptions(auth.roles_options): rolesOptions ;
+
+    // console.log(formatRolesOptions(auth.roles_options));
+
     const defaultRole = 4;
 
     return (

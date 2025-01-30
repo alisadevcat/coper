@@ -15,6 +15,7 @@ return new class extends Migration
             $table->smallIncrements('id');
             $table->string('title')->unique();
             $table->string('slug')->unique();
+            $table->string('label')->nullable();
             $table->tinyText('description')->nullable();
             $table->timestamps();
         });
