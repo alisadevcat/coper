@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Illuminate\Support\Facades\DB;
 use App\Models\Role;
+use App\Models\User;
 
 
 class HandleInertiaRequests extends Middleware
@@ -32,15 +33,21 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        // print_r(array_reduce(Role::whereIn('slug', ['borrower', 'lender'])->get(), callBackFunction, []));
         return [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
-                'role_id' =>  2,
-                'role_title' =>'User',
-                'roles_options'=> Role::whereIn('slug', ['borrower', 'lender'])->get()
             ],
+            'roles' =>[
+                'user_roles' => User::find($request->user()->id)->roles->pluck('slug'),
+                'options'=> Role::whereIn('slug', ['borrower', 'lender'])->get()->map(function ($role) {
+                    return [
+                        'value' => $role->id,
+                        'label' => $role->label,
+                        'selected'=> $role->slug == 'borrower' ? 1 : 0
+                    ];
+                })
+            ]
         ];
     }
 }

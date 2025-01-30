@@ -5,10 +5,17 @@ import AdminDashboard from "./DashBoardTypes/AdminDashboard";
 import BorrowerDashBoard from "./DashBoardTypes/BorrowerDashBoard";
 import LenderDashBoard from "./DashBoardTypes/LenderDashBoard";
 
+
+export const dashBoardComponents = {
+    lender: <LenderDashBoard />,
+    borrower: <BorrowerDashBoard />,
+    admin: <AdminDashboard />,
+};
+
 export default function Dashboard() {
-    const { auth } = usePage().props;
-    const roleID = auth.role_id ? auth.role_id : "";
-    const role =  auth.role_title ? auth.role_title : "";
+    const { roles } = usePage().props;
+    const roleSlugs = roles.user_roles ? roles.user_roles : [];
+    console.log(roles);
 
     return (
         <AuthenticatedLayout
@@ -22,12 +29,10 @@ export default function Dashboard() {
 
             <div className="mx-auto flex">
                 <div className="h-screen w-full max-w-64 bg-primary text-white">
-                    {roleID === 1 ? (
-                        <AdminDashboard />
-                    ) : roleID === 3 ? (
-                        <BorrowerDashBoard />
-                    ) : (
-                        <LenderDashBoard />
+                    {roleSlugs.map((role) =>
+                        dashBoardComponents[role] ? (
+                            <div key={role}>{dashBoardComponents[role]}</div>
+                        ) : null
                     )}
                 </div>
                 <div className="py-12 w-full max-w-2/3">
@@ -35,7 +40,10 @@ export default function Dashboard() {
                         <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                             <div className="p-6 text-gray-900">
                                 You're logged in!
-                                <p>your role is {role}</p>
+                                <p>
+                                    your role is{" "}
+                                    {roleSlugs.map((item) => ` ${item}`)}
+                                </p>
                             </div>
                         </div>
                     </div>

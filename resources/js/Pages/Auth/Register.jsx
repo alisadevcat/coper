@@ -6,7 +6,6 @@ import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
 import Select from "@/Components/Select";
 import { usePage } from "@inertiajs/react";
-import { formatRolesOptions } from "@/utils/helpers";
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -26,16 +25,12 @@ export default function Register() {
         });
     };
 
-    const { auth } = usePage().props;
+    const { roles } = usePage().props;
 
-    const rolesOptions = [
-        { label: "I want to borrow", value: 4, selected: true },
-        { label: "I want to lend", value: 3 },
-    ];
-
-    // const rolesOptions1 = auth.roles_options ? formatRolesOptions(auth.roles_options): rolesOptions ;
-
-    // console.log(formatRolesOptions(auth.roles_options));
+    // const rolesOptions = [
+    //     { label: "I want to borrow", value: 4, selected: true },
+    //     { label: "I want to lend", value: 3 },
+    // ];
 
     const defaultRole = 4;
 
@@ -61,7 +56,7 @@ export default function Register() {
                     <InputError message={errors.name} className="mt-2" />
                 </div>
 
-                <div>
+                <div className="mt-4">
                     <InputLabel htmlFor="last_name" value="Last Name" />
 
                     <TextInput
@@ -143,7 +138,7 @@ export default function Register() {
                         name="selectedRole"
                         value={data.role_id}
                         defaultValue={defaultRole}
-                        options={rolesOptions}
+                        options={roles.options}
                         className="mt-1 block w-full"
                         onChange={(e) => setData("role_id", e.target.value)}
                         required
