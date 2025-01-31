@@ -38,15 +38,15 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user(),
             ],
-            'roles' =>[
-                'user_roles' => User::find($request->user()->id)->roles->pluck('slug'),
-                'options'=> Role::whereIn('slug', ['borrower', 'lender'])->get()->map(function ($role) {
+            'roles' => [
+                'user_roles' => $request->user()?->id ? User::find($request->user()->id)->roles->pluck('slug') : [],
+                'options' => Role::whereIn('slug', ['borrower', 'lender']) ? Role::whereIn('slug', ['borrower', 'lender'])->get()->map(function ($role) {
                     return [
                         'value' => $role->id,
                         'label' => $role->label,
-                        'selected'=> $role->slug == 'borrower' ? 1 : 0
+                        'selected' => $role->slug == 'borrower' ? 1 : 0
                     ];
-                })
+                }) : []
             ]
         ];
     }
