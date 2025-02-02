@@ -22,7 +22,12 @@ export default function UpdateProfileInformation({
 
     const submit = (e) => {
         e.preventDefault();
-        patch(route("profile.update"), user);
+        patch(route("profile.update"),{
+            preserveScroll: true, // Optional: Keeps scroll position
+            data, // Sends the updated form data
+            onSuccess: (response) => console.log("Success:", response),
+            onError: (errors) => console.error("Errors:", errors),
+        });
     };
 
     return (
