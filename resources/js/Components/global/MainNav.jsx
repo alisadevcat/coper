@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
 import { usePage } from "@inertiajs/react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
+import ApplicationLogo from "@/Components/icons/ApplicationLogo";
 
 export const MainNav = () => {
     const { auth } = usePage().props;

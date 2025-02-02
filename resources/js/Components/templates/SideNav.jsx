@@ -1,6 +1,6 @@
 import classNames from "@/utils/classNames";
 import { Link } from "@inertiajs/react";
-import ApplicationLogo from "../ApplicationLogo";
+import ApplicationLogo from "../icons/ApplicationLogo";
 
 const SideNav = () => {
     return (
