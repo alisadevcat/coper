@@ -1,17 +1,14 @@
-import MainLayout from "@/Layouts/MainLayout";
 import { Hero } from "./Main/Hero";
-import { Cards } from "./Main/Cards";
-import { AboutUs } from "./Main/AboutUs";
-import { ToBorrowMoney } from "./Main/ToBorrowMoney";
-import { ToLendMoney } from "./Main/ToLendMoney";
-import '../../css/main.css';
+import "../../css/main.css";
+import { SimpleLayout } from "@/Layouts/simple";
+// ----------------------------------------------------------------------
 
-export default function Home() {
+export default function Page() {
     return (
         <>
-            <MainLayout>
+            <SimpleLayout header={{ sx: { backgroundColor: "#191e24" } }}>
                 <Hero />
-            </MainLayout>
+            </SimpleLayout>
         </>
     );
 }

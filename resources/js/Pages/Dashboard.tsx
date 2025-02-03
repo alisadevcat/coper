@@ -1,20 +1,30 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { usePage } from "@inertiajs/react";
-import AdminDashboard from "./DashBoardTypes/AdminDashboard";
+import { Roles, PagePropsData } from "@/types";
+import { OverviewAnalyticsView } from '@/sections/overview/view';
+import { ReactNode } from "react";
+
 import BorrowerDashBoard from "./DashBoardTypes/BorrowerDashBoard";
 import LenderDashBoard from "./DashBoardTypes/LenderDashBoard";
+import ModeratorDashboard from "./DashBoardTypes/ModeratorDashboard";
 
+type DashboardRoles = "lender" | "borrower" | "moderator";
 
-export const dashBoardComponents = {
-    lender: <LenderDashBoard />,
-    borrower: <BorrowerDashBoard />,
-    admin: <AdminDashboard />,
+type DashboardComponentsType = {
+  [key in DashboardRoles]: ReactNode;
+};
+
+export const dashBoardComponents: DashboardComponentsType = {
+  lender: <LenderDashBoard />,
+  borrower: <BorrowerDashBoard />,
+  moderator: <ModeratorDashboard />,
 };
 
 export default function Dashboard() {
-    const { roles } = usePage().props;
-    const roleSlugs = roles.user_roles ? roles.user_roles : [];
+
+    const { roles } = usePage<PagePropsData>().props;
+    const roleSlugs: Roles = roles?.user_roles ? roles.user_roles : [];
     console.log(roles);
 
     return (
@@ -30,8 +40,8 @@ export default function Dashboard() {
             <div className="mx-auto flex">
                 <div className="h-screen w-full max-w-64 bg-primary text-white">
                     {roleSlugs.map((role) =>
-                        dashBoardComponents[role] ? (
-                            <div key={role}>{dashBoardComponents[role]}</div>
+                        dashBoardComponents[role as keyof DashboardComponentsType] ? (
+                            <div key={role}>{dashBoardComponents[role as keyof DashboardComponentsType]}</div>
                         ) : null
                     )}
                 </div>
@@ -45,6 +55,7 @@ export default function Dashboard() {
                                     {roleSlugs.map((item) => ` ${item}`)}
                                 </p>
                             </div>
+                            <OverviewAnalyticsView />
                         </div>
                     </div>
                 </div>

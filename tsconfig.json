@@ -12,11 +12,14 @@
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,
       "noEmit": true,
+      "types": ["vite/client"],
       "baseUrl": ".",
       "paths": {
         "@/*": ["./resources/js/*"],
         "components/*": ["./resources/js/components/*"],
-        "layouts": ["./resources/js/layouts/index.ts"],
+        "sections/*": ["./resources/js/sections/*"],
+        "layouts-old": ["resources/js/Layouts-old/index.ts"],
+        "layouts": ["resources/js/Layouts/index.ts"],
         "ziggy-js": ["./vendor/tightenco/ziggy"],
         "ui": ["./resources/js/components/ui/index.ts"]
       }

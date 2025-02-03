@@ -1,9 +1,10 @@
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
+import InputError from '@/Components-old/InputError';
+import InputLabel from '@/Components-old/InputLabel';
+import PrimaryButton from '@/Components/buttons/PrimaryButton';
+import TextInput from '@/Components-old/TextInput';
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, useForm } from '@inertiajs/react';
+import { route } from 'ziggy-js';
 
 export default function ResetPassword({ token, email }) {
     const { data, setData, post, processing, errors, reset } = useForm({

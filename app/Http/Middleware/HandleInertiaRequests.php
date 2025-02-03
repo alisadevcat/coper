@@ -44,7 +44,7 @@ class HandleInertiaRequests extends Middleware
                     return [
                         'value' => $role->id,
                         'label' => $role->label,
-                        'selected' => $role->slug == 'borrower' ? 1 : 0
+                        'selected' => $role->slug == 'borrower' ? true : false
                     ];
                 }) : []
             ]

@@ -1,10 +1,10 @@
-import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import PrimaryButton from "@/Components/PrimaryButton";
-import TextInput from "@/Components/TextInput";
+import InputError from "@/Components-old/InputError";
+import InputLabel from "@/Components-old/InputLabel";
+import PrimaryButton from "@/Components/buttons/PrimaryButton";
+import TextInput from "@/Components-old/TextInput";
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, Link, useForm } from "@inertiajs/react";
-import Select from "@/Components/Select";
+import Select from "@/Components-old/Select";
 import { usePage } from "@inertiajs/react";
 
 export default function Register() {
