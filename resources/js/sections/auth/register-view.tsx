@@ -1,12 +1,10 @@
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
+import { SignupForm } from "./sign-up-form";
 import { Link } from "@inertiajs/react";
-import { RenderedForm } from "./render-form";
-import { LoginProps } from "@/Pages/Auth/Login";
-import { route } from "ziggy-js";
 
-export function SignInView({ status, canResetPassword }: LoginProps) {
+export function RegisterView() {
     return (
         <>
             <Box
@@ -16,13 +14,13 @@ export function SignInView({ status, canResetPassword }: LoginProps) {
                 alignItems="center"
                 sx={{ mb: 5 }}
             >
-                <Typography variant="h5">Sign in</Typography>
+                <Typography variant="h5">Register</Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Don’t have an account?<Link href={route("register")}>Get started</Link>
+                <Link href={route("login")}>Already registered?</Link>
                 </Typography>
             </Box>
 
-            <RenderedForm status={status} canResetPassword={canResetPassword} />
+            <SignupForm/>
 
             <Divider
                 sx={{

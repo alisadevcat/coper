@@ -47,7 +47,7 @@ export function SimpleLayout({
                                 This is an info Alert.
                             </Alert>
                         ),
-                        leftArea: <ApplicationLogo />,
+                        leftArea: <Link href="/"><ApplicationLogo /></Link>,
                         rightArea: <NavList/>,
                     }}
                 />

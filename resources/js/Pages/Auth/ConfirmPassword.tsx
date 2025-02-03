@@ -2,7 +2,7 @@ import InputError from '@/Components-old/InputError';
 import InputLabel from '@/Components-old/InputLabel';
 import PrimaryButton from '@/Components/buttons/PrimaryButton';
 import TextInput from '@/Components-old/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
+import { AuthLayout } from '@/Layouts/auth';
 import { Head, useForm } from '@inertiajs/react';
 import { router } from '@inertiajs/react';
 import { route } from 'ziggy-js';
@@ -22,7 +22,7 @@ export default function ConfirmPassword() {
     };
 
     return (
-        <GuestLayout>
+        <AuthLayout>
             <Head title="Confirm Password" />
 
             <div className="mb-4 text-sm text-gray-600">
@@ -53,6 +53,6 @@ export default function ConfirmPassword() {
                     </PrimaryButton>
                 </div>
             </form>
-        </GuestLayout>
+        </AuthLayout>
     );
 }
