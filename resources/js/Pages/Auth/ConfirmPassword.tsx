@@ -1,26 +1,14 @@
-import InputError from '@/Components-old/InputError';
-import InputLabel from '@/Components-old/InputLabel';
-import PrimaryButton from '@/Components/buttons/PrimaryButton';
-import TextInput from '@/Components-old/TextInput';
-import { AuthLayout } from '@/Layouts/auth';
-import { Head, useForm } from '@inertiajs/react';
-import { router } from '@inertiajs/react';
-import { route } from 'ziggy-js';
-
+import InputError from "@/Components-old/InputError";
+import InputLabel from "@/Components-old/InputLabel";
+import PrimaryButton from "@/Components/buttons/PrimaryButton";
+import TextInput from "@/Components-old/TextInput";
+import { AuthLayout } from "@/Layouts/auth";
+import { Head, useForm } from "@inertiajs/react";
+import { router } from "@inertiajs/react";
+import { route } from "ziggy-js";
+import { ConfirmPassForm } from "@/sections/auth/confirm-pass-form";
 
 export default function ConfirmPassword() {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        password: '',
-    });
-
-    const submit = (e) => {
-        e.preventDefault();
-
-        post(route('password.confirm'), {
-            onFinish: () => reset('password'),
-        });
-    };
-
     return (
         <AuthLayout>
             <Head title="Confirm Password" />
@@ -30,29 +18,7 @@ export default function ConfirmPassword() {
                 password before continuing.
             </div>
 
-            <form onSubmit={submit}>
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
-
-                    <TextInput
-                        id="password"
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        className="mt-1 block w-full"
-                        isFocused={true}
-                        onChange={(e) => setData('password', e.target.value)}
-                    />
-
-                    <InputError message={errors.password} className="mt-2" />
-                </div>
-
-                <div className="mt-4 flex items-center justify-end">
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Confirm
-                    </PrimaryButton>
-                </div>
-            </form>
+            <ConfirmPassForm />
         </AuthLayout>
     );
 }

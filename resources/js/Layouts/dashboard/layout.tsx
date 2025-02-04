@@ -80,7 +80,7 @@ export function DashboardLayout({ sx, children, header }: DashboardLayoutProps) 
             ),
             rightArea: (
               <Box gap={1} display="flex" alignItems="center">
-                <Searchbar />
+                {/* <Searchbar />
                 <LanguagePopover data={_langs} />
                 <NotificationsPopover data={_notifications} />
                 <AccountPopover
@@ -101,7 +101,7 @@ export function DashboardLayout({ sx, children, header }: DashboardLayoutProps) 
                       icon: <Iconify width={22} icon="solar:settings-bold-duotone" />,
                     },
                   ]}
-                />
+                /> */}
               </Box>
             ),
           }}
@@ -110,9 +110,9 @@ export function DashboardLayout({ sx, children, header }: DashboardLayoutProps) 
       /** **************************************
        * Sidebar
        *************************************** */
-      sidebarSection={
-        <NavDesktop data={navData} layoutQuery={layoutQuery} workspaces={_workspaces} />
-      }
+      // sidebarSection={
+      //   <NavDesktop data={navData} layoutQuery={layoutQuery} workspaces={_workspaces} />
+      // }
       /** **************************************
        * Footer
        *************************************** */

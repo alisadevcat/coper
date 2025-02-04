@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import { Link } from "@inertiajs/react";
-import { RenderedForm } from "./render-form";
+import { RenderedForm } from "./login-form";
 import { LoginProps } from "@/Pages/Auth/Login";
 import { route } from "ziggy-js";
 

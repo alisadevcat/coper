@@ -22,15 +22,14 @@ type RolesProps = {
     roles: RolesData;
 };
 export const SignupForm = () => {
-    const { data, setData, post, processing, errors, reset } =
-        useForm<RegisterFormData>({
-            first_name: "",
-            last_name: "",
-            email: "",
-            password: "",
-            password_confirmation: "",
-            role_id: "4",
-        });
+    const { data, setData, post, processing, errors, reset } = useForm({
+        first_name: "",
+        last_name: "",
+        email: "",
+        password: "",
+        password_confirmation: "",
+        role_id: "4",
+    });
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -39,7 +38,6 @@ export const SignupForm = () => {
             onFinish: () => reset("password", "password_confirmation"),
         });
     };
-
 
     const { roles } = usePage<RolesProps>().props;
     const options = roles?.options;
@@ -52,7 +50,6 @@ export const SignupForm = () => {
                     flexDirection="column"
                     alignItems="flex-end"
                 >
-
                     <TextField
                         fullWidth
                         id="first_name"
@@ -170,7 +167,9 @@ export const SignupForm = () => {
                         id="demo-simple-select"
                         value={String(data.role_id)}
                         name="selectedRole"
-                        onChange={(e)=>setData("role_id", Number(e.target.value))}
+                        onChange={(e) =>
+                            setData("role_id", Number(e.target.value))
+                        }
                     >
                         {options.map((option) => (
                             <option key={option.value} value={option.value}>
@@ -180,8 +179,6 @@ export const SignupForm = () => {
                             </option>
                         ))}
                     </Select>
-
-
 
                     <Button
                         fullWidth
