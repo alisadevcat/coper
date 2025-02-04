@@ -2,6 +2,7 @@ import type { Theme, SxProps, Breakpoint } from "@mui/material/styles";
 
 import { Link } from "@inertiajs/react";
 import Alert from "@mui/material/Alert";
+import { Footer } from "@/Components/global/Footer";
 
 import ApplicationLogo from "@/Components/icons/ApplicationLogo";
 
@@ -55,7 +56,7 @@ export function SimpleLayout({
             /** **************************************
              * Footer
              *************************************** */
-            footerSection={null}
+            footerSection={<Footer/>}
             /** **************************************
              * Style
              *************************************** */

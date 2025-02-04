@@ -17,7 +17,7 @@ import ListSubheader from '@mui/material/ListSubheader';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import ListItemButton from '@mui/material/ListItemButton';
 
-import { fToNow } from '@/utils/format-time';
+// import { fToNow } from '@/utils/format-time';
 
 import { Iconify } from '@/Components/iconify';
 import { Scrollbar } from '@/Components/scrollbar';
@@ -184,7 +184,7 @@ function NotificationItem({ notification }: { notification: NotificationItemProp
             }}
           >
             <Iconify width={14} icon="solar:clock-circle-outline" />
-            {fToNow(notification.postedAt)}
+            {/* {fToNow(notification.postedAt)} */}
           </Typography>
         }
       />

@@ -8,13 +8,13 @@ import { useTheme } from '@mui/material/styles';
 import ListItemButton from '@mui/material/ListItemButton';
 import Drawer, { drawerClasses } from '@mui/material/Drawer';
 
-import { usePathname } from '../../routes/hooks';
-import { RouterLink } from '../../routes/components';
+import { usePathname } from '@/routes/hooks';
+import { RouterLink } from '@/routes/components';
 
-import { varAlpha } from '../../theme/styles';
+import { varAlpha } from '@/theme/styles';
 
-import { Logo } from '../../Components/logo';
-import { Scrollbar } from '../../Components/scrollbar';
+import { Logo } from '@/Components/logo';
+import { Scrollbar } from '@/Components/scrollbar';
 
 import { NavUpgrade } from '../components/nav-upgrade';
 import { WorkspacesPopover } from '../components/workspaces-popover';
