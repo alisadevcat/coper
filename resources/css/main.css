@@ -404,7 +404,7 @@ body {
     margin-left: -8px;
     margin-right: -8px;
 
-    &.zakh {
+    /* &.zakh {
       background-image: url(./img/zakh.jpg);
     }
     &.odo {
@@ -412,7 +412,7 @@ body {
     }
     &.bvoice {
       background-image: url(./img/bvoice.jpg);
-    }
+    } */
   }
   .dot-contaner {
     display: flex;
@@ -433,7 +433,7 @@ body {
   background-size: contain;
   filter: drop-shadow(0px 0px 10px var(--ultra-dark));
   height: 533px;
-  &.ph1 {
+  /* &.ph1 {
     background-image: url(./img/ph_screens/ph_screen1.svg);
   }
   &.ph2 {
@@ -450,7 +450,7 @@ body {
   }
   &.ph6 {
     background-image: url(./img/ph_screens/ph_screen6.svg);
-  }
+  } */
 }
 .sign {
   width: 100%;
@@ -468,10 +468,10 @@ body {
     margin-bottom: 8px;
   }
   &.borrow {
-    background-image: url(./img/ph_screens/borrow_sign.svg);
+    background-image: url(../assets/borrow_sign.svg);
   }
   &.lend {
-    background-image: url(./img/ph_screens/lend_sign.svg);
+    background-image: url(../assets/lend_sign.svg);
   }
 }
 

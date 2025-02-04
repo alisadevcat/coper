@@ -1,46 +1,50 @@
 import React from "react";
+import { Box } from "@mui/material";
+import phone4 from "../../../assets/ph_screen4.svg";
+import phone5 from "../../../assets/ph_screen5.svg";
+import phone6 from "../../../assets/ph_screen6.svg";
 
-export const ToLendMoney = () => {
+const ToLendMoney = () => {
     return (
-        <section className="screen" id="lend">
-            <div className="container screen-container">
-                <div className="row">
-                    <div className="col-sm">
+        <Box className="screen" id="lend" sx={{color: "var(--white)"}}>
+            <Box className="screen-container" sx={{ maxWidth: "1140px", mx: "auto"}}>
+                <Box sx={{ display: 'flex'}}>
+                    <Box className="col-sm">
                         <h2 className="h2 gutterbottom-big">to lend money</h2>
-                    </div>
-                </div>
-                <div className="row gutterbottom-big">
-                    <div className="col-sm-1">
-                        <div className="sign lend">
+                    </Box>
+                </Box>
+                <Box className="gutterbottom-big" sx={{ display: 'flex'}}>
+                    <Box className="col-sm-1">
+                        <Box className="sign lend">
                             <span>1</span>
-                        </div>
-                    </div>
-                    <div className="col-sm-3">
-                        <div className="phone ph4"></div>
-                    </div>
-                    <div className="col-sm-1">
-                        <div className="sign lend">
+                        </Box>
+                    </Box>
+                    <Box className="col-sm-3">
+                        <img src={phone4} alt="" className="phone ph4" />
+                    </Box>
+                    <Box className="col-sm-1">
+                        <Box className="sign lend">
                             <span>2</span>
-                        </div>
-                    </div>
-                    <div className="col-sm-3">
-                        <div className="phone ph5"></div>
-                    </div>
-                    <div className="col-sm-1">
-                        <div className="sign lend">
+                        </Box>
+                    </Box>
+                    <Box className="col-sm-3">
+                        <img src={phone5} alt="" className="phone ph5" />
+                    </Box>
+                    <Box className="col-sm-1">
+                        <Box className="sign lend">
                             <span>3</span>
-                        </div>
-                    </div>
-                    <div className="col-sm-3">
-                        <div className="phone ph6"></div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm">
+                        </Box>
+                    </Box>
+                    <Box className="col-sm-3">
+                        <img src={phone6} alt="" className="phone ph6" />
+                    </Box>
+                </Box>
+                <Box sx={{ display: 'flex'}}>
+                    <Box className="col-sm">
                         <ul className="list">
                             <li>
                                 <p className="p">
-                                    In this section, you can quickly register
+                                    In this Box, you can quickly register
                                     and request a micro-loan for any purpose
                                     from other participants of the Coper
                                     platform, bypassing unnecessary
@@ -68,10 +72,11 @@ export const ToLendMoney = () => {
                                 </p>
                             </li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    </Box>
+                </Box>
+            </Box>
+        </Box>
     );
 };
 
+export default ToLendMoney;

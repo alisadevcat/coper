@@ -1,42 +1,46 @@
 import React from "react";
+import phone1 from "../../../assets/ph_screen1.svg";
+import phone2 from "../../../assets/ph_screen2.svg";
+import phone3 from "../../../assets/ph_screen3.svg";
+import { Box } from "@mui/material";
 
-export const ToBorrowMoney = () => {
+const ToBorrowMoney = () => {
     return (
-        <section className="screen lighter" id="borrow">
-            <div className="container screen-container">
-                <div className="row">
-                    <div className="col-sm">
+        <Box className="screen lighter" id="borrow" sx={{color: "var(--white)"}}>
+            <Box className="screen-container" sx={{ maxWidth: "1140px", mx: "auto"}}>
+                <Box sx={{ display: 'flex'}}>
+                    <Box className="col-sm">
                         <h2 className="h2 gutterbottom-big">to borrow money</h2>
-                    </div>
-                </div>
-                <div className="row gutterbottom-big">
-                    <div className="col-sm-1">
-                        <div className="sign borrow">
+                    </Box>
+                </Box>
+                <Box className="gutterbottom-big" sx={{ display: 'flex'}}>
+                    <Box className="col-sm-1">
+                        <Box className="sign borrow">
                             <span>1</span>
-                        </div>
-                    </div>
-                    <div className="col-sm-3">
-                        <div className="phone ph1"></div>
-                    </div>
-                    <div className="col-sm-1">
-                        <div className="sign borrow">
+                        </Box>
+                    </Box>
+                    <Box className="col-sm-3">
+                        <img src={phone1} alt="" className="phone ph1" />
+                    </Box>
+                    <Box className="col-sm-1">
+                        <Box className="sign borrow">
                             <span>2</span>
-                        </div>
-                    </div>
-                    <div className="col-sm-3">
-                        <div className="phone ph2"></div>
-                    </div>
-                    <div className="col-sm-1">
-                        <div className="sign borrow">
+                        </Box>
+                    </Box>
+                    <Box className="col-sm-3">
+                        <img src={phone2} alt="" className="phone ph2" />
+                    </Box>
+                    <Box className="col-sm-1">
+                        <Box className="sign borrow">
                             <span>3</span>
-                        </div>
-                    </div>
-                    <div className="col-sm-3">
-                        <div className="phone ph3"></div>
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm">
+                        </Box>
+                    </Box>
+                    <Box className="col-sm-3">
+                        <img src={phone3} alt="" className="phone ph3" />
+                    </Box>
+                </Box>
+                <Box sx={{ display: 'flex'}}>
+                    <Box className="col-sm">
                         <ul className="list">
                             <li>
                                 <p className="p">
@@ -57,7 +61,7 @@ export const ToBorrowMoney = () => {
                             <li>
                                 <p className="p">
                                     In addition to high returns, you engage in
-                                    true investments ina specific individual,
+                                    true investments ina specific inBoxidual,
                                     their ideas, and activities, rather than
                                     anonymous corporations with undisclosed
                                     beneficiaries.
@@ -66,17 +70,18 @@ export const ToBorrowMoney = () => {
                             <li>
                                 <p className="p">
                                     Behind every successful project is always a
-                                    talented individual who occasionally needs
+                                    talented inBoxidual who occasionally needs
                                     your support. Believe in human capital,
-                                    invest in specific individuals and their
+                                    invest in specific inBoxiduals and their
                                     ideas, and become part of a mutually
                                     beneficial endeavour.
                                 </p>
                             </li>
                         </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    </Box>
+                </Box>
+            </Box>
+        </Box>
     );
 };
+export default ToBorrowMoney;

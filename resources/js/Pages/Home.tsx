@@ -4,6 +4,8 @@ import { SimpleLayout } from "@/Layouts/simple";
 import { Head } from "@inertiajs/react";
 import AboutUs from "@/sections/home/AboutUs";
 import Cards from "@/sections/home/Cards-old";
+import  ToBorrowMoney  from "@/sections/home/ToBorrowMoney";
+import ToLendMoney from "@/sections/home/ToLendMoney";
 
 // ----------------------------------------------------------------------
 
@@ -18,6 +20,8 @@ export default function Page() {
                 <Hero />
                 <Cards/>
                 <AboutUs/>
+                <ToBorrowMoney/>
+                <ToLendMoney/>
             </SimpleLayout>
         </>
     );
