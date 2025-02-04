@@ -2,12 +2,12 @@ import React from "react";
 
 export const AboutUs = () => {
     return (
-        <section class="screen" id="about">
-            <div class="container screen-container">
-                <div class="row gutterbottom-big">
-                    <div class="col-sm">
-                        <h2 class="h2 gutterbottom-md">be cooperative!</h2>
-                        <p class="p gutterbottom">
+        <section className="screen" id="about">
+            <div className="container screen-container">
+                <div className="row gutterbottom-big">
+                    <div className="col-sm">
+                        <h2 className="h2 gutterbottom-md">be cooperative!</h2>
+                        <p className="p gutterbottom">
                             The world today revolves around online interaction,
                             with over 80% of the population utilising various
                             online services. However, there's a common need that
@@ -16,7 +16,7 @@ export const AboutUs = () => {
                             for various purposes. Yet often, there's a crucial
                             shortage of funds when needed most.
                         </p>
-                        <p class="p gutterbottom">
+                        <p className="p gutterbottom">
                             For instance, someone might need money to pay rent
                             or buy groceries, while for others, it's essential
                             capital for a startup. In a world where you can book
@@ -29,17 +29,17 @@ export const AboutUs = () => {
                             borrowers and lenders register for mutually
                             beneficial cooperation.
                         </p>
-                        <p class="p">
+                        <p className="p">
                             Coper is the future of financial services, where
                             your credit rating isn't as crucial as your ability
                             to lend a hand or receive help when needed.
                         </p>
                     </div>
                 </div>
-                <div class="row gutterbottom-big">
-                    <div class="col-sm">
-                        <h2 class="h2 gutterbottom-md">about us</h2>
-                        <p class="p gutterbottom">
+                <div className="row gutterbottom-big">
+                    <div className="col-sm">
+                        <h2 className="h2 gutterbottom-md">about us</h2>
+                        <p className="p gutterbottom">
                             Coper was created by a team of promising developers
                             forced to leave Russia due to their disagreement
                             with the war unleashed by the Russian government in
@@ -48,7 +48,7 @@ export const AboutUs = () => {
                             emerged from the collaboration and results of
                             adapting to a new life beyond their homeland.
                         </p>
-                        <p class="p gutterbottom">
+                        <p className="p gutterbottom">
                             The idea behind Coper arose from adapting to life in
                             a new environment, where people strive to help each
                             other and contribute to society. The name "Coper" is
@@ -62,47 +62,47 @@ export const AboutUs = () => {
                             an urgent problem quickly and without unnecessary
                             questions.
                         </p>
-                        <p class="p">
+                        <p className="p">
                             The idea's author and project founder: Zakhar
                             Ivachev. Co-founders of the project: Maxim Odoevsky
                             and Vasily Konstantinovsky.
                         </p>
                     </div>
                 </div>
-                <div class="row gutterbottom-big photos">
-                    <div class="col-sm dot-contaner">
-                        <div class="dot"></div>
+                <div className="row gutterbottom-big photos">
+                    <div className="col-sm dot-contaner">
+                        <div className="dot"></div>
                     </div>
-                    <div class="col-sm dot-contaner">
-                        <div class="dot"></div>
+                    <div className="col-sm dot-contaner">
+                        <div className="dot"></div>
                     </div>
-                    <div class="col-sm dot-contaner">
-                        <div class="dot"></div>
+                    <div className="col-sm dot-contaner">
+                        <div className="dot"></div>
                     </div>
 
-                    <div class="col-xs-1">
-                        <div class="avatar zakh"></div>
+                    <div className="col-xs-1">
+                        <div className="avatar zakh"></div>
                     </div>
-                    <div class="col-xs-1">
-                        <div class="avatar odo"></div>
+                    <div className="col-xs-1">
+                        <div className="avatar odo"></div>
                     </div>
-                    <div class="col-xs-1">
-                        <div class="avatar bvoice"></div>
+                    <div className="col-xs-1">
+                        <div className="avatar bvoice"></div>
                     </div>
-                    <div class="col-sm dot-contaner">
-                        <div class="dot"></div>
+                    <div className="col-sm dot-contaner">
+                        <div className="dot"></div>
                     </div>
-                    <div class="col-sm dot-contaner">
-                        <div class="dot"></div>
+                    <div className="col-sm dot-contaner">
+                        <div className="dot"></div>
                     </div>
-                    <div class="col-sm dot-contaner">
-                        <div class="dot"></div>
+                    <div className="col-sm dot-contaner">
+                        <div className="dot"></div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm">
-                        <h2 class="h2 gutterbottom-md">mission</h2>
-                        <p class="p gutterbottom">
+                <div className="row">
+                    <div className="col-sm">
+                        <h2 className="h2 gutterbottom-md">mission</h2>
+                        <p className="p gutterbottom">
                             We aim to create a platform that unites people to
                             provide assistance and support in various aspects of
                             life, especially in challenging times. From
@@ -110,7 +110,7 @@ export const AboutUs = () => {
                             students pay for education, Coper assists people in
                             different corners of the world.
                         </p>
-                        <p class="p gutterbottom">
+                        <p className="p gutterbottom">
                             On one hand, our service isn't just about
                             facilitating credit cooperation between two specific
                             individuals but also about providing assistance and
@@ -120,7 +120,7 @@ export const AboutUs = () => {
                             serving all layers of society, regardless of race,
                             nationality, citizenship, or religion.
                         </p>
-                        <p class="p gutterbottom">
+                        <p className="p gutterbottom">
                             On the other hand, our service involves investors,
                             ensuring trust. The program not only offers the
                             opportunity to earn above-market returns but also
@@ -140,7 +140,7 @@ export const AboutUs = () => {
                             Our mission is to promote cooperation and create
                             good deeds that benefit the entire world.
                         </p>
-                        <p class="p">
+                        <p className="p">
                             Transparency and safety are our priorities. We
                             develop strict rules and checks to ensure safety and
                             transparency for all project participants,

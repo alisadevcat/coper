@@ -7,10 +7,9 @@ export const Footer = () => {
                     <div className="col-sm">
                         <footer className="footer">
                             <div>
-                                <span id="currentYear"></span> Coper P2P fintech
+                                <span id="currentYear"> {year}</span> Coper P2P fintech
                                 project
                             </div>
-                            {year}
                             <div>All rights reserved</div>
                         </footer>
                     </div>

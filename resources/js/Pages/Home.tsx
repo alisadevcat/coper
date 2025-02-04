@@ -1,4 +1,4 @@
-import { Hero } from "./Main/Hero";
+import { Hero } from "@/sections/home/Hero";
 import "../../css/main.css";
 import { SimpleLayout } from "@/Layouts/simple";
 import { Head } from "@inertiajs/react";

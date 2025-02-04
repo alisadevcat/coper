@@ -1,9 +1,9 @@
 import MainLayout from "@/Layouts/MainLayout";
-import { Hero } from "../Pages/Main/Hero";
-import { Cards } from "../Pages/Main/Cards";
-import { AboutUs } from "../Pages/Main/AboutUs";
-import { ToBorrowMoney } from "../Pages/Main/ToBorrowMoney";
-import { ToLendMoney } from "../Pages/Main/ToLendMoney";
+import { Hero } from "../sections/home/Hero";
+import { Cards } from "../sections/home/Cards";
+import { AboutUs } from "../sections/home/AboutUs";
+import { ToBorrowMoney } from "../sections/home/ToBorrowMoney";
+import { ToLendMoney } from "../sections/home/ToLendMoney";
 import '../../css/main.css';
 
 export default function Home() {

@@ -329,7 +329,7 @@ body {
 .main-screen {
   height: calc(100vh - (var(--nav-height)));
   width: 100vw;
-  background: url(../images/bg1.svg) no-repeat right bottom;
+  background: url(../../../assets/background/home-hero.svg) no-repeat right bottom;
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -484,6 +484,7 @@ body {
     opacity: 0.5;
     font-size: 14px;
     margin-bottom: var(--s1);
+    color: var(--white);
   }
 }
 
