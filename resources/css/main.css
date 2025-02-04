@@ -1,6 +1,4 @@
 /*------------fonts-------------*/
-/* @import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined'); */
 @import '@fontsource-variable/darker-grotesque';
 
 /* http://meyerweb.com/eric/tools/css/reset/
@@ -135,9 +133,9 @@ table {
 
 /*-------------variables------------*/
 :root {
-  --error: #ff1183;
-  --warning: #ff8933;
   --primary: #3190ff;
+  --secondary: #ff1183;
+  --warning: #ff8933;
   --inactive: #8bc0ff;
   --success: #7fc156;
   --text: #214a79;

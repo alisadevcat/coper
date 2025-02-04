@@ -1,5 +1,6 @@
-@import "./components/index.css";
-/* @import "./template/index.css";
-@import "./vendors/index.css";
-@import "./docs/index.css";
-@import "./tailwind/index.css"; */
+
+@import '@fontsource/barlow/400.css';
+@import '@fontsource/barlow/500.css';
+@import '@fontsource/barlow/600.css';
+@import '@fontsource/barlow/700.css';
+@import '@fontsource/barlow/800.css';

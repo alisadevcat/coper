@@ -1,7 +1,7 @@
 import img from "../../../assets/phone_splash.svg";
 import bgImg from "../../../assets/background/home-hero.svg";
 import ApplicationLogo from "@/Components/icons/ApplicationLogo";
-import { Box, Typography, Button, Stack } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 
 export const Hero = () => {
     return (
@@ -10,7 +10,7 @@ export const Hero = () => {
         sx={{
           height: "calc(100vh - var(--nav-height))",
           width: "100vw",
-          backgroundImage: "url(../../../assets/background/home-hero.svg)",
+          backgroundImage: `url(${bgImg})`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "right bottom",
           backgroundSize: "cover",
@@ -22,7 +22,7 @@ export const Hero = () => {
         <Stack
           direction={{ xs: "column", md: "row" }}
           alignItems="center"
-          spacing={4}
+          spacing={15}
           px={4}
         >
           <Box sx={{ width: 281, height: 568, display: "flex", justifyContent: "center", alignItems: "center" }}>
@@ -30,16 +30,17 @@ export const Hero = () => {
           </Box>
 
           <Box sx={{ color: "white", ml: { md: 128 } }}>
+
             <Box sx={{ width: 314, height: 73, mb: 3 }}>
               <ApplicationLogo style={{ width: "100%", height: "100%", objectFit: "contain" }} />
             </Box>
             <Box
-              sx={{ fontSize: "var(--h2)", fontWeight: 500, opacity: 0.7, mb: 5, maxWidth: 480 }}
+              sx={{ fontSize: "42px", fontWeight: 500, lineHeight: "42px", opacity: 0.7, mb: 5, maxWidth: 480 }}
             >
               We assist people in challenging financial situations
             </Box>
             <Box
-              sx={{ fontSize: "var(--h3)", lineHeight: "25px", maxWidth: 400 }}
+              sx={{ fontSize: "24px", lineHeight: "25px", maxWidth: 400 }}
             >
               Coper P2P fintech project means co-operation between people all over
               the planet
@@ -51,17 +52,18 @@ export const Hero = () => {
                 sx={{
                   whiteSpace: "nowrap",
                   width: "max-content",
-                  height: 40,
+                  height: "40px",
                   color: "var(--white)",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   textTransform: "uppercase",
                   textDecoration: "none",
-                  fontSize: 14,
+                  fontSize: "14px",
                   fontWeight: 600,
-                  borderRadius: 8,
-                  padding: "11px 24px 13px",
+                  borderRadius: "8px",
+                  padding: "8px 24px", // Reduce vertical padding to fit 40px height
+                  minWidth: "auto", // Prevent Material UI from forcing min width
                   backgroundColor: "var(--primary)",
                   '&:hover': {
                     opacity: 0.8,
@@ -77,19 +79,20 @@ export const Hero = () => {
                 sx={{
                   whiteSpace: "nowrap",
                   width: "max-content",
-                  height: 40,
+                  height: "40px",
                   color: "var(--white)",
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
                   textTransform: "uppercase",
                   textDecoration: "none",
-                  fontSize: 14,
+                  fontSize: "14px",
                   fontWeight: 600,
-                  borderRadius: 8,
-                  padding: "11px 24px 13px",
-                  backgroundColor: "var(--error)",
-                  '&:hover': {
+                  borderRadius: "8px",
+                  padding: "8px 24px", // Reduce vertical padding to fit 40px height
+                  minWidth: "auto", // Prevent Material UI from forcing min width
+                  backgroundColor: "var(--secondary)",
+                  "&:hover": {
                     opacity: 0.8,
                     transition: "opacity 0.25s ease-out",
                   },
