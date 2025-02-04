@@ -1,6 +1,6 @@
 import MainLayout from "@/Layouts/MainLayout";
 import { Hero } from "../sections/home/Hero";
-import { Cards } from "../sections/home/Cards";
+import { Cards } from "../sections/home/Cards-old";
 import { AboutUs } from "../sections/home/AboutUs";
 import { ToBorrowMoney } from "../sections/home/ToBorrowMoney";
 import { ToLendMoney } from "../sections/home/ToLendMoney";

@@ -134,7 +134,7 @@ table {
 /*-------------variables------------*/
 :root {
   --primary: #3190ff;
-  --secondary: #ff1183;
+  --error: #ff1183;
   --warning: #ff8933;
   --inactive: #8bc0ff;
   --success: #7fc156;
@@ -177,9 +177,6 @@ table {
     margin-bottom: 4px;
   }
 }
-/* .layout__main{
-  background-color: #1f2a36;
-} */
 
 .gutterbottom {
   margin-bottom: var(--s3);
@@ -190,7 +187,7 @@ table {
 .gutterbottom-big {
   margin-bottom: var(--s5);
 }
-.button {
+.button-home {
   white-space: nowrap;
   width: max-content;
   height: 40px;
@@ -369,7 +366,7 @@ body {
   .buttons {
     margin-top: var(--s4);
     display: flex;
-    .button {
+    .button-home{
       &:first-child {
         margin-right: var(--s2);
       }
@@ -541,7 +538,7 @@ body {
       font-size: 21px;
     }
     .buttons {
-      .button {
+      .button-home {
         flex-grow: 1;
         flex-basis: 0;
         min-width: 0;
