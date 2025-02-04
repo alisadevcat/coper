@@ -1,16 +1,16 @@
 export const Footer = () => {
-    // const year = new Date().getFullYear();
+    const year = new Date().getFullYear();
     return (
-        <section class="screen">
-            <div class="container screen-container">
-                <div class="row">
-                    <div class="col-sm">
-                        <footer class="footer">
+        <section className="screen">
+            <div className="container screen-container">
+                <div className="row">
+                    <div className="col-sm">
+                        <footer className="footer">
                             <div>
                                 <span id="currentYear"></span> Coper P2P fintech
                                 project
                             </div>
-                            2025
+                            {year}
                             <div>All rights reserved</div>
                         </footer>
                     </div>
