@@ -177,9 +177,9 @@ table {
     margin-bottom: 4px;
   }
 }
-.layout__main{
+/* .layout__main{
   background-color: #1f2a36;
-}
+} */
 
 .gutterbottom {
   margin-bottom: var(--s3);

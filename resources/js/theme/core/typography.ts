@@ -24,7 +24,7 @@ export const defaultFont = 'DM Sans Variable';
 
 export const primaryFont = setFont(defaultFont);
 
-export const secondaryFont = setFont('Barlow');
+export const secondaryFont = setFont("'Darker Grotesque', sans-serif");
 
 // ----------------------------------------------------------------------
 

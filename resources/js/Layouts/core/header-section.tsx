@@ -85,7 +85,6 @@ export function HeaderSection({
             height: 1,
             display: 'flex',
             alignItems: 'center',
-            // backgroundColor: '#191e24',
             ...slotProps?.container?.sx,
           }}
         >
