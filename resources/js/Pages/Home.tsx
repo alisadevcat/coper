@@ -2,6 +2,8 @@ import { Hero } from "@/sections/home/Hero";
 import "../../css/main.css";
 import { SimpleLayout } from "@/Layouts/simple";
 import { Head } from "@inertiajs/react";
+import AboutUs from "@/sections/home/AboutUs";
+
 // ----------------------------------------------------------------------
 
 export default function Page() {
@@ -13,6 +15,7 @@ export default function Page() {
             </Head>
             <SimpleLayout header={{ sx: { backgroundColor: "#191e24" } }} sx={{ backgroundColor: "#1f2a36" }}>
                 <Hero />
+                <AboutUs/>
             </SimpleLayout>
         </>
     );
