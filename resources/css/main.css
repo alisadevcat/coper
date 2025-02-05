@@ -155,6 +155,7 @@ table {
   --h3: 24px;
   --p: 21px;
 }
+
 /*---------common-----------*/
 .h2 {
   font-size: var(--h2);
@@ -351,7 +352,7 @@ body {
     height: 73px;
     background: url(/img/logo.svg) no-repeat left center;
     background-size: contain;
-    margin-bottom: var(--s3);
+
   }
   .slogan {
     margin-bottom: var(--s5);

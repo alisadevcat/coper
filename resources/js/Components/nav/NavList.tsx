@@ -69,9 +69,7 @@ const NavList = () => {
                                     key={link.title}
                                     onClick={handleDrawerToggle}
                                     sx={{
-                                        fontWeight: "400",
                                         marginLeft: "var(--s5)",
-                                        fontSize: "23px",
                                     }}
                                     disablePadding
                                 >
@@ -82,7 +80,7 @@ const NavList = () => {
                                             width: "100%",
                                         }}
                                     >
-                                        <ListItemButton>
+                                        <ListItemButton sx={{ fontSize: "23px"}}>
                                             <ListItemText
                                                 primary={link.title}
                                             />

@@ -62,7 +62,6 @@ export const Hero = () => {
                         marginLeft: "calc(var(--s5) * 2)",
                         color: "white",
                         maxWidth: "480px",
-                        textAlign:'center',
                         [theme.breakpoints.down("md")]: {
                             display: "flex",
                             flexDirection: "column",
@@ -81,10 +80,10 @@ export const Hero = () => {
                             }}
                         />
                     </Box>
-                    <Box sx={{ marginBottom: '40px',  fontSize: '38px', fontWeight: '500', opacity: '0.7',lineHeight: '50px', [theme.breakpoints.down("md")]: {fontSize: "23px"} }}>
+                    <Box sx={{ marginBottom: '40px',  fontSize: '38px', fontWeight: '500', opacity: '0.7', lineHeight: '50px', [theme.breakpoints.down("md")]: { fontSize: "23px", textAlign:'center'} }}>
                         We assist people in challenging financial situations
                     </Box>
-                    <Box sx={{ fontSize:'21px', lineHeight: '25px', opacity: '0.7', fontWeight: "400", maxWidth: "400px" }}>
+                    <Box sx={{ fontSize:'21px', lineHeight: '25px', opacity: '0.7', fontWeight: "400", maxWidth: "400px" , [theme.breakpoints.down("md")]: { fontSize: "16px", textAlign:'center'}}}>
                         Coper P2P fintech project means co-operation between
                         people all over the planet
                     </Box>
