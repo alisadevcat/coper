@@ -13,7 +13,7 @@ const ToLendMoney = () => {
                         <h2 className="h2 gutterbottom-big">to lend money</h2>
                     </Box>
                 </Box>
-                <Box className="gutterbottom-big" sx={{ display: 'flex'}}>
+                <Box className="gutterbottom-big" sx={{ display: 'flex', justifyContent: "space-between"}}>
                     <Box className="col-sm-1">
                         <Box className="sign lend">
                             <span>1</span>
