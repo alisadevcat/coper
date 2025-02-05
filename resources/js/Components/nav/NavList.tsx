@@ -46,7 +46,7 @@ const NavList = () => {
                         edge="end"
                         color="inherit"
                         aria-label="menu"
-                        sx={{color: 'var(--white)'}}
+                        sx={{ color: "var(--white)" }}
                         onClick={handleDrawerToggle}
                     >
                         <MenuIcon />
@@ -57,21 +57,27 @@ const NavList = () => {
                         anchor="right"
                         open={mobileOpen}
                         onClose={handleDrawerToggle}
+                        sx={{ backgroundColor: "var(--ultra-dark)", color: "white"}}
                     >
                         <List>
                             {navLinks.map((link) => (
                                 <ListItem
                                     key={link.title}
                                     onClick={handleDrawerToggle}
+                                    sx={{
+                                        fontWeight: "400",
+                                        marginLeft: "var(--s5)",
+                                        fontSize: "23px",
+                                    }}
                                     disablePadding
                                 >
                                     <Link
                                         href={link.url}
                                         style={{
-                                            textDecoration: "none",
                                             color: "inherit",
                                             width: "100%",
                                         }}
+
                                     >
                                         <ListItemButton>
                                             <ListItemText
@@ -92,10 +98,11 @@ const NavList = () => {
                     {navLinks.map((link) => (
                         <Button
                             key={link.title}
-                            color="inherit"
                             component={Link}
                             href={link.url}
-                            sx={{color: 'var(--white)'}}
+                            sx={{ color: "var(--white)",  paddingTop: "3px",
+                                paddingBottom: "8px", }}
+                            className="hover-underline-animation"
                         >
                             {link.title}
                         </Button>

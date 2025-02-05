@@ -4,7 +4,7 @@ import { SimpleLayout } from "@/Layouts/simple";
 import { Head } from "@inertiajs/react";
 import AboutUs from "@/sections/home/AboutUs";
 import Cards from "@/sections/home/Cards-old";
-import  ToBorrowMoney  from "@/sections/home/ToBorrowMoney";
+import ToBorrowMoney from "@/sections/home/ToBorrowMoney";
 import ToLendMoney from "@/sections/home/ToLendMoney";
 
 // ----------------------------------------------------------------------
@@ -16,12 +16,22 @@ export default function Page() {
                 <title>Coper finance</title>
                 <meta name="description" content="Your page description" />
             </Head>
-            <SimpleLayout header={{ sx: { backgroundColor: "#191e24" } }} sx={{ backgroundColor: "#1f2a36" }}>
+            <SimpleLayout
+                header={{
+                    sx: {
+                        backgroundColor: "var(--ultra-dark)",
+                        px: "var(--s3)",
+                        py: "var(--s4)",
+                        height: "var(--nav-height)",
+                    },
+                }}
+                sx={{ backgroundColor: "#1f2a36" }}
+            >
                 <Hero />
-                <Cards/>
-                <AboutUs/>
-                <ToBorrowMoney/>
-                <ToLendMoney/>
+                <Cards />
+                <AboutUs />
+                <ToBorrowMoney />
+                <ToLendMoney />
             </SimpleLayout>
         </>
     );
