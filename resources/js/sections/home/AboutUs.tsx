@@ -9,10 +9,15 @@ import Grid from "@mui/material/Grid2";
 
 const AboutUs = () => {
     return (
-        <Box className="screen" id="about">
+        <Box id="about" sx={{ backgroundColor: "var(--ultra-dark" }}>
             <Box
-                className="container screen-container"
-                sx={{ color: "white", maxWidth: "1140px", mx: "auto" }}
+                className="screen-container"
+                sx={{
+                    color: "white",
+                    maxWidth: "1140px",
+                    mx: "auto",
+                    px: "80px",
+                }}
             >
                 <Box className="row gutterbottom-big">
                     <Box className="col-sm">
@@ -79,20 +84,39 @@ const AboutUs = () => {
                         </p>
                     </Box>
                 </Box>
-                <Box className="row gutterbottom-big photos">
-                    <Box sx={{ display: "flex", flexDirection: "row" }}>
-                        <Box className="col-sm dot-contaner">
+
+                <Box
+                    className="row gutterbottom-big photos"
+                    sx={{
+                        display: "flex",
+                        gap: "var(--s5)",
+                        justifyContent: "center",
+                    }}
+                >
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            gap: "64px",
+                        }}
+                    >
+                        <Box className="dot-contaner">
                             <Box className="dot"></Box>
                         </Box>
-                        <Box className="col-sm dot-contaner">
+                        <Box className="dot-contaner">
                             <Box className="dot"></Box>
                         </Box>
-                        <Box className="col-sm dot-contaner">
+                        <Box className="dot-contaner">
                             <Box className="dot"></Box>
                         </Box>
                     </Box>
-
-                    <Grid container size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            gap: "64px",
+                        }}
+                    >
                         <Box className="col-xs-1">
                             <img
                                 src={Person1}
@@ -114,19 +138,26 @@ const AboutUs = () => {
                                 className="avatar bvoice"
                             />
                         </Box>
-                    </Grid>
-                    <Box sx={{ display: "flex", flexDirection: "row" }}>
-                        <Box className="col-sm dot-contaner">
+                    </Box>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            gap: "64px",
+                        }}
+                    >
+                        <Box className="dot-contaner">
                             <Box className="dot"></Box>
                         </Box>
-                        <Box className="col-sm dot-contaner">
+                        <Box className=" dot-contaner">
                             <Box className="dot"></Box>
                         </Box>
-                        <Box className="col-sm dot-contaner">
+                        <Box className="dot-contaner">
                             <Box className="dot"></Box>
                         </Box>
                     </Box>
                 </Box>
+
                 <Box className="row">
                     <Box className="col-sm">
                         <h2 className="h2 gutterbottom-md">mission</h2>

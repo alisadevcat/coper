@@ -7,12 +7,14 @@ import phone6 from "../../../assets/ph_screen6.svg";
 const ToLendMoney = () => {
     return (
         <Box className="screen" id="lend" sx={{color: "var(--white)"}}>
-            <Box className="screen-container" sx={{ maxWidth: "1140px", mx: "auto"}}>
+            <Box className="screen-container" sx={{ maxWidth: "1140px", mx: "auto" }}>
+
                 <Box sx={{ display: 'flex'}}>
                     <Box className="col-sm">
                         <h2 className="h2 gutterbottom-big">to lend money</h2>
                     </Box>
                 </Box>
+
                 <Box className="gutterbottom-big" sx={{ display: 'flex', justifyContent: "space-between"}}>
                     <Box className="col-sm-1">
                         <Box className="sign lend">
