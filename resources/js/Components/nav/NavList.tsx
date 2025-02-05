@@ -19,11 +19,11 @@ import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 const navLinks = [
-    { url: "#about", title: "About" },
-    { url: "#borrow", title: "To Borrow Money" },
-    { url: "#lend", title: "To Lend Money" },
-    { url: route("login"), title: "Log in" },
-    { url: route("register"), title: "Register" },
+    { url: "#about", title: "about" },
+    { url: "#borrow", title: "to borrow money" },
+    { url: "#lend", title: "to lend money" },
+    { url: route("login"), title: "log in" },
+    { url: route("register"), title: "register" },
 ];
 
 const NavList = () => {
@@ -38,6 +38,7 @@ const NavList = () => {
     return (
         <>
             <div style={{ flexGrow: 1 }}></div>
+            <div style={{ maxHeight: 'var(--nav-height)' }}>
 
             {isMobile ? (
                 <>
@@ -57,7 +58,10 @@ const NavList = () => {
                         anchor="right"
                         open={mobileOpen}
                         onClose={handleDrawerToggle}
-                        sx={{ backgroundColor: "var(--ultra-dark)", color: "white"}}
+                        sx={{
+                            backgroundColor: "var(--ultra-dark)",
+                            color: "white",
+                        }}
                     >
                         <List>
                             {navLinks.map((link) => (
@@ -77,7 +81,6 @@ const NavList = () => {
                                             color: "inherit",
                                             width: "100%",
                                         }}
-
                                     >
                                         <ListItemButton>
                                             <ListItemText
@@ -93,22 +96,35 @@ const NavList = () => {
             ) : (
                 // Desktop Menu
                 <div
-                    style={{ display: "flex", gap: "1rem", marginLeft: "auto" }}
+                    style={{
+                        display: "flex",
+                        gap: "1rem",
+                        marginLeft: "auto",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                    }}
                 >
                     {navLinks.map((link) => (
                         <Button
                             key={link.title}
                             component={Link}
                             href={link.url}
-                            sx={{ color: "var(--white)",  paddingTop: "3px",
-                                paddingBottom: "8px", }}
+                            sx={{
+                                color: "var(--white)",
+                                paddingTop: "3px",
+                                paddingBottom: "8px",
+                                fontSize:'18px',
+                                fontWeight: '600'
+                            }}
                             className="hover-underline-animation"
                         >
                             {link.title}
                         </Button>
                     ))}
                 </div>
+
             )}
+            </div>
         </>
     );
 };

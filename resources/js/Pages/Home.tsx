@@ -20,9 +20,9 @@ export default function Page() {
                 header={{
                     sx: {
                         backgroundColor: "var(--ultra-dark)",
-                        px: "var(--s3)",
-                        py: "var(--s4)",
-                        height: "var(--nav-height)",
+                        // px: "var(--s3)",
+                        // py: "var(--s4)",
+
                     },
                 }}
                 sx={{ backgroundColor: "#1f2a36" }}
