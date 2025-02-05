@@ -10,15 +10,14 @@ import Grid from "@mui/material/Grid2";
 const AboutUs = () => {
     return (
         <Box id="about" sx={{ backgroundColor: "var(--ultra-dark" }}>
-            <Box
-                className="screen-container"
-                sx={{
+            <Container maxWidth="sm"  sx={{
                     color: "white",
-                    maxWidth: "1140px",
-                    mx: "auto",
                     px: "80px",
                 }}
             >
+            <Box
+                className="screen-container">
+
                 <Box className="row gutterbottom-big">
                     <Box className="col-sm">
                         <h2 className="h2 gutterbottom-md">be cooperative!</h2>
@@ -208,6 +207,7 @@ const AboutUs = () => {
                     </Box>
                 </Box>
             </Box>
+            </Container>
         </Box>
     );
 };

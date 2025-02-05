@@ -7,13 +7,14 @@ import { Box } from "@mui/material";
 const ToBorrowMoney = () => {
     return (
         <Box className="screen lighter" id="borrow" sx={{color: "var(--white)"}}>
+
             <Box className="screen-container" sx={{ maxWidth: "1140px", mx: "auto"}}>
                 <Box sx={{ display: 'flex'}}>
                     <Box className="col-sm">
                         <h2 className="h2 gutterbottom-big">to borrow money</h2>
                     </Box>
                 </Box>
-                <Box className="gutterbottom-big" sx={{ display: 'flex', justifyContent: "space-between"}}>
+                <Box className="gutterbottom-big" sx={{ display: 'flex', justifyContent: "space-between", flexWrap:"wrap"}}>
                     <Box className="col-sm-1">
                         <Box className="sign borrow">
                             <span>1</span>

@@ -2,13 +2,14 @@ import img from "../../../assets/phone_splash.svg";
 import bgImg from "../../../assets/background/home-hero.svg";
 import ApplicationLogo from "@/Components/icons/ApplicationLogo";
 import { Box, Button, Typography } from "@mui/material";
+import Container from "@mui/material";
 
 export const Hero = () => {
     return (
         <Box
             className="main-screen"
             sx={{
-                height: "calc(100vh - var(--nav-height))",
+                height: "calc(100vh - (var(--nav-height)))",
                 width: "100vw",
                 backgroundImage: `url(${bgImg})`,
                 backgroundRepeat: "no-repeat",

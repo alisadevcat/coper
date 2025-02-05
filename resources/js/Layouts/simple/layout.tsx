@@ -9,7 +9,7 @@ import ApplicationLogo from "@/Components/icons/ApplicationLogo";
 import { Main, CompactContent } from "./main";
 import { LayoutSection } from "../core/layout-section";
 import { HeaderSection } from "../core/header-section";
-import { NavList } from "@/Components/nav/NavList";
+import NavList from "@/Components/nav/NavList";
 
 // ----------------------------------------------------------------------
 
