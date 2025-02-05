@@ -298,6 +298,18 @@ body {
   font-size: 16px;
 }
 
+.avatar {
+  width: 130px;
+  height: 130px;
+  background-color: grey;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -391,27 +403,7 @@ body {
 }
 
 .photos {
-  .avatar {
-    width: 130px;
-    height: 130px;
-    /* background-color: grey; */
-    border-radius: 50%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    margin-left: -8px;
-    margin-right: -8px;
 
-    /* &.zakh {
-      background-image: url(./img/zakh.jpg);
-    }
-    &.odo {
-      background-image: url(./img/odo.jpg);
-    }
-    &.bvoice {
-      background-image: url(./img/bvoice.jpg);
-    } */
-  }
   .dot-contaner {
     display: flex;
     justify-content: center;

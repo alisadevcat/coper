@@ -21,7 +21,7 @@
         "layouts-old": ["resources/js/Layouts-old/index.ts"],
         "layouts": ["resources/js/Layouts/index.ts"],
         "ziggy-js": ["./vendor/tightenco/ziggy"],
-        "ui": ["./resources/js/components/ui/index.ts"]
+        "ui": ["./resources/js/components/ui/index.ts"],
       }
     },
     "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx", "resources/js/**/*.d.ts"],
