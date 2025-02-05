@@ -1,80 +1,86 @@
-import { Grid2 } from "@mui/material"; // Import Grid2 from the latest MUI
-import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { AboutCards } from "./AboutUsComponents/AboutCards";
+import { useTheme } from "@mui/material/styles";
 
 const AboutUs = () => {
+    const theme = useTheme();
     return (
         <Box
             id="about"
             sx={{
                 backgroundColor: "var(--bg-dark)",
                 width: "100%",
-                paddingTop:"var(--s5)"
-
+                paddingTop: "var(--s5)",
             }}
         >
-            <Box sx={{ color: "white", paddingBottom: "var(--s5)", maxWidth: "1200px", mx: "auto", }}>
+            <Box
+                sx={{
+                    color: "white",
+                    paddingBottom: "var(--s5)",
+                    maxWidth: "1200px",
+                    mx: "auto",
+                    [theme.breakpoints.down("md")]: {
+                        paddingX: "16px"
+                    },
+                }}
+            >
                 <Box sx={{ marginBottom: "var(--s5)" }}>
-                    <Box>
-                        <Typography
-                            sx={{
-                                fontWeight: "500",
-                                opacity: "0.7",
-                                fontSize: "var(--h2)",
-                                marginBottom: "var(--s4)",
-                            }}
-                        >
-                            be cooperative!
-                        </Typography>
+                    <Typography
+                        sx={{
+                            fontWeight: "500",
+                            opacity: "0.7",
+                            fontSize: "var(--h2)",
+                            marginBottom: "var(--s4)",
+                        }}
+                    >
+                        be cooperative!
+                    </Typography>
 
-                        <Typography
-                            sx={{
-                                lineHeight: 1.2,
-                                fontSize: "var(--p)",
-                                marginBottom: "var(--s3)",
-                            }}
-                        >
-                            The world today revolves around online interaction,
-                            with over 80% of the population utilising various
-                            online services. However, there's a common need that
-                            unites everyone: money. Regardless of religion,
-                            race, or language, everyone requires financial means
-                            for various purposes. Yet often, there's a crucial
-                            shortage of funds when needed most.
-                        </Typography>
+                    <Typography
+                        sx={{
+                            lineHeight: 1.2,
+                            fontSize: "var(--p)",
+                            marginBottom: "var(--s3)",
+                        }}
+                    >
+                        The world today revolves around online interaction, with
+                        over 80% of the population utilising various online
+                        services. However, there's a common need that unites
+                        everyone: money. Regardless of religion, race, or
+                        language, everyone requires financial means for various
+                        purposes. Yet often, there's a crucial shortage of funds
+                        when needed most.
+                    </Typography>
 
-                        <Typography
-                            sx={{
-                                lineHeight: 1.2,
-                                fontSize: "var(--p)",
-                                marginBottom: "var(--s3)",
-                            }}
-                        >
-                            For instance, someone might need money to pay rent
-                            or buy groceries, while for others, it's essential
-                            capital for a startup. In a world where you can book
-                            a round-the-world trip from home, why not have a
-                            service where people can help each other in
-                            difficult times? That's precisely what Coper offers!
-                            After a quick registration, you can access
-                            micro-loans provided by other participants,
-                            bypassing banking checks. On the platform, both
-                            borrowers and lenders register for mutually
-                            beneficial cooperation.
-                        </Typography>
-                        <Typography
-                            sx={{
-                                lineHeight: 1.2,
-                                fontSize: "var(--p)",
-                            }}
-                        >
-                            Coper is the future of financial services, where
-                            your credit rating isn't as crucial as your ability
-                            to lend a hand or receive help when needed.
-                        </Typography>
-                    </Box>
+                    <Typography
+                        sx={{
+                            lineHeight: 1.2,
+                            fontSize: "var(--p)",
+                            marginBottom: "var(--s3)",
+                        }}
+                    >
+                        For instance, someone might need money to pay rent or
+                        buy groceries, while for others, it's essential capital
+                        for a startup. In a world where you can book a
+                        round-the-world trip from home, why not have a service
+                        where people can help each other in difficult times?
+                        That's precisely what Coper offers! After a quick
+                        registration, you can access micro-loans provided by
+                        other participants, bypassing banking checks. On the
+                        platform, both borrowers and lenders register for
+                        mutually beneficial cooperation.
+                    </Typography>
+                    <Typography
+                        sx={{
+                            lineHeight: 1.2,
+                            fontSize: "var(--p)",
+                        }}
+                    >
+                        Coper is the future of financial services, where your
+                        credit rating isn't as crucial as your ability to lend a
+                        hand or receive help when needed.
+                    </Typography>
                 </Box>
                 <Box>
                     <Box>
@@ -138,7 +144,7 @@ const AboutUs = () => {
 
                 <AboutCards />
 
-                <Box className="row">
+                <Box>
                     <Typography
                         sx={{
                             fontWeight: "500",
