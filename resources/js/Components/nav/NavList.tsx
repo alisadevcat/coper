@@ -78,6 +78,7 @@ const NavList = () => {
                                         style={{
                                             color: "inherit",
                                             width: "100%",
+                                            textDecoration:"none"
                                         }}
                                     >
                                         <ListItemButton sx={{ fontSize: "23px"}}>

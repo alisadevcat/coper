@@ -145,6 +145,7 @@ table {
   --bg: #dfeeff;
   --ultra-dark: #191e24;
   --dark-bg: #1f2a36;
+  --lighter: rgba(255, 255, 255, 0.03);
   --s1: 4px;
   --s2: 8px;
   --s3: 16px;
