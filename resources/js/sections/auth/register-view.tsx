@@ -3,7 +3,8 @@ import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import { SignupForm } from "./register-form";
 import { Link } from "@inertiajs/react";
-import { route } from 'ziggy-js';
+import { route } from "ziggy-js";
+import ApplicationLogoBlack from "@/Components/icons/ApplicationLogoBlack";
 
 export function RegisterView() {
     return (
@@ -15,13 +16,18 @@ export function RegisterView() {
                 alignItems="center"
                 sx={{ mb: 5 }}
             >
+                <Box>
+                    <Link href="/">
+                        <ApplicationLogoBlack />
+                    </Link>
+                </Box>
                 <Typography variant="h5">Register</Typography>
                 <Typography variant="body2" color="text.secondary">
-                <Link href={route("login")}>Already registered?</Link>
+                    <Link href={route("login")}>Already registered?</Link>
                 </Typography>
             </Box>
 
-            <SignupForm/>
+            <SignupForm />
 
             <Divider
                 sx={{

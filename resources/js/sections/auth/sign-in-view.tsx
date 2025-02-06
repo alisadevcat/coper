@@ -5,6 +5,7 @@ import { Link } from "@inertiajs/react";
 import { RenderedForm } from "./login-form";
 import { LoginProps } from "@/Pages/Auth/Login";
 import { route } from "ziggy-js";
+import ApplicationLogoBlack from "@/Components/icons/ApplicationLogoBlack";
 
 export function SignInView({ status, canResetPassword }: LoginProps) {
     return (
@@ -16,9 +17,16 @@ export function SignInView({ status, canResetPassword }: LoginProps) {
                 alignItems="center"
                 sx={{ mb: 5 }}
             >
+                <Box>
+                    <Link href="/">
+                        <ApplicationLogoBlack />
+                    </Link>
+                </Box>
+
                 <Typography variant="h5">Sign in</Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Don’t have an account?<Link href={route("register")}>Get started</Link>
+                    Don’t have an account?
+                    <Link href={route("register")}>Get started</Link>
                 </Typography>
             </Box>
 

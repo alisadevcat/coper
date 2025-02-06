@@ -1,10 +1,5 @@
 import type { Theme, SxProps, Breakpoint } from "@mui/material/styles";
-
-import Link from "@mui/material/Link";
-import Alert from "@mui/material/Alert";
 import { stylesMode } from "@/theme/styles";
-
-import ApplicationLogoBlack from "@/Components/icons/ApplicationLogoBlack";
 import backGroundImage from "../../../assets/background/overlay.jpg";
 
 import { Main } from "./main";
@@ -49,19 +44,8 @@ export function AuthLayout({ sx, children, header }: AuthLayoutProps) {
                             ...header?.sx,
                         }}
                         slots={{
-                            topArea: (
-                                <Alert
-                                    severity="info"
-                                    sx={{ display: "none", borderRadius: 0 }}
-                                >
-                                    This is an info Alert.
-                                </Alert>
-                            ),
-                            leftArea: (
-                                <Link href="/">
-                                    <ApplicationLogoBlack />
-                                </Link>
-                            ),
+                            topArea: false,
+                            leftArea: false,
                             rightArea: false,
                         }}
                     />
