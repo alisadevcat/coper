@@ -1,0 +1,39 @@
+
+.select-role-input {
+    font: inherit;
+    letter-spacing: inherit;
+    color: currentcolor;
+    border: 0px;
+    box-sizing: content-box;
+    background: none;
+    height: 1.4375em;
+    margin: 0px;
+    -webkit-tap-highlight-color: transparent;
+    display: block;
+    min-width: 0px;
+    width: 100%;
+    animation-name: mui-auto-fill-cancel;
+    animation-duration: 10ms;
+    padding: 16.5px 14px;
+
+}
+.select-box{
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.4375em;
+    color: var(--palette-text-primary);
+    box-sizing: border-box;
+    cursor: text;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    border-radius: var(--shape-borderRadius);
+}
+
+.select-role-inputt:focus {
+    border-color: #6366F1; /* focus:border-indigo-500 */
+    outline: none; /* removes default focus outline */
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.5);
+}

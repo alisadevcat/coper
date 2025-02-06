@@ -1,12 +1,12 @@
 import { useState, useCallback } from "react";
 import { Button } from "@mui/material";
+import { ChangeEvent } from "@/types";
 
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import { Alert } from "@mui/material";
-import { Head, Link, useForm, usePage } from "@inertiajs/react";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import MenuItem from "@mui/material/MenuItem";
+import { useForm, usePage } from "@inertiajs/react";
+import Select from "@/Components/select/Select";
 import { RolesData } from "@/types";
 import { route } from "ziggy-js";
 
@@ -21,15 +21,17 @@ type RegisterFormData = {
 type RolesProps = {
     roles: RolesData;
 };
+
 export const SignupForm = () => {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        first_name: "",
-        last_name: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
-        role_id: "4",
-    });
+    const { data, setData, post, processing, errors, reset } =
+        useForm<RegisterFormData>({
+            first_name: "",
+            last_name: "",
+            email: "",
+            password: "",
+            password_confirmation: "",
+            role_id: 4,
+        });
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -41,6 +43,10 @@ export const SignupForm = () => {
 
     const { roles } = usePage<RolesProps>().props;
     const options = roles?.options;
+
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(e);
+    };
 
     return (
         <>
@@ -104,7 +110,7 @@ export const SignupForm = () => {
                         id="password"
                         name="password"
                         label="Password"
-                        defaultValue="@demo1234"
+                        defaultValue="none"
                         type="password"
                         slotProps={{
                             // input: {
@@ -162,24 +168,17 @@ export const SignupForm = () => {
                         </Alert>
                     )}
 
-                    <Select
-                        labelId="demo-simple-select"
-                        id="demo-simple-select"
-                        value={String(data.role_id)}
-                        name="selectedRole"
-                        onChange={(e) =>
-                            setData("role_id", Number(e.target.value))
-                        }
-                    >
-                        {options.map((option) => (
-                            <option key={option.value} value={option.value}>
-                                <MenuItem value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            </option>
-                        ))}
-                    </Select>
-
+                    <Box className="select-box">
+                        <Select
+                            value={String(data.role_id)}
+                            name="selectedRole"
+                            className="select-role-input"
+                            onChange={(e) =>
+                                setData("role_id", Number(e.target.value))
+                            }
+                            options={options}
+                        />
+                    </Box>
                     <Button
                         fullWidth
                         size="large"

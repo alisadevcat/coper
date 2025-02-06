@@ -1,3 +1,5 @@
+import { SyntheticEvent } from "react";
+
 export type AuthData = {
     user: AuthenticatedUserData;
 };
@@ -27,3 +29,7 @@ export type PagePropsData = {
     auth: AuthData;
     roles: RolesData;
 };
+
+export interface ChangeEvent<T = Element> extends SyntheticEvent<T> {
+    target: EventTarget & T;
+}
