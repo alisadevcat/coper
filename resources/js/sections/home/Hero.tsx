@@ -4,6 +4,7 @@ import ApplicationLogo from "@/Components/icons/ApplicationLogo";
 import { Box, Button, Typography } from "@mui/material";
 import Container from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { ClassNames } from "@emotion/react";
 
 export const Hero = () => {
     const theme = useTheme();
@@ -80,7 +81,7 @@ export const Hero = () => {
                             }}
                         />
                     </Box>
-                    <Box sx={{ marginBottom: '40px',  fontSize: '38px', fontWeight: '500', opacity: '0.7', lineHeight: '50px', [theme.breakpoints.down("md")]: { fontSize: "23px", textAlign:'center'} }}>
+                    <Box className="heading-2" sx={{ marginBottom: '40px', lineHeight: '1.3', [theme.breakpoints.down("md")]: { fontSize: "23px", textAlign:'center'} }} >
                         We assist people in challenging financial situations
                     </Box>
                     <Box sx={{ fontSize:'21px', lineHeight: '25px', opacity: '0.7', fontWeight: "400", maxWidth: "400px" , [theme.breakpoints.down("md")]: { fontSize: "16px", textAlign:'center'}}}>

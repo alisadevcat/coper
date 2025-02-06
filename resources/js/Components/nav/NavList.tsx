@@ -38,7 +38,7 @@ const NavList = () => {
     return (
         <>
             <div style={{ flexGrow: 1 }}></div>
-            <div style={{ maxHeight: 'var(--nav-height)' }}>
+            <div style={{ maxHeight: 'var(--nav-height)', color:"var(--white)" }}>
 
             {isMobile ? (
                 <>

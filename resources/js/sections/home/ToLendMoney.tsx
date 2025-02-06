@@ -12,7 +12,6 @@ const ToLendMoney = () => {
             id="lend"
             sx={{
                 color: "var(--white)",
-                backgroundColor: "var(--lighter)",
             }}
         >
             <Box
@@ -27,16 +26,7 @@ const ToLendMoney = () => {
                     },
                 }}
             >
-                <Typography
-                    sx={{
-                        fontWeight: "500",
-                        opacity: "0.7",
-                        fontSize: "var(--h2)",
-                        marginBottom: "var(--s4)",
-                    }}
-                >
-                    to lend money
-                </Typography>
+                <h2 className="heading-2">to lend money</h2>
 
                 <Box
                     sx={{
@@ -44,6 +34,7 @@ const ToLendMoney = () => {
                         marginBottom: "var(--s5)",
                         justifyContent: "space-between",
                         gap: "16px",
+                        paddingTop: "var(--s5)",
                         [theme.breakpoints.down("md")]: {
                             flexDirection: "column",
                         },
@@ -143,14 +134,8 @@ const ToLendMoney = () => {
                     }}
                 >
                     <ul className="list">
-                        <li>
-                            <Typography
-                                sx={{
-                                    lineHeight: 1.2,
-                                    fontSize: "var(--p)",
-                                    marginBottom: "var(--s3)",
-                                }}
-                            >
+                        <li className="mb-3">
+                            <Typography className="paragraph">
                                 In this Box, you can quickly register and
                                 request a micro-loan for any purpose from other
                                 participants of the Coper platform, bypassing
@@ -158,38 +143,20 @@ const ToLendMoney = () => {
                             </Typography>
                         </li>
                         <li>
-                            <Typography
-                                sx={{
-                                    lineHeight: 1.2,
-                                    fontSize: "var(--p)",
-                                    marginBottom: "var(--s3)",
-                                }}
-                            >
+                            <Typography className="paragraph">
                                 There is no need to provide a lot of documents
                                 to check your credit history or solvency.
                             </Typography>
                         </li>
                         <li>
-                            <Typography
-                                sx={{
-                                    lineHeight: 1.2,
-                                    fontSize: "var(--p)",
-                                    marginBottom: "var(--s3)",
-                                }}
-                            >
+                            <Typography className="paragraph mb-3">
                                 Your reputation is your key to obtaining the
                                 necessary funds for your purposes in just a few
                                 minutes.
                             </Typography>
                         </li>
                         <li>
-                            <Typography
-                                sx={{
-                                    lineHeight: 1.2,
-                                    fontSize: "var(--p)",
-                                    marginBottom: "var(--s3)",
-                                }}
-                            >
+                            <Typography className="paragraph mb-3">
                                 Your reputation is your key to obtaining the
                                 necessary funds for your purposes in just a few
                                 minutes.

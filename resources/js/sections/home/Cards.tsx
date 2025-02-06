@@ -71,18 +71,12 @@ export const Cards = () => {
                                 }}
                             >
                                 <Typography
-                                    sx={{
-                                        fontWeight: "600",
-                                        fontSize: "24px",
-                                        lineHeight: "1.1",
-                                    }}
+                                 className="heading-4"
                                 >
                                     Not just about monetary profit—it's about
                                     human cooperation
                                 </Typography>
-                                <Typography
-                                    sx={{ fontSize: "16px", lineHeight: 1.2 }}
-                                >
+                                <Typography className="small-paragraph">
                                     Just imagine: with your investments, you can
                                     change someone's life, business, and
                                     contribute to truly significant endeavours
@@ -127,18 +121,12 @@ export const Cards = () => {
                                 }}
                             >
                                 <Typography
-                                    sx={{
-                                        fontWeight: "600",
-                                        fontSize: "24px",
-                                        lineHeight: "1.1",
-                                    }}
+                              className="heading-4"
                                 >
                                     Invest with us: Empower change, support
                                     ventures
                                 </Typography>
-                                <Typography
-                                    sx={{ fontSize: "16px", lineHeight: 1.2 }}
-                                >
+                                <Typography className="small-paragraph">
                                     There are no limits, regardless of race,
                                     skin colour, location, or socioeconomic
                                     status. Coper is a place for everyone
@@ -183,18 +171,12 @@ export const Cards = () => {
                                 }}
                             >
                                 <Typography
-                                    sx={{
-                                        fontWeight: "600",
-                                        fontSize: "24px",
-                                        lineHeight: "1.1",
-                                    }}
+                                    className="heading-4"
                                 >
                                     Your reputation: the currency of success in
                                     Coper
                                 </Typography>
-                                <Typography
-                                    sx={{ fontSize: "16px", lineHeight: 1.2 }}
-                                >
+                                <Typography className="small-paragraph">
                                     No longer do you need to feel ashamed to ask
                                     your loved ones for money before receiving
                                     your salary

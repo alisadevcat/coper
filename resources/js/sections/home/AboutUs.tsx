@@ -25,25 +25,10 @@ const AboutUs = () => {
                     },
                 }}
             >
-                <Box sx={{ marginBottom: "var(--s5)" }}>
-                    <Typography
-                        sx={{
-                            fontWeight: "500",
-                            opacity: "0.7",
-                            fontSize: "var(--h2)",
-                            marginBottom: "var(--s4)",
-                        }}
-                    >
-                        be cooperative!
-                    </Typography>
+                 <Box className="prose pb-5">
+                <h2 className="heading-2 pb-4"> be cooperative!</h2>
 
-                    <Typography
-                        sx={{
-                            lineHeight: 1.2,
-                            fontSize: "var(--p)",
-                            marginBottom: "var(--s3)",
-                        }}
-                    >
+                    <Typography>
                         The world today revolves around online interaction, with
                         over 80% of the population utilising various online
                         services. However, there's a common need that unites
@@ -54,11 +39,6 @@ const AboutUs = () => {
                     </Typography>
 
                     <Typography
-                        sx={{
-                            lineHeight: 1.2,
-                            fontSize: "var(--p)",
-                            marginBottom: "var(--s3)",
-                        }}
                     >
                         For instance, someone might need money to pay rent or
                         buy groceries, while for others, it's essential capital
@@ -72,10 +52,6 @@ const AboutUs = () => {
                         mutually beneficial cooperation.
                     </Typography>
                     <Typography
-                        sx={{
-                            lineHeight: 1.2,
-                            fontSize: "var(--p)",
-                        }}
                     >
                         Coper is the future of financial services, where your
                         credit rating isn't as crucial as your ability to lend a
@@ -83,23 +59,9 @@ const AboutUs = () => {
                     </Typography>
                 </Box>
                 <Box>
-                    <Box>
+                <Box className="prose pb-3">
+                        <h2 className="heading-2 pb-4"> about us</h2>
                         <Typography
-                            sx={{
-                                fontWeight: "500",
-                                opacity: "0.7",
-                                fontSize: "var(--h2)",
-                                marginBottom: "var(--s4)",
-                            }}
-                        >
-                            about us
-                        </Typography>
-                        <Typography
-                            sx={{
-                                lineHeight: 1.2,
-                                fontSize: "var(--p)",
-                                marginBottom: "var(--s3)",
-                            }}
                         >
                             Coper was created by a team of promising developers
                             forced to leave Russia due to their disagreement
@@ -110,11 +72,6 @@ const AboutUs = () => {
                             adapting to a new life beyond their homeland.
                         </Typography>
                         <Typography
-                            sx={{
-                                lineHeight: 1.2,
-                                fontSize: "var(--p)",
-                                marginBottom: "var(--s3)",
-                            }}
                         >
                             The idea behind Coper arose from adapting to life in
                             a new environment, where people strive to help each
@@ -130,10 +87,6 @@ const AboutUs = () => {
                             questions.
                         </Typography>
                         <Typography
-                            sx={{
-                                lineHeight: 1.2,
-                                fontSize: "var(--p)",
-                            }}
                         >
                             The idea's author and project founder: Zakhar
                             Ivachev. Co-founders of the project: Maxim Odoevsky
@@ -144,23 +97,9 @@ const AboutUs = () => {
 
                 <AboutCards />
 
-                <Box>
+                <Box className="prose pt-4">
+                    <h2 className="heading-2 pb-4">mission</h2>
                     <Typography
-                        sx={{
-                            fontWeight: "500",
-                            opacity: "0.7",
-                            fontSize: "var(--h2)",
-                            marginBottom: "var(--s4)",
-                        }}
-                    >
-                        mission
-                    </Typography>
-                    <Typography
-                        sx={{
-                            lineHeight: 1.2,
-                            fontSize: "var(--p)",
-                            marginBottom: "var(--s3)",
-                        }}
                     >
                         We aim to create a platform that unites people to
                         provide assistance and support in various aspects of
@@ -168,13 +107,8 @@ const AboutUs = () => {
                         small businesses in Africa to helping students pay for
                         education, Coper assists people in different corners of
                         the world.
-                    </Typography>
+                        </Typography>
                     <Typography
-                        sx={{
-                            lineHeight: 1.2,
-                            fontSize: "var(--p)",
-                            marginBottom: "var(--s3)",
-                        }}
                     >
                         On one hand, our service isn't just about facilitating
                         credit cooperation between two specific individuals but
@@ -185,13 +119,7 @@ const AboutUs = () => {
                         society, regardless of race, nationality, citizenship,
                         or religion.
                     </Typography>
-                    <Typography
-                        sx={{
-                            lineHeight: 1.2,
-                            fontSize: "var(--p)",
-                            marginBottom: "var(--s3)",
-                        }}
-                    >
+                    <Typography>
                         On the other hand, our service involves investors,
                         ensuring trust. The program not only offers the
                         opportunity to earn above-market returns but also allows
@@ -210,13 +138,7 @@ const AboutUs = () => {
                         society. Our mission is to promote cooperation and
                         create good deeds that benefit the entire world.
                     </Typography>
-                    <Typography
-                        sx={{
-                            lineHeight: 1.2,
-                            fontSize: "var(--p)",
-                            // marginBottom: "var(--s3)",
-                        }}
-                    >
+                    <Typography>
                         Transparency and safety are our priorities. We develop
                         strict rules and checks to ensure safety and
                         transparency for all project participants, minimizing

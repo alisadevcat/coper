@@ -40,14 +40,7 @@ export function SimpleLayout({
                     slotProps={{ container: { maxWidth: false }, toolbar: { sx: { bgcolor: 'transparent', backdropFilter: 'unset' } }, }}
                     sx={header?.sx}
                     slots={{
-                        topArea: (
-                            <Alert
-                                severity="info"
-                                sx={{ display: "none", borderRadius: 0 }}
-                            >
-                                This is an info Alert.
-                            </Alert>
-                        ),
+                        topArea: false,
                         leftArea: <Link href="/"><ApplicationLogo /></Link>,
                         rightArea: <NavList/>,
                     }}

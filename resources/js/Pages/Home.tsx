@@ -1,11 +1,12 @@
 import { Hero } from "@/sections/home/Hero";
-import "../../css/main.css";
 import { SimpleLayout } from "@/Layouts/simple";
 import { Head } from "@inertiajs/react";
 import AboutUs from "@/sections/home/AboutUs";
 import ToBorrowMoney from "@/sections/home/ToBorrowMoney";
 import ToLendMoney from "@/sections/home/ToLendMoney";
 import { Cards } from "@/sections/home/Cards";
+import "../../css/main.css";
+
 // ----------------------------------------------------------------------
 
 export default function Page() {

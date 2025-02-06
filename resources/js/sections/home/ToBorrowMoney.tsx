@@ -28,22 +28,14 @@ const ToBorrowMoney = () => {
                 }}
             >
 
-                <Typography
-                        sx={{
-                            fontWeight: "500",
-                            opacity: "0.7",
-                            fontSize: "var(--h2)",
-                            marginBottom: "var(--s4)",
-                        }}
-                    >
-                     to borrow money
-                    </Typography>
+                <h2 className="heading-2">to borrow money</h2>
 
                 <Box
                     sx={{
                         display: "flex",
                         marginBottom: "var(--s5)",
                         justifyContent: "space-between",
+                        paddingTop:"var(--s5)",
                         gap: "16px",
                         [theme.breakpoints.down("md")]: {
                             flexDirection: "column",
@@ -145,13 +137,7 @@ const ToBorrowMoney = () => {
                 >
                     <ul className="list">
                         <li>
-                            <Typography
-                                sx={{
-                                    lineHeight: 1.2,
-                                    fontSize: "var(--p)",
-                                    marginBottom: "var(--s3)",
-                                }}
-                            >
+                        <Typography className="paragraph mb3">
                                 On the Coper platform, you can easily register
                                 and provide a loan to another participant on
                                 terms that are advantageous to you, surpassing
@@ -159,26 +145,14 @@ const ToBorrowMoney = () => {
                             </Typography>
                         </li>
                         <li>
-                            <Typography
-                                sx={{
-                                    lineHeight: 1.2,
-                                    fontSize: "var(--p)",
-                                    marginBottom: "var(--s3)",
-                                }}
-                            >
+                            <Typography className="paragraph mb3">
                                 Choose your borrower and get money from them
                                 immediately, avoiding unnecessary bureaucratic
                                 obstacles and cumbersome procedures.
                             </Typography>
                         </li>
                         <li>
-                            <Typography
-                                sx={{
-                                    lineHeight: 1.2,
-                                    fontSize: "var(--p)",
-                                    marginBottom: "var(--s3)",
-                                }}
-                            >
+                        <Typography className="paragraph mb3">
                                 In addition to high returns, you engage in true
                                 investments ina specific inBoxidual, their
                                 ideas, and activities, rather than anonymous
@@ -186,13 +160,7 @@ const ToBorrowMoney = () => {
                             </Typography>
                         </li>
                         <li>
-                            <Typography
-                                sx={{
-                                    lineHeight: 1.2,
-                                    fontSize: "var(--p)",
-                                    marginBottom: "var(--s3)",
-                                }}
-                            >
+                        <Typography className="paragraph mb3">
                                 Behind every successful project is always a
                                 talented inBoxidual who occasionally needs your
                                 support. Believe in human capital, invest in
