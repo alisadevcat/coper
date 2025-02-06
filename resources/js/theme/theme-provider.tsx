@@ -10,10 +10,11 @@ import { createTheme } from './create-theme';
 
 type Props = {
   children: React.ReactNode;
+  layout: 'dashboard' | 'home'| 'auth';
 };
 
-export function ThemeProvider({ children }: Props) {
-  const theme = createTheme();
+export function ThemeProvider({ children, layout }: Props) {
+  const theme = createTheme(layout);
 
   return (
     <CssVarsProvider theme={theme}>

@@ -2,11 +2,14 @@ import type { Theme } from '@mui/material/styles';
 import { extendTheme } from '@mui/material/styles';
 // import { experimental_extendTheme as extendTheme } from '@mui/material/styles';
 
-import { shadows, typography, components, colorSchemes, customShadows } from './core';
+
+import { shadows, homeTypography, dashBoardTypography, components, colorSchemes, customShadows } from './core';
 
 // ----------------------------------------------------------------------
 
-export function createTheme(): Theme {
+export function createTheme(layout: 'dashboard' | 'home' | 'auth' ): Theme {
+  const typography = layout === 'home' ? homeTypography : dashBoardTypography;
+
   const initialTheme = {
     colorSchemes,
     shadows: shadows(),

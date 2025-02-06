@@ -3,6 +3,7 @@ import type { Theme, SxProps, Breakpoint } from "@mui/material/styles";
 import { Link } from "@inertiajs/react";
 import Alert from "@mui/material/Alert";
 import { Footer } from "../core/footer-section";
+import { ThemeProvider } from "@/theme/theme-provider";
 
 import ApplicationLogo from "@/Components/icons/ApplicationLogo";
 
@@ -33,40 +34,54 @@ export function SimpleLayout({
     const layoutQuery: Breakpoint = "md";
 
     return (
-        <LayoutSection
-            headerSection={
-                <HeaderSection
-                    layoutQuery={layoutQuery}
-                    slotProps={{ container: { maxWidth: false }, toolbar: { sx: { bgcolor: 'transparent', backdropFilter: 'unset' } }, }}
-                    sx={header?.sx}
-                    slots={{
-                        topArea: false,
-                        leftArea: <Link href="/"><ApplicationLogo /></Link>,
-                        rightArea: <NavList/>,
-                    }}
-                />
-            }
-            /** **************************************
-             * Footer
-             *************************************** */
-            footerSection={<Footer/>}
-            /** **************************************
-             * Style
-             *************************************** */
-            cssVars={{
-                "--layout-simple-content-compact-width": "448px",
-            }}
-            sx={sx}
-        >
-            <Main>
-                {content?.compact ? (
-                    <CompactContent layoutQuery={layoutQuery}>
-                        {children}
-                    </CompactContent>
-                ) : (
-                    children
-                )}
-            </Main>
-        </LayoutSection>
+        <ThemeProvider layout="home">
+            <LayoutSection
+                headerSection={
+                    <HeaderSection
+                        layoutQuery={layoutQuery}
+                        slotProps={{
+                            container: { maxWidth: false },
+                            toolbar: {
+                                sx: {
+                                    bgcolor: "transparent",
+                                    backdropFilter: "unset",
+                                },
+                            },
+                        }}
+                        sx={header?.sx}
+                        slots={{
+                            topArea: false,
+                            leftArea: (
+                                <Link href="/">
+                                    <ApplicationLogo />
+                                </Link>
+                            ),
+                            rightArea: <NavList />,
+                        }}
+                    />
+                }
+                /** **************************************
+                 * Footer
+                 *************************************** */
+                footerSection={<Footer />}
+                /** **************************************
+                 * Style
+                 *************************************** */
+                cssVars={{
+                    "--layout-simple-content-compact-width": "448px",
+                }}
+                sx={sx}
+            >
+                <Main>
+                    {content?.compact ? (
+                        <CompactContent layoutQuery={layoutQuery}>
+                            {children}
+                        </CompactContent>
+                    ) : (
+                        children
+                    )}
+                </Main>
+            </LayoutSection>
+        </ThemeProvider>
     );
 }

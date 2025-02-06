@@ -1,6 +1,6 @@
 import type { TypographyOptions } from '@mui/material/styles/createTypography';
 
-import { setFont, pxToRem, responsiveFontSizes } from '../styles/utils';
+import { setFont, setSecondaryFont, pxToRem, responsiveFontSizes } from '../styles/utils';
 
 // ----------------------------------------------------------------------
 
@@ -20,17 +20,42 @@ declare module '@mui/material/styles' {
 
 // ----------------------------------------------------------------------
 
-export const defaultFont = 'Darker Grotesque';
+export const defaultFont = 'DM Sans Variable';
 
-export const primaryFont = setFont(defaultFont);
+export const dashBoardprimaryFont = setFont(defaultFont);
 
-export const secondaryFont = setFont("Darker Grotesque");
+export const dashBoardSecondaryFont = setSecondaryFont('Barlow');
 
 // ----------------------------------------------------------------------
 
-export const typography: TypographyOptions = {
-  fontFamily: primaryFont,
-  fontSecondaryFamily: secondaryFont,
+// HomeLayout Font
+export const homePrimaryFont = setFont('Darker Grotesque');
+export const homeSecondaryFont = setSecondaryFont('Barlow');
+
+// ----------------------------------------------------------------------
+
+// DashBoardLayout Typography
+export const homeTypography: TypographyOptions = {
+  fontFamily: homePrimaryFont,
+  fontWeightLight: '300',
+  fontWeightRegular: '400',
+  fontWeightMedium: '500',
+  fontWeightSemiBold: '600',
+  fontWeightBold: '700',
+  h1: {
+    fontWeight: 800,
+    fontSize: pxToRem(40),
+    fontFamily: homeSecondaryFont,
+    ...responsiveFontSizes({ sm: 52, md: 58, lg: 64 }),
+  },
+  body1: {
+    fontSize: pxToRem(16),
+  },
+};
+
+export const dashBoardTypography: TypographyOptions = {
+  fontFamily: dashBoardprimaryFont,
+  fontSecondaryFamily: dashBoardSecondaryFont,
   fontWeightLight: '300',
   fontWeightRegular: '400',
   fontWeightMedium: '500',
@@ -40,21 +65,21 @@ export const typography: TypographyOptions = {
     fontWeight: 800,
     lineHeight: 80 / 64,
     fontSize: pxToRem(40),
-    fontFamily: secondaryFont,
+    fontFamily: dashBoardprimaryFont ,
     ...responsiveFontSizes({ sm: 52, md: 58, lg: 64 }),
   },
   h2: {
     fontWeight: 800,
     lineHeight: 64 / 48,
     fontSize: pxToRem(32),
-    fontFamily: secondaryFont,
+    fontFamily: dashBoardprimaryFont,
     ...responsiveFontSizes({ sm: 40, md: 44, lg: 48 }),
   },
   h3: {
     fontWeight: 700,
     lineHeight: 1.5,
     fontSize: pxToRem(24),
-    fontFamily: secondaryFont,
+    fontFamily: dashBoardprimaryFont,
     ...responsiveFontSizes({ sm: 26, md: 30, lg: 32 }),
   },
   h4: {
@@ -110,3 +135,6 @@ export const typography: TypographyOptions = {
     textTransform: 'unset',
   },
 };
+
+
+

@@ -21,6 +21,10 @@ export const mediaQueries = {
 export function setFont(fontName: string) {
   return `"${fontName}", sans-serif"`;
 }
+export function setSecondaryFont(fontName: string) {
+  return `"${fontName}", sans-serif"`;
+}
+
 
 /**
  * Converts rem to px
