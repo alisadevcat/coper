@@ -5,13 +5,12 @@ import IconButton from "@mui/material/IconButton";
 
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import { Alert } from "@mui/material";
 import { useForm, usePage } from "@inertiajs/react";
 import Select from "@/Components/select/Select";
 import { RolesData } from "@/types";
 import { route } from "ziggy-js";
-import Link from "@mui/material/Link";
 import { Iconify } from "@/Components/iconify";
+import InputError from "@/Components/InputError";
 
 type RegisterFormData = {
     first_name: string;
@@ -41,9 +40,13 @@ export const SignupForm = () => {
     const handleNameChange = (e) => {
         const newValue = e.target.value;
         const filteredValue = newValue.replace(/[^a-zA-Z]/g, ""); // Remove non-Latin characters
-       setData("first_name", e.target.value);
-      };
-
+        setData("first_name", filteredValue);
+    };
+    const handleLastNameChange = (e) => {
+        const newValue = e.target.value;
+        const filteredValue = newValue.replace(/[^a-zA-Z]/g, ""); // Remove non-Latin characters
+        setData("last_name", filteredValue);
+    };
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -55,10 +58,6 @@ export const SignupForm = () => {
 
     const { roles } = usePage<RolesProps>().props;
     const options = roles?.options;
-
-    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e);
-    };
 
     return (
         <>
@@ -81,7 +80,7 @@ export const SignupForm = () => {
                         required
                     />
                     {errors.first_name && (
-                        <Alert severity="error">{errors.first_name}</Alert>
+                        <InputError>{errors.first_name}</InputError>
                     )}
 
                     <TextField
@@ -92,12 +91,12 @@ export const SignupForm = () => {
                         value={data.last_name}
                         slotProps={{ inputLabel: { shrink: true } }}
                         sx={{ mb: 3, backgroundColor: "transparent" }}
-                        onChange={(e) => setData("last_name", e.target.value)}
+                        onChange={handleLastNameChange}
                         autoComplete="last_name"
                         required
                     />
                     {errors.last_name && (
-                        <Alert severity="error">{errors.last_name}</Alert>
+                        <InputError>{errors.last_name}</InputError>
                     )}
 
                     <TextField
@@ -113,9 +112,7 @@ export const SignupForm = () => {
                         autoComplete="username"
                         required
                     />
-                    {errors.email && (
-                        <Alert severity="error">{errors.email}</Alert>
-                    )}
+                    {errors.email && <InputError>{errors.email}</InputError>}
 
                     <TextField
                         fullWidth
@@ -148,12 +145,12 @@ export const SignupForm = () => {
                         }}
                         sx={{ mb: 3 }}
                         onChange={(e) => setData("password", e.target.value)}
-                        // autoComplete="current-password"
+                        autoComplete="current-password"
                         required
                     />
 
                     {errors.password && (
-                        <Alert severity="error">{errors.password}</Alert>
+                        <InputError>{errors.password}</InputError>
                     )}
 
                     <TextField
@@ -161,7 +158,6 @@ export const SignupForm = () => {
                         id="password_confirmation"
                         name="password_confirmation"
                         label="Confirm Password"
-                        // defaultValue="@demo1234"
                         value={data.password_confirmation}
                         autoComplete="new-password"
                         type={showConfrimedPassword ? "text" : "password"}
@@ -198,9 +194,7 @@ export const SignupForm = () => {
                     />
 
                     {errors.password_confirmation && (
-                        <Alert severity="error">
-                            {errors.password_confirmation}
-                        </Alert>
+                        <InputError>{errors.password_confirmation}</InputError>
                     )}
 
                     <Box className="select-box">
@@ -220,7 +214,7 @@ export const SignupForm = () => {
                         type="submit"
                         color="inherit"
                         variant="contained"
-                        sx={{marginTop: "2rem" }}
+                        sx={{ marginTop: "2rem" }}
                         disabled={processing}
                     >
                         Register
@@ -230,24 +224,3 @@ export const SignupForm = () => {
         </>
     );
 };
-
-{
-    /* <TextField
-                        fullWidth
-                        id="password"
-                        name="password"
-                        label="Password"
-                        defaultValue="none"
-                        type="password"
-                        slotProps={{
-                            inputLabel: { shrink: true },
-                        }}
-                        sx={{ mb: 3 }}
-                        autoComplete="current-password"
-                        required
-                        onChange={(e) => setData("password", e.target.value)}
-                    />
-                    {errors.password && (
-                        <Alert severity="error">{errors.password}</Alert>
-                    )} */
-}
