@@ -1,35 +1,28 @@
+import { useState } from "react";
 import { Link, usePage } from "@inertiajs/react";
 import { route } from "ziggy-js";
 import { AuthData } from "@/types";
+import NavLink from "./NavLink";
 
-import React, { useState } from "react";
 import {
-    AppBar,
-    Toolbar,
     IconButton,
     Drawer,
     List,
     ListItem,
     ListItemText,
     ListItemButton,
-    Button,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
-const navLinks = [
-    { url: "#about", title: "about" },
-    { url: "#borrow", title: "to borrow money" },
-    { url: "#lend", title: "to lend money" },
-    { url: route("login"), title: "log in" },
-    { url: route("register"), title: "register" },
-];
+import { authNavLinks, navLinks } from "./config-navs";
 
 const NavList = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+    const { auth } = usePage<{ auth: AuthData }>().props;
+    const links = auth.user ? authNavLinks : navLinks;
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -38,91 +31,98 @@ const NavList = () => {
     return (
         <>
             <div style={{ flexGrow: 1 }}></div>
-            <div style={{ maxHeight: 'var(--nav-height)', color:"var(--white)" }}>
+            <div
+                style={{
+                    maxHeight: "var(--nav-height)",
+                    color: "var(--white)",
+                }}
+            >
+                {isMobile ? (
+                    <>
+                        {/* Burger Menu Icon */}
+                        <IconButton
+                            edge="end"
+                            color="inherit"
+                            aria-label="menu"
+                            sx={{ color: "var(--white)" }}
+                            onClick={handleDrawerToggle}
+                        >
+                            <MenuIcon />
+                        </IconButton>
 
-            {isMobile ? (
-                <>
-                    {/* Burger Menu Icon */}
-                    <IconButton
-                        edge="end"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ color: "var(--white)" }}
-                        onClick={handleDrawerToggle}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-
-                    {/* Mobile Drawer */}
-                    <Drawer
-                        anchor="right"
-                        open={mobileOpen}
-                        onClose={handleDrawerToggle}
-                        sx={{
-                            backgroundColor: "var(--ultra-dark)",
-                            color: "white",
+                        {/* Mobile Drawer */}
+                        <Drawer
+                            anchor="right"
+                            open={mobileOpen}
+                            onClose={handleDrawerToggle}
+                            sx={{
+                                backgroundColor: "var(--ultra-dark)",
+                                color: "white",
+                            }}
+                        >
+                            <List>
+                                {links.map((link) => (
+                                    <ListItem
+                                        key={link.title}
+                                        onClick={handleDrawerToggle}
+                                        sx={{
+                                            marginLeft: "var(--s5)",
+                                        }}
+                                        disablePadding
+                                    >
+                                        <NavLink
+                                            href={link.url}
+                                            style={{
+                                                color: "inherit",
+                                                width: "100%",
+                                                textDecoration: "none",
+                                            }}
+                                            method={link.method}
+                                        >
+                                            <ListItemButton
+                                                sx={{ fontSize: "23px" }}
+                                            >
+                                                <ListItemText
+                                                    primary={link.title}
+                                                />
+                                            </ListItemButton>
+                                        </NavLink>
+                                    </ListItem>
+                                ))}
+                            </List>
+                        </Drawer>
+                    </>
+                ) : (
+                    // Desktop Menu
+                    <div
+                        style={{
+                            display: "flex",
+                            gap: "1rem",
+                            marginLeft: "auto",
+                            justifyContent: "space-between",
+                            alignItems: "center",
                         }}
                     >
-                        <List>
-                            {navLinks.map((link) => (
-                                <ListItem
-                                    key={link.title}
-                                    onClick={handleDrawerToggle}
-                                    sx={{
-                                        marginLeft: "var(--s5)",
-                                    }}
-                                    disablePadding
-                                >
-                                    <Link
-                                        href={link.url}
-                                        style={{
-                                            color: "inherit",
-                                            width: "100%",
-                                            textDecoration:"none"
-                                        }}
-                                    >
-                                        <ListItemButton sx={{ fontSize: "23px"}}>
-                                            <ListItemText
-                                                primary={link.title}
-                                            />
-                                        </ListItemButton>
-                                    </Link>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </Drawer>
-                </>
-            ) : (
-                // Desktop Menu
-                <div
-                    style={{
-                        display: "flex",
-                        gap: "1rem",
-                        marginLeft: "auto",
-                        justifyContent: "space-between",
-                        alignItems: "center",
-                    }}
-                >
-                    {navLinks.map((link) => (
-                        <Button
-                            key={link.title}
-                            component={Link}
-                            href={link.url}
-                            sx={{
-                                color: "var(--white)",
-                                paddingTop: "3px",
-                                paddingBottom: "8px",
-                                fontSize:'18px',
-                                fontWeight: '600'
-                            }}
-                            className="hover-underline-animation"
-                        >
-                            {link.title}
-                        </Button>
-                    ))}
-                </div>
-
-            )}
+                        {links.map((link) => (
+                            <NavLink
+                                key={link.title}
+                                method={link?.method}
+                                href={link.url}
+                                style={{
+                                    color: "var(--white)",
+                                    paddingTop: "3px",
+                                    paddingBottom: "8px",
+                                    fontSize: "18px",
+                                    fontWeight: "600",
+                                    textDecoration: "none",
+                                }}
+                                className="hover-underline-animation"
+                            >
+                                {link.title}
+                            </NavLink>
+                        ))}
+                    </div>
+                )}
             </div>
         </>
     );

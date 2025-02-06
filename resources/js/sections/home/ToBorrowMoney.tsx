@@ -27,7 +27,6 @@ const ToBorrowMoney = () => {
                     },
                 }}
             >
-
                 <h2 className="heading-2">to borrow money</h2>
 
                 <Box
@@ -35,7 +34,7 @@ const ToBorrowMoney = () => {
                         display: "flex",
                         marginBottom: "var(--s5)",
                         justifyContent: "space-between",
-                        paddingTop:"var(--s5)",
+                        paddingTop: "var(--s5)",
                         gap: "16px",
                         [theme.breakpoints.down("md")]: {
                             flexDirection: "column",
@@ -137,7 +136,7 @@ const ToBorrowMoney = () => {
                 >
                     <ul className="list">
                         <li>
-                        <Typography className="paragraph mb3">
+                            <Typography className="paragraph mb3">
                                 On the Coper platform, you can easily register
                                 and provide a loan to another participant on
                                 terms that are advantageous to you, surpassing
@@ -152,19 +151,19 @@ const ToBorrowMoney = () => {
                             </Typography>
                         </li>
                         <li>
-                        <Typography className="paragraph mb3">
+                            <Typography className="paragraph mb3">
                                 In addition to high returns, you engage in true
-                                investments ina specific inBoxidual, their
+                                investments ina specific individual, their
                                 ideas, and activities, rather than anonymous
                                 corporations with undisclosed beneficiaries.
                             </Typography>
                         </li>
                         <li>
-                        <Typography className="paragraph mb3">
+                            <Typography className="paragraph mb3">
                                 Behind every successful project is always a
-                                talented inBoxidual who occasionally needs your
+                                talented individual who occasionally needs your
                                 support. Believe in human capital, invest in
-                                specific inBoxiduals and their ideas, and become
+                                specific individuals and their ideas, and become
                                 part of a mutually beneficial endeavour.
                             </Typography>
                         </li>

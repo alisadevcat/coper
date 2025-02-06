@@ -1,28 +1,31 @@
 import type { Theme, SxProps, Breakpoint } from "@mui/material/styles";
 
 import { useState } from "react";
-
 import Box from "@mui/material/Box";
 import Alert from "@mui/material/Alert";
 import { useTheme } from "@mui/material/styles";
-
 import { _langs, _notifications } from "@/_mock";
 import { ThemeProvider } from "@/theme/theme-provider";
-
-import { Iconify } from "@/Components/iconify";
+import { usePage } from "@inertiajs/react";
 
 import { Main } from "./main";
 import { layoutClasses } from "../classes";
 import { NavMobile, NavDesktop } from "./nav";
-import { navData } from "../config-nav-dashboard";
-import { Searchbar } from "../components/searchbar";
-import { _workspaces } from "../config-nav-workspace";
+import { _workspaces } from "./config-nav-workspace";
 import { MenuButton } from "../components/menu-button";
 import { LayoutSection } from "../core/layout-section";
 import { HeaderSection } from "../core/header-section";
+import { Searchbar } from "../components/searchbar";
 import { AccountPopover } from "../components/account-popover";
 import { LanguagePopover } from "../components/language-popover";
 import { NotificationsPopover } from "../components/notifications-popover";
+import { topNavLinks } from "./config-nav-dashboard";
+import { Roles, PagePropsData } from "@/types";
+import {
+    dashBoardNavs,
+    DashboardNavType,
+    defaultNavData,
+} from "./config-nav-dashboard";
 
 // ----------------------------------------------------------------------
 
@@ -40,10 +43,15 @@ export function DashboardLayout({
     header,
 }: DashboardLayoutProps) {
     const theme = useTheme();
-
+    const { roles } = usePage<PagePropsData>().props;
+    const roleSlugs: Roles = roles?.user_roles ? roles.user_roles : [];
     const [navOpen, setNavOpen] = useState(false);
 
     const layoutQuery: Breakpoint = "lg";
+
+    const navData = roleSlugs[0]
+        ? dashBoardNavs[roleSlugs[0] as keyof DashboardNavType]
+        : defaultNavData;
 
     return (
         <ThemeProvider layout="dashboard">
@@ -90,28 +98,12 @@ export function DashboardLayout({
                             ),
                             rightArea: (
                                 <Box gap={1} display="flex" alignItems="center">
-                                    {/* <Searchbar />
-                <LanguagePopover data={_langs} />
-                <NotificationsPopover data={_notifications} />
-                <AccountPopover
-                  data={[
-                    {
-                      label: 'Home',
-                      href: '/',
-                      icon: <Iconify width={22} icon="solar:home-angle-bold-duotone" />,
-                    },
-                    {
-                      label: 'Profile',
-                      href: '#',
-                      icon: <Iconify width={22} icon="solar:shield-keyhole-bold-duotone" />,
-                    },
-                    {
-                      label: 'Settings',
-                      href: '#',
-                      icon: <Iconify width={22} icon="solar:settings-bold-duotone" />,
-                    },
-                  ]}
-                /> */}
+                                    <Searchbar />
+                                    <LanguagePopover data={_langs} />
+                                    <NotificationsPopover
+                                        data={_notifications}
+                                    />
+                                    <AccountPopover data={topNavLinks} />
                                 </Box>
                             ),
                         }}
@@ -120,9 +112,13 @@ export function DashboardLayout({
                 /** **************************************
                  * Sidebar
                  *************************************** */
-                // sidebarSection={
-                //   <NavDesktop data={navData} layoutQuery={layoutQuery} workspaces={_workspaces} />
-                // }
+                sidebarSection={
+                    <NavDesktop
+                        data={navData}
+                        layoutQuery={layoutQuery}
+                        workspaces={_workspaces}
+                    />
+                }
                 /** **************************************
                  * Footer
                  *************************************** */

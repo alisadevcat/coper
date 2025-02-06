@@ -3,7 +3,7 @@ import type { StackProps } from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
+import img from '../../../assets/illustrations/illustration-dashboard.webp';
 import { textGradient } from '@/theme/styles';
 
 // ----------------------------------------------------------------------
@@ -17,7 +17,7 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
       sx={{ mb: 4, textAlign: 'center', ...sx }}
       {...other}
     >
-      <Typography
+      {/* <Typography
         variant="h6"
         sx={(theme) => ({
           ...textGradient(
@@ -32,23 +32,23 @@ export function NavUpgrade({ sx, ...other }: StackProps) {
         <Box component="strong" sx={{ color: 'text.primary' }}>
           $69
         </Box>
-      </Typography>
+      </Typography> */}
 
-      <Box
+      {/* <Box
         component="img"
         alt="Minimal dashboard"
-        src="/assets/illustrations/illustration-dashboard.webp"
+        src={img}
         sx={{ width: 200, my: 2 }}
-      />
+      /> */}
 
-      <Button
+      {/* <Button
         href="https://material-ui.com/store/items/minimal-dashboard/"
         target="_blank"
         variant="contained"
         color="inherit"
       >
         Upgrade to Pro
-      </Button>
+      </Button>*/}
     </Box>
   );
 }

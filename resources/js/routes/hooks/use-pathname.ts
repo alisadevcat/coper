@@ -1,10 +1,9 @@
 import { useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
-
+import { usePage } from "@inertiajs/react";
 // ----------------------------------------------------------------------
 
 export function usePathname() {
-  const { pathname } = useLocation();
+  const pathname = usePage();
 
   return useMemo(() => pathname, [pathname]);
 }

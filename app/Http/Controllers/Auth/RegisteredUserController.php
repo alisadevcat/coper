@@ -38,26 +38,29 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
 
-        $user->roles()->attach($request->role_id);
+            $user = User::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        UserProfile::create([
-            'user_id' => $user->id,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+            $user->roles()->attach($request->role_id);
 
+            UserProfile::create([
+                'user_id' => $user->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
 
-        event(new Registered($user));
+            event(new Registered($user));
 
-        Auth::login($user);
-
-        return redirect(route('dashboard', absolute: false));
+            Auth::login($user);
+            return redirect(route('dashboard', absolute: false))->with('success', 'Form submitted successfully');
+        } catch (\Exception $e) {
+            return redirect(route('register', absolute: false))->with('error', 'Operation failed: ' . $e->getMessage());
+        }
     }
 }

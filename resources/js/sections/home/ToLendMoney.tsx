@@ -136,23 +136,17 @@ const ToLendMoney = () => {
                     <ul className="list">
                         <li className="mb-3">
                             <Typography className="paragraph">
-                                In this Box, you can quickly register and
-                                request a micro-loan for any purpose from other
-                                participants of the Coper platform, bypassing
-                                unnecessary complexities.
+                            In this section, you can quickly register and request a micro-loan for any purpose from other participants of the Coper platform, bypassing unnecessary complexities.
                             </Typography>
                         </li>
                         <li>
                             <Typography className="paragraph">
-                                There is no need to provide a lot of documents
-                                to check your credit history or solvency.
+                            There is no need to provide a lot of documents to check your credit history or solvency.
                             </Typography>
                         </li>
                         <li>
                             <Typography className="paragraph mb-3">
-                                Your reputation is your key to obtaining the
-                                necessary funds for your purposes in just a few
-                                minutes.
+                            For regular use of our investor’s services, it is enough for you to monitor your rating.
                             </Typography>
                         </li>
                         <li>

@@ -30,6 +30,13 @@ export type PagePropsData = {
     roles: RolesData;
 };
 
-export interface ChangeEvent<T = Element> extends SyntheticEvent<T> {
-    target: EventTarget & T;
-}
+// export interface ChangeEvent<T = Element> extends SyntheticEvent<T> {
+//     target: EventTarget & T;
+// }
+
+export type LinkItem = {
+    url: string;
+    title: string;
+    method?: "get" | "post" | "put" | "delete" | "patch"; // Ensure correct type
+    route?: boolean;
+};

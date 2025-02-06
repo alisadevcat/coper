@@ -53,7 +53,6 @@ export const RenderedForm = ({ status, canResetPassword }: LoginProps) => {
                         name="email"
                         label="Email address"
                         value={data.email}
-                        defaultValue="hello@gmail.com"
                         slotProps={{ inputLabel: { shrink: true } }}
                         sx={{ mb: 3, backgroundColor: "transparent" }}
                         onChange={(e) => setData("email", e.target.value)}
@@ -69,7 +68,6 @@ export const RenderedForm = ({ status, canResetPassword }: LoginProps) => {
                         id="password"
                         name="password"
                         label="Password"
-                        defaultValue="@demo1234"
                         type={showPassword ? "text" : "password"}
                         slotProps={{
                             input: {
@@ -98,20 +96,6 @@ export const RenderedForm = ({ status, canResetPassword }: LoginProps) => {
                         autoComplete="current-password"
                         onChange={(e) => setData("password", e.target.value)}
                     />
-                    <div className="mt-4 block">
-                        <label className="flex items-center">
-                            <Checkbox
-                                name="remember"
-                                checked={data.remember}
-                                onChange={(e) =>
-                                    setData("remember", e.target.checked)
-                                }
-                            />
-                            <span className="ms-2 text-sm text-gray-600">
-                                Remember me
-                            </span>
-                        </label>
-                    </div>
 
                     {errors.password && (
                         <Alert severity="error">{errors.password}</Alert>

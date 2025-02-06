@@ -2,15 +2,14 @@ import { useState, useCallback } from "react";
 import { Button } from "@mui/material";
 import InputAdornment from "@mui/material/InputAdornment";
 import IconButton from "@mui/material/IconButton";
-
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import { useForm, usePage } from "@inertiajs/react";
 import Select from "@/Components/select/Select";
 import { RolesData } from "@/types";
-import { route } from "ziggy-js";
 import { Iconify } from "@/Components/iconify";
 import InputError from "@/Components/InputError";
+import { useForm, usePage } from "@inertiajs/react";
+import { route } from "ziggy-js";
 
 type RegisterFormData = {
     first_name: string;
@@ -20,8 +19,14 @@ type RegisterFormData = {
     password_confirmation: string;
     role_id: number | null;
 };
+type SessionMessages = {
+    success: string | null;
+    error: string | null;
+  };
+
 type RolesProps = {
     roles: RolesData;
+    flesh: SessionMessages
 };
 
 export const SignupForm = () => {
@@ -56,8 +61,10 @@ export const SignupForm = () => {
         });
     };
 
-    const { roles } = usePage<RolesProps>().props;
+    const { roles, flesh } = usePage<RolesProps>().props;
     const options = roles?.options;
+
+    console.log(flesh);
 
     return (
         <>

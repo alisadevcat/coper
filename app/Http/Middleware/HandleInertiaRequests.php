@@ -47,7 +47,11 @@ class HandleInertiaRequests extends Middleware
                         'selected' => $role->slug == 'borrower' ? true : false
                     ];
                 }) : []
-            ]
+            ],
+            'flash' => [
+                'success' => $request->session()->get('success'),
+                'error' => $request->session()->get('error'),
+            ],
         ];
     }
 }
