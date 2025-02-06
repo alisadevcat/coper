@@ -29,11 +29,11 @@ export default function Dashboard() {
     console.log(roles);
 
     return (
-        <DashboardLayout>
+        // <DashboardLayout>
             <Link method="post" href={route("logout")} as="button">
                 Log Out
             </Link>
-        </DashboardLayout>
+        // </DashboardLayout>
     );
 }
 

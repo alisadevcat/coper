@@ -1,6 +1,7 @@
 import { useState, useCallback } from "react";
 import { Button } from "@mui/material";
-import { ChangeEvent } from "@/types";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
 
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -9,6 +10,8 @@ import { useForm, usePage } from "@inertiajs/react";
 import Select from "@/Components/select/Select";
 import { RolesData } from "@/types";
 import { route } from "ziggy-js";
+import Link from "@mui/material/Link";
+import { Iconify } from "@/Components/iconify";
 
 type RegisterFormData = {
     first_name: string;
@@ -32,6 +35,15 @@ export const SignupForm = () => {
             password_confirmation: "",
             role_id: 4,
         });
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfrimedPassword, setShowConfrimedPassword] = useState(false);
+
+    const handleNameChange = (e) => {
+        const newValue = e.target.value;
+        const filteredValue = newValue.replace(/[^a-zA-Z]/g, ""); // Remove non-Latin characters
+       setData("first_name", e.target.value);
+      };
+
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -64,7 +76,7 @@ export const SignupForm = () => {
                         value={data.first_name}
                         slotProps={{ inputLabel: { shrink: true } }}
                         sx={{ mb: 3, backgroundColor: "transparent" }}
-                        onChange={(e) => setData("first_name", e.target.value)}
+                        onChange={handleNameChange}
                         autoComplete="first_name"
                         required
                     />
@@ -107,39 +119,39 @@ export const SignupForm = () => {
 
                     <TextField
                         fullWidth
-                        id="password"
                         name="password"
                         label="Password"
-                        defaultValue="none"
-                        type="password"
+                        defaultValue=""
+                        type={showPassword ? "text" : "password"}
                         slotProps={{
-                            // input: {
-                            //     endAdornment: (
-                            //         <InputAdornment position="end">
-                            //             <IconButton
-                            //                 onClick={() =>
-                            //                     setShowPassword(!showPassword)
-                            //                 }
-                            //                 edge="end"
-                            //             >
-                            //                 <Iconify
-                            //                     icon={
-                            //                         showPassword
-                            //                             ? "solar:eye-bold"
-                            //                             : "solar:eye-closed-bold"
-                            //                     }
-                            //                 />
-                            //             </IconButton>
-                            //         </InputAdornment>
-                            //     ),
-                            // },
                             inputLabel: { shrink: true },
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            onClick={() =>
+                                                setShowPassword(!showPassword)
+                                            }
+                                            edge="end"
+                                        >
+                                            <Iconify
+                                                icon={
+                                                    showPassword
+                                                        ? "solar:eye-bold"
+                                                        : "solar:eye-closed-bold"
+                                                }
+                                            />
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            },
                         }}
                         sx={{ mb: 3 }}
-                        autoComplete="current-password"
-                        required
                         onChange={(e) => setData("password", e.target.value)}
+                        // autoComplete="current-password"
+                        required
                     />
+
                     {errors.password && (
                         <Alert severity="error">{errors.password}</Alert>
                     )}
@@ -147,14 +159,36 @@ export const SignupForm = () => {
                     <TextField
                         fullWidth
                         id="password_confirmation"
-                        type="password"
                         name="password_confirmation"
                         label="Confirm Password"
-                        defaultValue="@demo1234"
+                        // defaultValue="@demo1234"
                         value={data.password_confirmation}
                         autoComplete="new-password"
+                        type={showConfrimedPassword ? "text" : "password"}
                         slotProps={{
                             inputLabel: { shrink: true },
+                            input: {
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            onClick={() =>
+                                                setShowConfrimedPassword(
+                                                    !showConfrimedPassword
+                                                )
+                                            }
+                                            edge="end"
+                                        >
+                                            <Iconify
+                                                icon={
+                                                    showConfrimedPassword
+                                                        ? "solar:eye-bold"
+                                                        : "solar:eye-closed-bold"
+                                                }
+                                            />
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            },
                         }}
                         sx={{ mb: 3 }}
                         required
@@ -162,6 +196,7 @@ export const SignupForm = () => {
                             setData("password_confirmation", e.target.value)
                         }
                     />
+
                     {errors.password_confirmation && (
                         <Alert severity="error">
                             {errors.password_confirmation}
@@ -185,6 +220,7 @@ export const SignupForm = () => {
                         type="submit"
                         color="inherit"
                         variant="contained"
+                        sx={{marginTop: "2rem" }}
                         disabled={processing}
                     >
                         Register
@@ -194,3 +230,24 @@ export const SignupForm = () => {
         </>
     );
 };
+
+{
+    /* <TextField
+                        fullWidth
+                        id="password"
+                        name="password"
+                        label="Password"
+                        defaultValue="none"
+                        type="password"
+                        slotProps={{
+                            inputLabel: { shrink: true },
+                        }}
+                        sx={{ mb: 3 }}
+                        autoComplete="current-password"
+                        required
+                        onChange={(e) => setData("password", e.target.value)}
+                    />
+                    {errors.password && (
+                        <Alert severity="error">{errors.password}</Alert>
+                    )} */
+}
