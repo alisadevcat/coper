@@ -14,6 +14,10 @@ return new class extends Migration
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
             $table->enum('gender', ['male', 'female', 'other'])->default('male');
+            $table->text('country')->nullable();
+            $table->text('city')->nullable();
+            $table->text('zip_code')->nullable();
+            $table->text('state')->nullable();
             $table->text('address')->nullable();
             $table->date('birth_date')->nullable();
             $table->string('phone')->nullable();
