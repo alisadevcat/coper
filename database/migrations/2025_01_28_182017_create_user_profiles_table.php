@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('job_title')->nullable();
             $table->text('purpose')->nullable();
             $table->text('additional_info')->nullable();
-            $table->enum('status', ['pending', 'verified', 'rejected', 'not verified'])->default('not verified');
+            $table->enum('status', ['pending', 'verified', 'rejected', 'unverified'])->default('unverified');
             $table->text('rejection_reason')->nullable();
             $table->timestamps();
             $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');
