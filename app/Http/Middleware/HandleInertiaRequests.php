@@ -4,6 +4,10 @@ namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Inertia\Middleware;
+use Illuminate\Support\Facades\DB;
+use App\Models\Role;
+use App\Models\User;
+
 
 class HandleInertiaRequests extends Middleware
 {
@@ -33,6 +37,20 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
+            ],
+            'roles' => [
+                'user_roles' => $request->user()?->id ? User::find($request->user()->id)->roles->pluck('slug') : [],
+                'options' => Role::whereIn('slug', ['borrower', 'lender']) ? Role::whereIn('slug', ['borrower', 'lender'])->get()->map(function ($role) {
+                    return [
+                        'value' => $role->id,
+                        'label' => $role->label,
+                        'selected' => $role->slug == 'borrower' ? true : false
+                    ];
+                }) : []
+            ],
+            'flash' => [
+                'success' => $request->session()->get('success'),
+                'error' => $request->session()->get('error'),
             ],
         ];
     }

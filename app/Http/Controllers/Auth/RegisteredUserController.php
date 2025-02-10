@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Models\UserProfile;
 
 class RegisteredUserController extends Controller
 {
@@ -31,21 +32,35 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
+            'first_name' => 'required|string|max:255|regex:/^[a-zA-Z]+$/',
+            'last_name' => 'required|string|max:255|regex:/^[a-zA-Z]+$/',
+            'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
 
-        event(new Registered($user));
+            $user = User::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
 
-        Auth::login($user);
+            $user->roles()->attach($request->role_id);
 
-        return redirect(route('dashboard', absolute: false));
+            UserProfile::create([
+                'user_id' => $user->id,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            event(new Registered($user));
+
+            Auth::login($user);
+            return redirect(route('dashboard', absolute: false))->with('success', 'Form submitted successfully');
+        } catch (\Exception $e) {
+            return redirect(route('register', absolute: false))->with('error', 'Operation failed: ' . $e->getMessage());
+        }
     }
 }
