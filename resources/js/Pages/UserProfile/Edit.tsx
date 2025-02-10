@@ -1,15 +1,16 @@
 import { DashboardLayout } from "@/Layouts/dashboard";
 import { Head } from "@inertiajs/react";
 import { DashboardContent } from "@/Layouts/dashboard";
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { UserDetailsColumn } from "@/sections/profile/UserDetailsColumn";
-import img from "../../../assets/images/avatar-25.webp";
-import { ImageUpload } from "@/sections/profile/image-upload";
+
+import { AvatarColumn } from "@/sections/profile/avatar-column";
 
 // ----------------------------------------------------------------------
 
-export default function Page() {
+export default function Page({ profileData }) {
+    console.log(profileData);
     return (
         <>
             <Head>
@@ -30,27 +31,8 @@ export default function Page() {
                         }}
                     >
                         <Grid container spacing={3}>
-                            {/* Avatar Column */}
-                            <Grid
-                                size={{ xs: 12, sm: 4 }}
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                }}
-                            >
-                                <img src={img} alt="" />
-                                <Box display="flex" flexDirection="column" pt="4" justifyContent={"center"} alignItems={"center"}>
-                                    <ImageUpload />
-                                    <Typography
-                                        variant="caption"
-                                        color="text.secondary"
-                                    >
-                                        Allowed: .jpeg, .jpg, .png, .gif max
-                                        size of 3 Mb
-                                    </Typography>
-                                </Box>
-                            </Grid>
+
+                          <AvatarColumn/>
                             <Grid
                                 size={{ xs: 12, sm: 8 }}
                                 sx={{
@@ -59,7 +41,7 @@ export default function Page() {
                                     alignItems: "center",
                                 }}
                             >
-                                <UserDetailsColumn />
+                                <UserDetailsColumn profileData={profileData}/>
                             </Grid>
                         </Grid>
                     </Box>

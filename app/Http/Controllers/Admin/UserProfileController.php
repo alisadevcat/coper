@@ -16,7 +16,7 @@ class UserProfileController extends Controller
     {
         $userProfile = UserProfile::where('user_id', $request->user()->id)->first();
         return Inertia::render('UserProfile/Edit', [
-            'userProfile' => $userProfile,
+            'profileData' => $userProfile,
             'status' => session('status'),
         ]);
     }

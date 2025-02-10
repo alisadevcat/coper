@@ -5,7 +5,7 @@ export const ImageUpload = () => {
     return (
         <TextField
             variant="outlined"
-            // fullWidth
+            fullWidth
             type="file"
             // error={!!error}
             // helperText={error || (file ? `Selected file: ${file.name}` : "Allowed: .jpeg, .jpg, .png, .gif (Max: 3MB)")}
