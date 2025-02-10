@@ -137,9 +137,10 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
                         display="flex"
                         flexDirection="column"
                         sx={{pl: 2,
-                            py: 3,
+                            py: 5,
                             gap: 1.5,
-                            pr: 1.5}}>
+                            pr: 1.5}}
+                        >
                         <DashboardNavList data={data} />
                     </Box>
                 </Box>

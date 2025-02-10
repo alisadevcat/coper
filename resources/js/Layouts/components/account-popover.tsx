@@ -1,9 +1,7 @@
 import type { IconButtonProps } from "@mui/material/IconButton";
 
 import { useState, useCallback } from "react";
-
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
 import Popover from "@mui/material/Popover";
 import Divider from "@mui/material/Divider";
@@ -12,11 +10,11 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuItem, { menuItemClasses } from "@mui/material/MenuItem";
 import NavLink from "@/Components/nav/NavLink";
-import ResponsiveNavLink from "@/Components/buttons/ResponsiveNavLink";
+import { usePage } from "@inertiajs/react";
+import { AuthData } from "@/types";
+import profileImg from "../../../assets/images/avatar-25.webp";
 
 import { useRouter, usePathname } from "@/routes/hooks";
-
-import { _myAccount } from "@/_mock";
 
 import { router } from "@inertiajs/react";
 import { route } from "ziggy-js";
@@ -31,16 +29,26 @@ export type AccountPopoverProps = IconButtonProps & {
     }[];
 };
 
+
 export function AccountPopover({
     data = [],
     sx,
     ...other
 }: AccountPopoverProps) {
     const pathname = usePathname();
+    const { auth } = usePage<{ auth: AuthData }>().props;
+    const user = auth.user;
 
     const [openPopover, setOpenPopover] = useState<HTMLButtonElement | null>(
         null
     );
+
+    const _myAccount = {
+        displayName: `${user.first_name} ${user.last_name}`,
+        email: user.email,
+        photoURL: profileImg,
+      };
+
 
     const handleOpenPopover = useCallback(
         (event: React.MouseEvent<HTMLButtonElement>) => {
