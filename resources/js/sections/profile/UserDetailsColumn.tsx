@@ -13,11 +13,15 @@ import {
 import DocumentUpload from "@/Components/uploads/upload-input";
 import { route } from "ziggy-js";
 import { useForm } from "@inertiajs/react";
-
+import { countries } from "@/Layouts/dashboard/config-nav-workspace";
 
 export const UserDetailsColumn = ({ profileData }) => {
     const { data, setData, post, put, processing, errors } = useForm({
         gender: profileData?.gender || "male",
+        country: profileData?.country,
+        city: profileData?.city,
+        state: profileData?.state,
+        zip_code: profileData?.zip_code,
         address: profileData?.address || "",
         birth_date: profileData?.birth_date || "",
         phone: profileData?.phone || "",
@@ -32,18 +36,17 @@ export const UserDetailsColumn = ({ profileData }) => {
         rejection_reason: profileData?.rejection_reason || "",
     });
 
-    const handleSubmit = (e:React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        put(route('profile.update'), {
+        put(route("profile.update"), {
             onSuccess: () => {
                 // Success handler if needed
             },
             onError: () => {
                 // Error handler if needed
-            }
+            },
         });
-
     };
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -78,7 +81,9 @@ export const UserDetailsColumn = ({ profileData }) => {
                                 name="birth_date"
                                 value={data.birth_date}
                                 onChange={handleChange}
-                                InputLabelProps={{ shrink: true }}
+                                slotProps={{
+                                    inputLabel: { shrink: true },
+                                }}
                             />
                         </Grid>
 
@@ -91,6 +96,43 @@ export const UserDetailsColumn = ({ profileData }) => {
                                 onChange={handleChange}
                             />
                         </Grid>
+
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <FormControl fullWidth>
+                                <InputLabel>Country</InputLabel>
+                                <Select
+                                    name="gender"
+                                    value={data.country}
+                                    onChange={handleChange}
+                                >
+                                    {countries.map((item) => (
+                                        <MenuItem value={item.name}>
+                                            {item.name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
+                        </Grid>
+
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField
+                                fullWidth
+                                label="State/Region"
+                                name="state"
+                                value={data.state}
+                                onChange={handleChange}
+                            />
+                        </Grid>
+
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField
+                                fullWidth
+                                label="City"
+                                name="city"
+                                value={data.city}
+                                onChange={handleChange}
+                            />
+                        </Grid>
                         <Grid size={{ xs: 12, md: 6 }}>
                             <TextField
                                 fullWidth
@@ -100,13 +142,31 @@ export const UserDetailsColumn = ({ profileData }) => {
                                 onChange={handleChange}
                             />
                         </Grid>
-
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField
+                                fullWidth
+                                label="Zip Code"
+                                name="zip code"
+                                value={data.zip_code}
+                                onChange={handleChange}
+                            />
+                        </Grid>
                         <Grid size={{ xs: 12, md: 6 }}>
                             <TextField
                                 fullWidth
                                 label="Crypto Wallet"
                                 name="crypto_wallet"
                                 value={data.crypto_wallet}
+                                onChange={handleChange}
+                            />
+                        </Grid>
+
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField
+                                fullWidth
+                                label="Job Title"
+                                name="job_title"
+                                value={data.job_title}
                                 onChange={handleChange}
                             />
                         </Grid>
@@ -140,17 +200,6 @@ export const UserDetailsColumn = ({ profileData }) => {
                                 onChange={handleChange}
                             />
                         </Grid>
-
-                        <Grid size={{ xs: 12, md: 6 }}>
-                            <TextField
-                                fullWidth
-                                label="Job Title"
-                                name="job_title"
-                                value={data.job_title}
-                                onChange={handleChange}
-                            />
-                        </Grid>
-
 
                         {data.status === "rejected" && (
                             <Grid size={{ xs: 12 }}>

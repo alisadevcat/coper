@@ -1,10 +1,14 @@
 import { useState, useCallback } from "react";
-import { Button } from "@mui/material";
-import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
-import Select from "@/Components/select/Select";
+import {
+    TextField,
+    Box,
+    FormControl,
+    Select,
+    Button,
+    MenuItem,
+    IconButton,
+    InputAdornment,
+} from "@mui/material";
 import { RolesData } from "@/types";
 import { Iconify } from "@/Components/iconify";
 import InputError from "@/Components/InputError";
@@ -22,11 +26,11 @@ type RegisterFormData = {
 type SessionMessages = {
     success: string | null;
     error: string | null;
-  };
+};
 
 type RolesProps = {
     roles: RolesData;
-    flesh: SessionMessages
+    flesh: SessionMessages;
 };
 
 export const SignupForm = () => {
@@ -205,16 +209,23 @@ export const SignupForm = () => {
                     )}
 
                     <Box className="select-box">
-                        <Select
-                            value={String(data.role_id)}
-                            name="selectedRole"
-                            className="select-role-input"
-                            onChange={(e) =>
-                                setData("role_id", Number(e.target.value))
-                            }
-                            options={options}
-                        />
+                        <FormControl fullWidth>
+                            <Select
+                                name="role_id"
+                                value={String(data.role_id)}
+                                onChange={(e) =>
+                                    setData("role_id", Number(e.target.value))
+                                }
+                            >
+                                {options.map((item) => (
+                                    <MenuItem value={item.value}>
+                                        {item.label}
+                                    </MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
                     </Box>
+
                     <Button
                         fullWidth
                         size="large"
