@@ -26,7 +26,6 @@ class UserProfileController extends Controller
      */
     public function update(Request $request): RedirectResponse
     {
-       print_R($request->user);
         $request->user()->fill($request->validated());
 
         // if ($request->user()->isDirty('email')) {
@@ -38,6 +37,14 @@ class UserProfileController extends Controller
         //     'password' => ['required', Password::defaults(), 'confirmed'],
         // ]);
 
+        // $request->validate([
+        //     'file' => 'required|file|mimes:pdf,jpg|max:2048',
+        // ]);
+
+        // $file = $request->file('file');
+        // $path = $file->store('uploads', 'public');
+
+        // return back()->with('success', 'File uploaded successfully!');
         $request->user()->save();
 
         return Redirect::route('userprofile.edit');
