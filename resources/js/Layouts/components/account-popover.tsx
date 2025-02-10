@@ -134,34 +134,18 @@ export function AccountPopover({
                     }}
                 >
                     {data.map((option) => (
-                        // <NavLink
-                        //     href={option.href}
-                        //     style={{ textDecoration: "none", color: "inherit" }}
-                        // >
-                        //     <MenuItem
-                        //         key={option.label}
-                        //         selected={option.href === pathname.url}
-                        //     >
-                        //         {option.icon}
-                        //         {option.label}
-                        //     </MenuItem>
-                        // </NavLink>
-
-                           <NavLink href={option.href}>
-                            {option.icon}
-                               {option.label}
-                           </NavLink>
-
-
-                        // <MenuItem
-                        //   key={option.label}
-                        //   component={NavLink}
-                        //   selected={option.href === pathname.url}
-                        //   onClick={() => handleClickItem(option.href)}
-                        // >
-                        //   {option.icon}
-                        //   {option.label}
-                        // </MenuItem>
+                        <NavLink
+                            href={option.href}
+                            style={{ textDecoration: "none", color: "inherit" }}
+                        >
+                            <MenuItem
+                                key={option.label}
+                                selected={option.href === pathname.url}
+                            >
+                                {option.icon}
+                                {option.label}
+                            </MenuItem>
+                        </NavLink>
                     ))}
                 </MenuList>
 
@@ -182,8 +166,8 @@ export function AccountPopover({
                             padding: "6px 16px",
                             fontSize: "0.875rem",
                             fontWeight: 700,
-                            cursor: 'pointer',
-                            textDecoration: 'none',
+                            cursor: "pointer",
+                            textDecoration: "none",
                         }}
                     >
                         Logout

@@ -4,7 +4,7 @@ export const authNavLinks: LinkItem[] = [
     { url: "#about", title: "about" },
     { url: "#borrow", title: "to borrow money" },
     { url: "#lend", title: "to lend money"},
-    { url: "dashboard", title: "dashboard" },
+    { url: "/dashboard", title: "dashboard" },
     { url: "logout", title: "log out", method: "post" },
 ];
 

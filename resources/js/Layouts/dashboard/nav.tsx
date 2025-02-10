@@ -115,13 +115,13 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
 
     return (
         <>
-           <Link href="/">
-                                    <ApplicationLogoBlack />
-                                </Link>
+            <Link href="/">
+                <ApplicationLogoBlack />
+            </Link>
 
             {slots?.topArea}
 
-          <WorkspacesPopover data={workspaces} sx={{ my: 2 }} />
+            {/* <WorkspacesPopover data={workspaces} sx={{ my: 2 }} /> */}
 
             <Scrollbar fillContent>
                 <Box
@@ -136,8 +136,11 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
                         gap={0.5}
                         display="flex"
                         flexDirection="column"
-                    >
-                  <DashboardNavList data={data}/>
+                        sx={{pl: 2,
+                            py: 3,
+                            gap: 1.5,
+                            pr: 1.5}}>
+                        <DashboardNavList data={data} />
                     </Box>
                 </Box>
             </Scrollbar>

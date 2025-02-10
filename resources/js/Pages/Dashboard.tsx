@@ -8,7 +8,7 @@ import { DashboardLayout } from "@/Layouts/dashboard";
 import { route } from "ziggy-js";
 import { Typography } from "@mui/material";
 import NavLink from "@/Components/nav/NavLink";
-
+import { DashboardContent } from "@/Layouts/dashboard";
 
 export default function Dashboard() {
     const { roles } = usePage<PagePropsData>().props;
@@ -27,29 +27,18 @@ export default function Dashboard() {
                 />
             </Head>
             <DashboardLayout>
+                <DashboardContent maxWidth="xl">
                     <Typography variant="h4" sx={{ mb: { xs: 3, md: 5 } }}>
                         Hi, Welcome back 👋
                     </Typography>
-
-                    <div className="py-12 w-full max-w-2/3">
-                        <div className="">
-                            <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                                <div className="p-6 text-gray-900">
-                                    You're logged in!
-                                    <p>
-                                        your role is
-                                        {roleSlugs.map((item) => ` ${item}`)}
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <Typography variant="body2" color="text.secondary">
-                        <NavLink method="post" href={route("logout")}>
-                            Log Out
-                        </NavLink>
+                        You're logged in!
+                        <p>
+                            Your role is
+                            {roleSlugs.map((item) => ` ${item}`)}
+                        </p>
                     </Typography>
+                </DashboardContent>
             </DashboardLayout>
         </>
     );

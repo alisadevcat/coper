@@ -98,8 +98,6 @@ export function DashboardLayout({
                             ),
                             rightArea: (
                                 <Box gap={1} display="flex" alignItems="center">
-                                    <Searchbar />
-                                    <LanguagePopover data={_langs} />
                                     <NotificationsPopover
                                         data={_notifications}
                                     />
