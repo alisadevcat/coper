@@ -12,6 +12,7 @@ export const AvatarColumn = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                gap:"1rem"
             }}
         >
             <Box pt="2">
@@ -21,16 +22,15 @@ export const AvatarColumn = () => {
             <Box
                 display="flex"
                 flexDirection="column"
-                pt="2"
-                justifyContent={"center"}
-                alignItems={"center"}
+                justifyContent="center"
+                alignItems="center"
             >
                 <ImageUpload />
-                <Typography variant="caption" color="text.secondary" pt="2">
+                <Typography variant="caption" color="text.secondary" sx={{ pt:"1rem" }}>
                     Allowed: .jpeg, .jpg, .png, .gif max size of 3 Mb
                 </Typography>
 
-                <Grid size={{ xs: 12 }} pt="2">
+                <Grid size={{ xs: 12 }} sx={{ pt: "1rem" }}>
                     <TextField
                         fullWidth
                         label="Your Status"

@@ -137,7 +137,7 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
                         display="flex"
                         flexDirection="column"
                         sx={{pl: 2,
-                            py: 5,
+                            py: 3,
                             gap: 1.5,
                             pr: 1.5}}
                         >

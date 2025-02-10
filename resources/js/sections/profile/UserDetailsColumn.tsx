@@ -13,12 +13,20 @@ import {
 import DocumentUpload from "@/Components/uploads/upload-input";
 import { route } from "ziggy-js";
 import { useForm } from "@inertiajs/react";
-import { countries } from "@/Layouts/dashboard/config-nav-workspace";
+import {
+    countries,
+    currencies,
+} from "@/Layouts/dashboard/config-nav-workspace";
+import { usePage } from "@inertiajs/react";
+import { AuthData } from "@/types";
 
 export const UserDetailsColumn = ({ profileData }) => {
+    const { user } = usePage<{ auth: AuthData }>().props.auth;
     const { data, setData, post, put, processing, errors } = useForm({
+        first_name: user.first_name || "",
+        last_name: user.last_name || "",
         gender: profileData?.gender || "male",
-        country: profileData?.country,
+        country: profileData?.country || "",
         city: profileData?.city,
         state: profileData?.state,
         zip_code: profileData?.zip_code,
@@ -26,6 +34,7 @@ export const UserDetailsColumn = ({ profileData }) => {
         birth_date: profileData?.birth_date || "",
         phone: profileData?.phone || "",
         crypto_wallet: profileData?.crypto_wallet || "",
+        currency: profileData?.currency || "",
         bank_account_number: profileData?.bank_account_number || "",
         iban: profileData?.iban || "",
         swift: profileData?.swift || "",
@@ -59,6 +68,32 @@ export const UserDetailsColumn = ({ profileData }) => {
                 <form onSubmit={handleSubmit}>
                     <Grid container spacing={2}>
                         <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField
+                                fullWidth
+                                label="First Name"
+                                type="first_name"
+                                name="first_name"
+                                value={data.first_name}
+                                onChange={handleChange}
+                                slotProps={{
+                                    inputLabel: { shrink: true },
+                                }}
+                            />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField
+                                fullWidth
+                                label="Last Name"
+                                type="last_name"
+                                name="last_name"
+                                value={data.last_name}
+                                onChange={handleChange}
+                                slotProps={{
+                                    inputLabel: { shrink: true },
+                                }}
+                            />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 6 }}>
                             <FormControl fullWidth>
                                 <InputLabel>Gender</InputLabel>
                                 <Select
@@ -66,7 +101,9 @@ export const UserDetailsColumn = ({ profileData }) => {
                                     value={data.gender}
                                     onChange={handleChange}
                                 >
-                                    <MenuItem value="male">Male</MenuItem>
+                                    <MenuItem selected value="male">
+                                        Male
+                                    </MenuItem>
                                     <MenuItem value="female">Female</MenuItem>
                                     <MenuItem value="other">Other</MenuItem>
                                 </Select>
@@ -101,9 +138,11 @@ export const UserDetailsColumn = ({ profileData }) => {
                             <FormControl fullWidth>
                                 <InputLabel>Country</InputLabel>
                                 <Select
-                                    name="gender"
+                                    name="country"
                                     value={data.country}
-                                    onChange={handleChange}
+                                    onChange={(e) =>
+                                        setData("country", e.target.value)
+                                    }
                                 >
                                     {countries.map((item) => (
                                         <MenuItem value={item.name}>
@@ -146,17 +185,8 @@ export const UserDetailsColumn = ({ profileData }) => {
                             <TextField
                                 fullWidth
                                 label="Zip Code"
-                                name="zip code"
+                                name="zip_code"
                                 value={data.zip_code}
-                                onChange={handleChange}
-                            />
-                        </Grid>
-                        <Grid size={{ xs: 12, md: 6 }}>
-                            <TextField
-                                fullWidth
-                                label="Crypto Wallet"
-                                name="crypto_wallet"
-                                value={data.crypto_wallet}
                                 onChange={handleChange}
                             />
                         </Grid>
@@ -170,6 +200,7 @@ export const UserDetailsColumn = ({ profileData }) => {
                                 onChange={handleChange}
                             />
                         </Grid>
+
 
                         <Grid size={{ xs: 12, md: 6 }}>
                             <TextField
@@ -199,6 +230,33 @@ export const UserDetailsColumn = ({ profileData }) => {
                                 value={data.swift}
                                 onChange={handleChange}
                             />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField
+                                fullWidth
+                                label="Crypto Wallet"
+                                name="crypto_wallet"
+                                value={data.crypto_wallet}
+                                onChange={handleChange}
+                            />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <FormControl fullWidth>
+                                <InputLabel>Currency</InputLabel>
+                                <Select
+                                    name="currency"
+                                    value={data.currency}
+                                    onChange={(e) =>
+                                        setData("currency", e.target.value)
+                                    }
+                                >
+                                    {currencies.map((item) => (
+                                        <MenuItem value={item.name}>
+                                            {item.name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </FormControl>
                         </Grid>
 
                         {data.status === "rejected" && (

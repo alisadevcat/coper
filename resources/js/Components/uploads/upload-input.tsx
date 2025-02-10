@@ -130,7 +130,10 @@ const DocumentUpload = () => {
     return (
         <Box sx={{ maxWidth: 800, margin: "auto", padding: 3 }}>
             <Typography variant="h4" gutterBottom>
-                Document Upload
+            Please upload your ID document
+            </Typography>
+            <Typography gutterBottom>
+                You can upload your id, passport or driving license
             </Typography>
 
             <UploadBox {...getRootProps()} sx={{ mb: 3 }}>

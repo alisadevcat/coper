@@ -266,3 +266,14 @@ export const countries = [
     { name: "Zambia", code: "ZM" },
     { name: "Zimbabwe", code: "ZW" },
 ];
+
+export const currencies = [
+    {
+        name: "USDT",
+        code: "usdt"
+    },
+    {
+        name: "USDC",
+        code: "usdc"
+    },
+];

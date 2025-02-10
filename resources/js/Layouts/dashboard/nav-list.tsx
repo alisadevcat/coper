@@ -17,7 +17,7 @@ type DataProps = { data: DataItemProp[] };
 
 const DashboardNavList = ({ data }: DataProps) => {
     const pathname = usePage().url;
-    console.log(pathname, data);
+
     return (
         <>
             {data.map((item: DataItemProp) => {

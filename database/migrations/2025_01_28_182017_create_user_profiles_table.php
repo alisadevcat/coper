@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('birth_date')->nullable();
             $table->string('phone')->nullable();
             $table->string('crypto_wallet')->nullable();
+            $table->string('currency')->nullable();
             $table->string('bank_account_number')->nullable();
             $table->string('iban')->nullable();
             $table->string('swift')->nullable();
