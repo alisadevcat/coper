@@ -50,7 +50,7 @@ const validateFile = (file) => {
     }
 };
 
-const DocumentUpload = () => {
+const DocumentUpload = ({ documentPath }) => {
     const [files, setFiles] = useState([]);
     const [uploading, setUploading] = useState(false);
     const [alert, setAlert] = useState({

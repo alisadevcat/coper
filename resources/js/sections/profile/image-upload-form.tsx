@@ -1,0 +1,57 @@
+import React, { useState } from "react";
+import { useForm } from "@inertiajs/react";
+import { route } from "ziggy-js";
+import { ImageUpload } from "./image-upload";// Adjust the import path
+import { Button, Box } from "@mui/material";
+import defaultImg from "../../../assets/images/blank-profile-picture.webp";
+
+const ImageUploadForm = () => {
+    const [preview, setPreview] = useState(defaultImg);
+
+    // Initialize Inertia's useForm
+    const { data, setData, post, processing, errors } = useForm({
+        image: null, // This will hold the uploaded file
+    });
+
+    console.log(preview, 'preview');
+    // Handle file change in the ImageUpload component
+    const handleImageChange = (file) => {
+        console.log(file);
+        setData("image", file); // Update the form data with the new file
+        setPreview(URL.createObjectURL(file)); // Set the preview URL
+    };
+
+    // Handle form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        post(route("upload-image"), {
+            onSuccess: () => {
+                // Handle success (e.g., show a success message)
+                console.log("Image uploaded successfully!");
+            },
+            onError: (errors) => {
+                // Handle errors (e.g., display validation errors)
+                console.error("Error uploading image:", errors);
+            },
+        });
+    };
+
+    return (
+        <Box component="form" onSubmit={handleSubmit}>
+            <ImageUpload
+                handleImageChange={handleImageChange}
+            />
+            <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                disabled={processing}
+                sx={{ mt: 2 }}
+            >
+                {processing ? "Uploading..." : "Upload Image"}
+            </Button>
+        </Box>
+    );
+};
+
+export default ImageUploadForm;

@@ -11,6 +11,7 @@ import { styled } from "@mui/system";
 import { useDropzone } from "react-dropzone";
 import { Iconify } from "@/Components/iconify";
 import defaultImg from "../../../assets/images/blank-profile-picture.webp";
+// // import defaultImg from "../../../assets/images/avatar-25.webp";
 
 const UploadCard = styled(Card)({
     maxWidth: 500,
@@ -38,7 +39,7 @@ const PreviewContainer = styled(Box)({
     },
 });
 
-export const ImageUpload = () => {
+export const ImageUpload = ({ handleImageChange }) => {
     const [preview, setPreview] = useState(defaultImg);
     const [error, setError] = useState<string | null>(null);
 
@@ -51,9 +52,9 @@ export const ImageUpload = () => {
             const file = acceptedFiles[0];
             const previewUrl = URL.createObjectURL(file);
             setPreview(previewUrl);
-            console.log("Files accepted:", acceptedFiles);
+            handleImageChange(file); // Pass the file to the parent component
         }
-    }, []);
+    }, [handleImageChange]);
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
@@ -110,3 +111,78 @@ export const ImageUpload = () => {
         </UploadCard>
     );
 };
+
+// export const ImageUpload = ({ data, setData, handleImageChange }) => {
+//     const [preview, setPreview] = useState(data.photoPath? data.photoPath: defaultImg);
+//     const [error, setError] = useState<string | null>(null);
+//     console.log(preview);
+
+//     const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+//         if (rejectedFiles.length > 0) {
+//             setError("Please upload a valid file under 3MB");
+//             return;
+//         }
+//         if (acceptedFiles.length > 0) {
+//             const file = acceptedFiles[0];
+//             const previewUrl = URL.createObjectURL(file);
+//             setPreview(previewUrl);
+//             console.log(file, 'file');
+//             handleImageChange(previewUrl);
+//         }
+//     }, []);
+
+//     const { getRootProps, getInputProps, isDragActive } = useDropzone({
+//         onDrop,
+//         accept: {
+//             "image/*": [".jpg", ".jpeg", ".png", ".gif"],
+//         },
+//         maxSize: 3 * 1024 * 1024,
+//         multiple: false,
+//     });
+
+//     return (
+//         <UploadCard>
+//             <CardContent>
+//                 <PreviewContainer>
+//                     <img src={preview} alt="Preview" />
+//                 </PreviewContainer>
+//                 <Typography variant="h6" gutterBottom>
+//                     Upload Photo
+//                 </Typography>
+//                 <Typography
+//                     variant="caption"
+//                     color="text.secondary"
+//                     sx={{ pt: "1rem" }}
+//                 >
+//                     Allowed: .jpeg, .jpg, .png, .gif max size of 3 Mb
+//                 </Typography>
+//                 <DropZone {...getRootProps()} isDragActive={isDragActive}>
+//                     <input {...getInputProps()} />
+//                     <Iconify
+//                         width={24}
+//                         icon="material-symbols:download"
+//                         style={{ marginBottom: "0.5rem" }}
+//                     />
+//                     <Typography>
+//                         {isDragActive ? "Drop here" : "Drag & drop files here"}
+//                     </Typography>
+//                 </DropZone>
+
+//                 <Snackbar
+//                     open={!!error}
+//                     autoHideDuration={4000}
+//                     onClose={() => setError(null)}
+//                     anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+//                 >
+//                     <Alert
+//                         onClose={() => setError(null)}
+//                         severity="error"
+//                         variant="filled"
+//                     >
+//                         {error}
+//                     </Alert>
+//                 </Snackbar>
+//             </CardContent>
+//         </UploadCard>
+//     );
+// };
