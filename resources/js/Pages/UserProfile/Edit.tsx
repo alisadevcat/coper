@@ -5,6 +5,7 @@ import { Typography, Box, TextField } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { UserDetailsColumn } from "@/sections/profile/UserDetailsColumn";
 
+
 import { AvatarColumn } from "@/sections/profile/avatar-column";
 
 // ----------------------------------------------------------------------

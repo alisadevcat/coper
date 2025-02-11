@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { useDropzone } from "react-dropzone";
 import { Iconify } from "../iconify";
+import defaultmg from "../../../assets/images/blank-profile-picture.webp";
 
 const UploadBox = styled(Box)({
     border: "2px dashed #ccc",
@@ -31,6 +32,24 @@ const PreviewCard = styled(Card)({
     position: "relative",
 });
 
+
+
+const validateFile = (file) => {
+    const validTypes = [".pdf", ".jpg", ".jpeg", ".png"];
+    const maxSize = 5 * 1024 * 1024; // 5MB
+
+    if (
+        !validTypes.some((type) => file.name.toLowerCase().endsWith(type))
+    ) {
+        throw new Error(
+            "Invalid file type. Supported types: PDF, JPG, JPEG, PNG"
+        );
+    }
+    if (file.size > maxSize) {
+        throw new Error("File size exceeds 5MB limit");
+    }
+};
+
 const DocumentUpload = () => {
     const [files, setFiles] = useState([]);
     const [uploading, setUploading] = useState(false);
@@ -40,21 +59,6 @@ const DocumentUpload = () => {
         severity: "info",
     });
 
-    const validateFile = (file) => {
-        const validTypes = [".pdf", ".jpg", ".jpeg", ".png"];
-        const maxSize = 5 * 1024 * 1024; // 5MB
-
-        if (
-            !validTypes.some((type) => file.name.toLowerCase().endsWith(type))
-        ) {
-            throw new Error(
-                "Invalid file type. Supported types: PDF, JPG, JPEG, PNG"
-            );
-        }
-        if (file.size > maxSize) {
-            throw new Error("File size exceeds 5MB limit");
-        }
-    };
 
     const onDrop = useCallback(
         (acceptedFiles) => {
@@ -136,26 +140,6 @@ const DocumentUpload = () => {
                 You can upload your id, passport or driving license
             </Typography>
 
-            <UploadBox {...getRootProps()} sx={{ mb: 3 }}>
-                <input {...getInputProps()} />
-                <Iconify
-                    width={40}
-                    icon="material-symbols:download"
-                    color="#757575"
-                />
-                <Typography variant="h6" sx={{ mt: 2 }}>
-                    {isDragActive
-                        ? "Drop files here"
-                        : "Drag & drop files or click to select"}
-                </Typography>
-                <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    sx={{ mt: 1 }}
-                >
-                    Supported formats: PDF, JPG, JPEG, PNG (Max 5MB per file)
-                </Typography>
-            </UploadBox>
 
             <Grid container spacing={2}>
                 {files.map((file, index) => (
@@ -185,7 +169,7 @@ const DocumentUpload = () => {
                                 >
                                     {(file.file.size / (1024 * 1024)).toFixed(
                                         2
-                                    )}{" "}
+                                    )}
                                     MB
                                 </Typography>
                                 <IconButton
@@ -204,6 +188,28 @@ const DocumentUpload = () => {
                     </Grid>
                 ))}
             </Grid>
+
+
+            <UploadBox {...getRootProps()} sx={{ mb: 3 }}>
+                <input {...getInputProps()} />
+                <Iconify
+                    width={40}
+                    icon="material-symbols:download"
+                    color="#757575"
+                />
+                <Typography variant="h6" sx={{ mt: 2 }}>
+                    {isDragActive
+                        ? "Drop files here"
+                        : "Drag & drop files or click to select"}
+                </Typography>
+                <Typography
+                    variant="body2"
+                    color="textSecondary"
+                    sx={{ mt: 1 }}
+                >
+                    Supported formats: PDF, JPG, JPEG, PNG (Max 5MB per file)
+                </Typography>
+            </UploadBox>
 
             {files.length > 0 && (
                 <Button
