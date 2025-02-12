@@ -1,3 +1,4 @@
+
 import { Box, Container, Typography } from "@mui/material";
 
 export const Footer = () => {
@@ -29,3 +30,4 @@ export const Footer = () => {
         </Box>
     );
 };
+

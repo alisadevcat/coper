@@ -1,3 +1,4 @@
+
 import type { Theme, SxProps, Breakpoint } from "@mui/material/styles";
 import { usePage } from "@inertiajs/react";
 import { useEffect } from "react";
@@ -152,3 +153,4 @@ export function NavContent({ data, slots, workspaces, sx }: NavContentProps) {
         </>
     );
 }
+
