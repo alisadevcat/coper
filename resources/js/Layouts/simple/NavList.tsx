@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Link, usePage } from "@inertiajs/react";
-import { route } from "ziggy-js";
+import { usePage } from "@inertiajs/react";
 import { AuthData } from "@/types";
-import NavLink from "./NavLink";
+import NavLink from "@/Components/nav/NavLink";
 
 import {
     IconButton,
