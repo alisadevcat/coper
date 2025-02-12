@@ -12,6 +12,7 @@ import { Link } from "@inertiajs/react";
 import { NavUpgrade } from "../components/nav-upgrade";
 // import { WorkspacesPopover } from "../components/workspaces-popover";
 
+
 import type { WorkspacesPopoverProps } from "../components/workspaces-popover";
 import DashboardNavList from "./nav-list";
 // ----------------------------------------------------------------------
