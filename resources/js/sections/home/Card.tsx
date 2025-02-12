@@ -5,7 +5,7 @@ import { HandshakeIcon } from "@/Components/icons/HandshakeIcon";
 import { HeartIcon } from "@/Components/icons/HeartIcon";
 import { CurrencyIcon } from "@/Components/icons/CurrencyIcon";
 
-const icons:{ [key: string]: React.ReactElement } = {
+const icons: { [key: string]: React.ReactElement } = {
     heart: <HeartIcon />,
     currency: <CurrencyIcon />,
     handshake: <HandshakeIcon />,
@@ -56,45 +56,11 @@ export const Card = ({ card }: { card: CardData }) => {
                 <Typography variant="h4" className="heading-4">
                     {card.heading}
                 </Typography>
-                <Typography className="small-paragraph">
+                <Typography className="paragraph">
                     {card.description}
                 </Typography>
             </Box>
-            {/* <Box
-                sx={{
-                    width: "48",
-                    height: "48",
-                    [theme.breakpoints.down("md")]: {
-                        width: "60px",
-                        height: "60px",
-                    },
-                }}
-            >
-                <HandshakeIcon />
-            </Box>
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "1rem",
-                    maxwWidth: "261px",
-                    ml: "1rem",
-                    [theme.breakpoints.down("md")]: {
-                        ml: 0,
-                        gap: "19px",
-                        textAlign: "center",
-                    },
-                }}
-            >
-                <Typography variant="h4" className="heading-4">
-                    Not just about monetary profit—it's about human cooperation
-                </Typography>
-                <Typography className="small-paragraph">
-                    Just imagine: with your investments, you can change
-                    someone's life, business, and contribute to truly
-                    significant endeavours
-                </Typography>
-            </Box> */}
         </Box>
+
     );
 };

@@ -112,8 +112,8 @@ const NavList = () => {
                                     color: "var(--white)",
                                     paddingTop: "3px",
                                     paddingBottom: "8px",
-                                    fontSize: "18px",
-                                    fontWeight: "600",
+                                    fontSize: "23px",
+                                    fontWeight: "400",
                                     textDecoration: "none",
                                 }}
                                 className="hover-underline-animation"
