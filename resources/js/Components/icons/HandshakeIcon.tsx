@@ -1,5 +1,5 @@
 
-export const HandshakeIcon = (props) => {
+export const HandshakeIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
     return (
         <svg
             width="48"
