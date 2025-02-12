@@ -1,21 +1,12 @@
 /*------------fonts-------------*/
-@import '@fontsource-variable/darker-grotesque';
+/* @import '@fontsource-variable/darker-grotesque'; */
+@import url('https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@300..900&display=swap');
 
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
 */
 
-
-.gutterbottom {
-  margin-bottom: var(--s3);
-}
-.gutterbottom-md {
-  margin-bottom: var(--s4);
-}
-.gutterbottom-big {
-  margin-bottom: var(--s5);
-}
 .button-home {
   white-space: nowrap;
   width: max-content;
@@ -41,15 +32,6 @@
     background-color: var(--error);
   }
 }
-.screen {
-  width: 100%;
-  &.ultra-dark {
-    background-color: var(--ultra-dark);
-  }
-  &.lighter {
-    background: rgba(255, 255, 255, 0.03);
-  }
-}
 
 /*-----------underline animation------------*/
 .hover-underline-animation {
@@ -73,48 +55,8 @@
   transform-origin: bottom left;
 }
 
-/*-----------material symbols outlined---------*/
-.material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 56px; /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-  &.primary {
-    color: var(--primary);
-  }
-  &.error {
-    color: var(--error);
-  }
-  &.warning {
-    color: var(--warning);
-  }
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
 
 /*-----------my code-------------*/
-* {
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
 body {
   background-color: var(--dark-bg);
   color: var(--white);
@@ -137,100 +79,8 @@ body {
   margin-right: -8px;
 }
 
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: var(--s3) var(--s4);
-  height: var(--nav-height);
-  .navigation-logo {
-    width: 102px;
-    height: 23px;
-  }
-  .navigation-list {
-    display: flex;
-    li {
-      font-weight: 400;
-      margin-left: var(--s5);
-      font-size: 23px;
-      a {
-        color: white;
-        text-decoration: none;
-        /* vertical-align: text-top; */
-        padding-top: 3px;
-        padding-bottom: 8px;
-      }
-    }
-  }
-}
-.main-screen {
-  height: calc(100vh - (var(--nav-height)));
-  width: 100vw;
-  background: url(../../../assets/background/home-hero.svg) no-repeat right bottom;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .main-screen-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: var(--s4);
-    padding-right: var(--s4);
-  }
-  .phone {
-    width: 281px;
-    height: 568px;
-    background: url(../images/phone_splash.svg) no-repeat center;
-    background-size: contain;
-    filter: drop-shadow(0px 0px 10px var(--ultra-dark));
-  }
-
-  .logo {
-    width: 314px;
-    height: 73px;
-    background: url(/img/logo.svg) no-repeat left center;
-    background-size: contain;
-
-  }
-  .slogan {
-    margin-bottom: var(--s5);
-    max-width: 480px;
-  }
-  .description {
-    max-width: 400px;
-  }
-  .buttons {
-    margin-top: var(--s4);
-    display: flex;
-    .button-home{
-      &:first-child {
-        margin-right: var(--s2);
-      }
-    }
-  }
-}
-
-.screen-container {
-  padding-top: var(--s5);
-  padding-bottom: var(--s5);
-}
-
-.card {
-  display: flex;
-  .card-right {
-    margin-left: var(--s3);
-  }
-  .card-title {
-    font-size: var(--h3);
-    font-weight: 600;
-    margin-bottom: var(--s3);
-    line-height: 1.1;
-  }
-}
 
 .photos {
-
   .dot-contaner {
     display: flex;
     justify-content: center;
@@ -250,25 +100,8 @@ body {
   background-size: contain;
   filter: drop-shadow(0px 0px 10px var(--ultra-dark));
   height: 533px;
-  /* &.ph1 {
-    background-image: url(./img/ph_screens/ph_screen1.svg);
-  }
-  &.ph2 {
-    background-image: url(./img/ph_screens/ph_screen2.svg);
-  }
-  &.ph3 {
-    background-image: url(./img/ph_screens/ph_screen3.svg);
-  }
-  &.ph4 {
-    background-image: url(./img/ph_screens/ph_screen4.svg);
-  }
-  &.ph5 {
-    background-image: url(./img/ph_screens/ph_screen5.svg);
-  }
-  &.ph6 {
-    background-image: url(./img/ph_screens/ph_screen6.svg);
-  } */
 }
+
 .sign {
   width: 100%;
   height: 100%;
@@ -292,97 +125,10 @@ body {
   }
 }
 
-.footer {
-  div {
-    text-align: center;
-    opacity: 0.5;
-    font-size: 14px;
-    margin-bottom: var(--s1);
-    color: var(--white);
-  }
-}
-
 /*---------phone--------*/
 @media (min-width: 300px) and (max-width: 790px) {
-  .navigation {
-    padding: var(--s3);
-    justify-content: center;
-    .navigation-logo {
-      display: none;
-    }
-    .navigation-list {
-      display: flex;
-      justify-content: space-around;
-      width: 100%;
-      li {
-        margin-left: 0;
-        font-size: 21px;
-      }
-    }
-  }
-  .phone,
-  .main-screen .phone {
+  .phone {
     height: 480px;
-  }
-  .main-screen {
-    height: unset;
-    .main-screen-wrapper {
-      flex-direction: column;
-      padding-left: var(--s3);
-      padding-right: var(--s3);
-      .logo {
-        width: 260px;
-        height: 62px;
-      }
-      .right-side {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-left: 0;
-        margin-bottom: var(--s5);
-      }
-    }
-    .phone {
-      margin-top: var(--s5);
-      margin-bottom: var(--s4);
-    }
-    .slogan {
-      text-align: center;
-      margin-bottom: var(--s4);
-    }
-    .description {
-      text-align: center;
-      font-size: 21px;
-    }
-    .buttons {
-      .button-home {
-        flex-grow: 1;
-        flex-basis: 0;
-        min-width: 0;
-      }
-    }
-  }
-  .screen-container {
-    padding-top: var(--s4);
-    padding-bottom: var(--s4);
-  }
-
-  .card {
-    margin-top: 24px;
-    margin-bottom: 24px;
-    padding-left: var(--s5);
-    padding-right: var(--s5);
-    flex-direction: column;
-    text-align: center;
-    .card-right {
-      margin-left: 0;
-    }
-    .card-title {
-      margin-top: var(--s3);
-    }
-    .material-symbols-outlined {
-      font-size: 68px;
-    }
   }
 
   .h2 {
@@ -392,43 +138,17 @@ body {
   .dot {
     display: none;
   }
-  .photos {
-    justify-content: center;
-    .avatar {
-      margin-left: -8px;
-      margin-right: -8px;
-    }
-  }
+
   .sign {
     width: 75px;
     height: 75px;
-  }
-  .gutterbottom-big {
-    margin-bottom: var(--s4);
   }
 }
 
 /*-tablet-*/
 @media (min-width: 791px) and (max-width: 991px) {
-  .main-screen {
-    .logo {
-      width: 266px;
-      height: 60px;
-    }
-  }
   .h2 {
     font-size: 38px;
-  }
-  .main-screen {
-    .main-screen-wrapper {
-      .right-side {
-        margin-left: var(--s5);
-      }
-    }
-  }
-  .card {
-    margin-top: 15px;
-    margin-bottom: 15px;
   }
   .phone {
     height: 310px;

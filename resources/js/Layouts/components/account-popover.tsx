@@ -12,7 +12,8 @@ import MenuItem, { menuItemClasses } from "@mui/material/MenuItem";
 import NavLink from "@/Components/nav/NavLink";
 import { usePage } from "@inertiajs/react";
 import { AuthData } from "@/types";
-import profileImg from "../../../assets/images/avatar-25.webp";
+import profileImg from "../../../assets/images/blank-profile-picture.webp";
+
 
 import { useRouter, usePathname } from "@/routes/hooks";
 

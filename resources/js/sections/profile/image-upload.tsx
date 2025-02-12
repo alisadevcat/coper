@@ -1,27 +1,188 @@
-import React from "react";
-import { TextField } from "@mui/material";
+import { useState, useCallback } from "react";
+import {
+    Box,
+    Card,
+    CardContent,
+    Typography,
+    Snackbar,
+    Alert,
+} from "@mui/material";
+import { styled } from "@mui/system";
+import { useDropzone } from "react-dropzone";
+import { Iconify } from "@/Components/iconify";
+import defaultImg from "../../../assets/images/blank-profile-picture.webp";
+// // import defaultImg from "../../../assets/images/avatar-25.webp";
 
-export const ImageUpload = () => {
+const UploadCard = styled(Card)({
+    maxWidth: 500,
+    margin: "1rem auto",
+    padding: "1rem",
+});
+
+const DropZone = styled(Box)(({ theme, isDragActive }) => ({
+    border: `2px dashed ${isDragActive ? theme.palette.primary.main : "#ccc"}`,
+    borderRadius: "4px",
+    padding: "1.5rem",
+    textAlign: "center",
+    cursor: "pointer",
+    backgroundColor: isDragActive ? "#f5f5f5" : "transparent",
+}));
+
+const PreviewContainer = styled(Box)({
+    marginTop: "1rem",
+    display: "flex",
+    justifyContent: "center",
+    "& img": {
+        maxWidth: "100%",
+        maxHeight: "400px",
+        objectFit: "contain",
+    },
+});
+
+export const ImageUpload = ({ handleImageChange }) => {
+    const [preview, setPreview] = useState(defaultImg);
+    const [error, setError] = useState<string | null>(null);
+
+    const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+        if (rejectedFiles.length > 0) {
+            setError("Please upload a valid file under 3MB");
+            return;
+        }
+        if (acceptedFiles.length > 0) {
+            const file = acceptedFiles[0];
+            const previewUrl = URL.createObjectURL(file);
+            setPreview(previewUrl);
+            handleImageChange(file); // Pass the file to the parent component
+        }
+    }, [handleImageChange]);
+
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({
+        onDrop,
+        accept: {
+            "image/*": [".jpg", ".jpeg", ".png", ".gif"],
+        },
+        maxSize: 3 * 1024 * 1024,
+        multiple: false,
+    });
+
     return (
-        <TextField
-            variant="outlined"
-            fullWidth
-            type="file"
-            // error={!!error}
-            // helperText={error || (file ? `Selected file: ${file.name}` : "Allowed: .jpeg, .jpg, .png, .gif (Max: 3MB)")}
-            slotProps={{
-                inputLabel: { shrink: true },
-            }}
-            slots={{
-                input: (props) => (
-                    <input
-                        {...props}
-                        type="file"
-                        accept=".jpeg, .jpg, .png, .gif"
-                        // onChange={handleFileChange}
+        <UploadCard>
+            <CardContent>
+                <PreviewContainer>
+                    <img src={preview} alt="Preview" />
+                </PreviewContainer>
+                <Typography variant="h6" gutterBottom>
+                    Upload Photo
+                </Typography>
+                <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    sx={{ pt: "1rem" }}
+                >
+                    Allowed: .jpeg, .jpg, .png, .gif max size of 3 Mb
+                </Typography>
+                <DropZone {...getRootProps()} isDragActive={isDragActive}>
+                    <input {...getInputProps()} />
+                    <Iconify
+                        width={24}
+                        icon="material-symbols:download"
+                        style={{ marginBottom: "0.5rem" }}
                     />
-                ),
-            }}
-        />
+                    <Typography>
+                        {isDragActive ? "Drop here" : "Drag & drop files here"}
+                    </Typography>
+                </DropZone>
+
+                <Snackbar
+                    open={!!error}
+                    autoHideDuration={4000}
+                    onClose={() => setError(null)}
+                    anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                >
+                    <Alert
+                        onClose={() => setError(null)}
+                        severity="error"
+                        variant="filled"
+                    >
+                        {error}
+                    </Alert>
+                </Snackbar>
+            </CardContent>
+        </UploadCard>
     );
 };
+
+// export const ImageUpload = ({ data, setData, handleImageChange }) => {
+//     const [preview, setPreview] = useState(data.photoPath? data.photoPath: defaultImg);
+//     const [error, setError] = useState<string | null>(null);
+//     console.log(preview);
+
+//     const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
+//         if (rejectedFiles.length > 0) {
+//             setError("Please upload a valid file under 3MB");
+//             return;
+//         }
+//         if (acceptedFiles.length > 0) {
+//             const file = acceptedFiles[0];
+//             const previewUrl = URL.createObjectURL(file);
+//             setPreview(previewUrl);
+//             console.log(file, 'file');
+//             handleImageChange(previewUrl);
+//         }
+//     }, []);
+
+//     const { getRootProps, getInputProps, isDragActive } = useDropzone({
+//         onDrop,
+//         accept: {
+//             "image/*": [".jpg", ".jpeg", ".png", ".gif"],
+//         },
+//         maxSize: 3 * 1024 * 1024,
+//         multiple: false,
+//     });
+
+//     return (
+//         <UploadCard>
+//             <CardContent>
+//                 <PreviewContainer>
+//                     <img src={preview} alt="Preview" />
+//                 </PreviewContainer>
+//                 <Typography variant="h6" gutterBottom>
+//                     Upload Photo
+//                 </Typography>
+//                 <Typography
+//                     variant="caption"
+//                     color="text.secondary"
+//                     sx={{ pt: "1rem" }}
+//                 >
+//                     Allowed: .jpeg, .jpg, .png, .gif max size of 3 Mb
+//                 </Typography>
+//                 <DropZone {...getRootProps()} isDragActive={isDragActive}>
+//                     <input {...getInputProps()} />
+//                     <Iconify
+//                         width={24}
+//                         icon="material-symbols:download"
+//                         style={{ marginBottom: "0.5rem" }}
+//                     />
+//                     <Typography>
+//                         {isDragActive ? "Drop here" : "Drag & drop files here"}
+//                     </Typography>
+//                 </DropZone>
+
+//                 <Snackbar
+//                     open={!!error}
+//                     autoHideDuration={4000}
+//                     onClose={() => setError(null)}
+//                     anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+//                 >
+//                     <Alert
+//                         onClose={() => setError(null)}
+//                         severity="error"
+//                         variant="filled"
+//                     >
+//                         {error}
+//                     </Alert>
+//                 </Snackbar>
+//             </CardContent>
+//         </UploadCard>
+//     );
+// };

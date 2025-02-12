@@ -1,6 +1,5 @@
-import React from "react";
 
-export const HeartIcon = (props) => {
+export const HeartIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
     return (
         <svg
             width="48"

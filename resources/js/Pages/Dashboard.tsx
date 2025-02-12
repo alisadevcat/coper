@@ -1,13 +1,8 @@
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import { usePage } from "@inertiajs/react";
 import { Roles, PagePropsData } from "@/types";
-import { OverviewAnalyticsView } from "@/sections/overview/view";
-import { ReactNode } from "react";
 import { DashboardLayout } from "@/Layouts/dashboard";
-import { route } from "ziggy-js";
 import { Typography } from "@mui/material";
-import NavLink from "@/Components/nav/NavLink";
 import { DashboardContent } from "@/Layouts/dashboard";
 
 export default function Dashboard() {
@@ -34,8 +29,8 @@ export default function Dashboard() {
                     <Typography variant="body2" color="text.secondary">
                         You're logged in!
                         <p>
-                            Your role is
-                            {roleSlugs.map((item) => ` ${item}`)}
+                            Your role is a
+                            {roleSlugs.map((item) => ` ${item}`)} !
                         </p>
                     </Typography>
                 </DashboardContent>
@@ -69,3 +64,4 @@ export default function Dashboard() {
 //    </div>
 //  </div>
 // </div>
+

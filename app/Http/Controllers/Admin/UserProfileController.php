@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\UserProfile;
+use App\Models\Upload;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -15,13 +16,23 @@ class UserProfileController extends Controller
     public function edit(Request $request): Response
     {
         $userProfile = UserProfile::where('user_id', $request->user()->id)->first();
+        // $imageFile = Upload::where('user_id', $request->user()->id)->where('file_type', 'photo')->latest()->first();
+        $imageFile = Upload::where('user_id', $request->user()->id)->where('file_type', 'photo')->orderBy('created_at', 'desc')
+        ->first();
+        $documentFile = Upload::where('user_id', $request->user()->id)->where('file_type', 'document')->orderBy('created_at', 'desc')
+        ->first();
+        $photoPath = $imageFile ? $imageFile->file_path : '';
+        $documentPath = $documentFile ?  $documentFile->file_path : '';
+
         return Inertia::render('UserProfile/Edit', [
             'profileData' => $userProfile,
+            'photoPath' => $photoPath,
+            'documentPath' => $documentPath,
             'status' => session('status'),
         ]);
     }
 
-      /**
+    /**
      * Update the user's profile information.
      */
     public function update(Request $request): RedirectResponse
@@ -49,5 +60,4 @@ class UserProfileController extends Controller
 
         return Redirect::route('userprofile.edit');
     }
-
 }

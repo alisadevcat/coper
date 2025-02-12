@@ -1,16 +1,20 @@
 import { DashboardLayout } from "@/Layouts/dashboard";
 import { Head } from "@inertiajs/react";
 import { DashboardContent } from "@/Layouts/dashboard";
-import { Typography, Box, TextField } from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import { UserDetailsColumn } from "@/sections/profile/UserDetailsColumn";
-
-import { AvatarColumn } from "@/sections/profile/avatar-column";
+import { Typography, Box, Button } from "@mui/material";
+import { usePage } from "@inertiajs/react";
+import { Roles, PagePropsData } from "@/types";
+import BorrowerProfile from "@/sections/profile/BorrowerProfile";
 
 // ----------------------------------------------------------------------
 
-export default function Page({ profileData }) {
-    console.log(profileData);
+export default function Page({ profileData, photoPath, documentPath }) {
+    console.log(profileData, photoPath, documentPath, "ewrger");
+    const { roles } = usePage<PagePropsData>().props;
+    const roleSlugs: Roles = roles?.user_roles ? roles.user_roles : [];
+
+    console.log(roleSlugs[0]);
+
     return (
         <>
             <Head>
@@ -30,20 +34,13 @@ export default function Page({ profileData }) {
                             borderRadius: 2,
                         }}
                     >
-                        <Grid container spacing={3}>
-
-                          <AvatarColumn/>
-                            <Grid
-                                size={{ xs: 12, sm: 8 }}
-                                sx={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "center",
-                                }}
-                            >
-                                <UserDetailsColumn profileData={profileData}/>
-                            </Grid>
-                        </Grid>
+                        {roleSlugs[0] === "borrower" && (
+                            <BorrowerProfile
+                                profileData={profileData}
+                                photoPath={photoPath}
+                                documentPath={documentPath}
+                            />
+                        )}
                     </Box>
                 </DashboardContent>
             </DashboardLayout>

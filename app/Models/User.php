@@ -50,7 +50,7 @@ class User extends Authenticatable
     }
 
 
-    public function profile():hasOne
+    public function profile(): hasOne
     {
         return $this->hasOne(UserProfile::class);
     }
@@ -58,5 +58,11 @@ class User extends Authenticatable
     public function roles(): BelongsToMany
     {
         return $this->belongsToMany(Role::class, 'users_roles');
+    }
+
+    public function uploads()
+    {
+
+        return $this->hasMany(Upload::class);
     }
 }
