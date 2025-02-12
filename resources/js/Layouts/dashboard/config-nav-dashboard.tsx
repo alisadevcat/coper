@@ -59,7 +59,7 @@ type NavData = {
 
 export const dashBoardLenderNavLinks: NavData[] = [
     {
-        title: "Dashboard Lender",
+        title: "Dashboardr",
         path: "/dashboard",
         icon: icon("ic-analytics"),
     },
@@ -68,21 +68,21 @@ export const dashBoardLenderNavLinks: NavData[] = [
         path: route("userprofile.edit"),
         icon: icon("ic-blog"),
     },
-    {
-        title: "Messages",
-        path: "/messages",
-        icon: icon("ic-cart"),
-        info: (
-            <Label color="error" variant="inverted">
-                +3
-            </Label>
-        ),
-    },
+    // {
+    //     title: "Messages",
+    //     path: "/messages",
+    //     icon: icon("ic-cart"),
+    //     info: (
+    //         <Label color="error" variant="inverted">
+    //             +3
+    //         </Label>
+    //     ),
+    // },
 ];
 
 export const dashBoardBorrowerNavLinks: NavData[] = [
     {
-        title: "Dashboard Borrower",
+        title: "Dashboard",
         path: "/dashboard",
         icon: icon("ic-analytics"),
     },
@@ -91,21 +91,21 @@ export const dashBoardBorrowerNavLinks: NavData[] = [
         path: route("userprofile.edit"),
         icon: icon("ic-blog"),
     },
-    {
-        title: "Messages",
-        path: "/messages",
-        icon: icon("ic-cart"),
-        info: (
-            <Label color="error" variant="inverted">
-                +3
-            </Label>
-        ),
-    },
+    // {
+    //     title: "Messages",
+    //     path: "/messages",
+    //     icon: icon("ic-cart"),
+    //     info: (
+    //         <Label color="error" variant="inverted">
+    //             +3
+    //         </Label>
+    //     ),
+    // },
 ];
 
 export const dashBoardModeratorNavLinks: NavData[] = [
     {
-        title: "Dashboard Borrower",
+        title: "Dashboard",
         path: "/dashboard",
         icon: icon("ic-analytics"),
     },
@@ -114,16 +114,16 @@ export const dashBoardModeratorNavLinks: NavData[] = [
         path: route("userprofile.edit"),
         icon: icon("ic-blog"),
     },
-    {
-        title: "Messages",
-        path: "/messages",
-        icon: icon("ic-cart"),
-        info: (
-            <Label color="error" variant="inverted">
-                +3
-            </Label>
-        ),
-    },
+    // {
+    //     title: "Messages",
+    //     path: "/messages",
+    //     icon: icon("ic-cart"),
+    //     info: (
+    //         <Label color="error" variant="inverted">
+    //             +3
+    //         </Label>
+    //     ),
+    // },
 ];
 
 export const topNavLinks = [
@@ -134,7 +134,7 @@ export const topNavLinks = [
     },
     {
         label: "Profile",
-        href: "/user-profile",
+        href: route("userprofile.edit"),
         icon: <Iconify width={22} icon="solar:shield-keyhole-bold-duotone" />,
     },
     {

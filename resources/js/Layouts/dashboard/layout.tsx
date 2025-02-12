@@ -15,9 +15,9 @@ import { _workspaces } from "./config-nav-workspace";
 import { MenuButton } from "../components/menu-button";
 import { LayoutSection } from "../core/layout-section";
 import { HeaderSection } from "../core/header-section";
-import { Searchbar } from "../components/searchbar";
+// import { Searchbar } from "../components/searchbar";
 import { AccountPopover } from "../components/account-popover";
-import { LanguagePopover } from "../components/language-popover";
+// import { LanguagePopover } from "../components/language-popover";
 import { NotificationsPopover } from "../components/notifications-popover";
 import { topNavLinks } from "./config-nav-dashboard";
 import { Roles, PagePropsData } from "@/types";
@@ -98,9 +98,9 @@ export function DashboardLayout({
                             ),
                             rightArea: (
                                 <Box gap={1} display="flex" alignItems="center">
-                                    <NotificationsPopover
+                                    {/* <NotificationsPopover
                                         data={_notifications}
-                                    />
+                                    /> */}
                                     <AccountPopover data={topNavLinks} />
                                 </Box>
                             ),
