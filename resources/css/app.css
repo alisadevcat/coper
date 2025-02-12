@@ -4,6 +4,14 @@
 html {
     height: 100%;
     -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+* {
+    box-sizing: border-box;
+}
+html,
+body {
+    overflow-x: hidden;
 }
 body,
 #root,
@@ -270,6 +278,7 @@ table {
     line-height: 1.2;
     font-size: var(--p);
 }
+
 button.inertia-link-post {
     text-decoration: none;
     background: none;
