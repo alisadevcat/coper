@@ -1,6 +1,5 @@
-import React from "react";
 
-export const CurrencyIcon = (props) => {
+export const CurrencyIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
     return (
         <svg
             width="48"
