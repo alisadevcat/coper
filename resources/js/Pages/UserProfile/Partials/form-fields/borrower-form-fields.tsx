@@ -178,6 +178,7 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                     name="bank_account_number"
                     value={data.bank_account_number}
                     onChange={handleChange}
+                    type="number"
                 />
                 {errors.bank_account_number && (
                     <InputError>{errors.bank_account_number}</InputError>

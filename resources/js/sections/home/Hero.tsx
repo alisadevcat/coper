@@ -1,5 +1,5 @@
-import img from "../../../assets/phone_splash.svg";
-import bgImg from "../../../assets/background/home-hero.svg";
+import img from "assets/home/phone_splash.svg";
+import bgImg from "assets/background/home-hero.svg";
 import ApplicationLogo from "@/Components/icons/ApplicationLogo";
 import { Box, Button, Typography } from "@mui/material";
 import Container from "@mui/material";

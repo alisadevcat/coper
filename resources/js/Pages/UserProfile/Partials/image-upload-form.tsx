@@ -1,9 +1,11 @@
 import { useForm } from "@inertiajs/react";
 import { route } from "ziggy-js";
+import Grid from "@mui/material/Grid2";
 import { ImageUpload } from "@/Components/uploads/image-upload";
 import { Button, Box } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { FlashMessageType } from "@/types";
+import { Transition } from "@headlessui/react";
 
 type imageUrlType = {
     imageUrl: string;
@@ -11,9 +13,10 @@ type imageUrlType = {
 
 const ImageUploadForm = ({ imageUrl }: imageUrlType) => {
     const { flash } = usePage<{ flash: FlashMessageType }>().props;
-    const { data, setData, post, processing, errors } = useForm({
-        image: null,
-    });
+    const { data, setData, post, processing, errors, recentlySuccessful } =
+        useForm({
+            image: null,
+        });
 
     const handleImageChange = (file) => {
         setData("image", file);
@@ -37,6 +40,7 @@ const ImageUploadForm = ({ imageUrl }: imageUrlType) => {
                 handleImageChange={handleImageChange}
                 imageUrl={imageUrl}
             />
+               <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
             <Button
                 type="submit"
                 variant="contained"
@@ -46,7 +50,16 @@ const ImageUploadForm = ({ imageUrl }: imageUrlType) => {
             >
                 {processing ? "Uploading..." : "Upload Image"}
             </Button>
-            {flash.message && <div>{flash.message}</div>}
+            <Transition
+                show={recentlySuccessful}
+                enter="transition ease-in-out"
+                enterFrom="opacity-0"
+                leave="transition ease-in-out"
+                leaveTo="opacity-0"
+            >
+                <p>Photo Uploaded</p>
+            </Transition>
+            </Grid>
         </form>
     );
 };

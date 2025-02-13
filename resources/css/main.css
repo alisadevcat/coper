@@ -38,6 +38,7 @@
   display: inline-block;
   position: relative;
 }
+
 .hover-underline-animation::after {
   content: '';
   position: absolute;
@@ -58,7 +59,7 @@
 
 /*-----------my code-------------*/
 body {
-  background-color: var(--dark-bg);
+  /* background-color: var(--dark-bg); */
   color: var(--white);
   font-family: 'Darker Grotesque', sans-serif;
   font-optical-sizing: auto;

@@ -1,5 +1,6 @@
-import { Button } from "@mui/material";
+import { Button, Box } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import { Transition } from "@headlessui/react";
 import DocumentUpload from "@/Components/uploads/upload-input";
 import { route } from "ziggy-js";
 import { usePage } from "@inertiajs/react";
@@ -36,9 +37,15 @@ const BorrowerProfile = ({ profileData }) => {
     const { user } = usePage<{ auth: AuthData }>().props.auth;
     const { flash } = usePage<{ flash: FlashMessageType }>().props;
 
-    const { data, setData, post, patch, processing, errors } = useForm(
-        defaultProfileData(user, profileData)
-    );
+    const {
+        data,
+        setData,
+        post,
+        patch,
+        processing,
+        errors,
+        recentlySuccessful,
+    } = useForm(defaultProfileData(user, profileData));
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -70,7 +77,16 @@ const BorrowerProfile = ({ profileData }) => {
                         <Grid size={{ xs: 12 }}>{data.rejection_reason}</Grid>
                     )}
                 </Grid>
-                <Grid size={{ xs: 12 }}>
+                <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        gap: 4,
+                    }}
+                >
                     <Button
                         variant="contained"
                         type="submit"
@@ -78,7 +94,16 @@ const BorrowerProfile = ({ profileData }) => {
                     >
                         Save Changes
                     </Button>
-                    {flash.message && <div>{flash.message}</div>}
+                    <Transition
+                        show={recentlySuccessful}
+                        enter="transition ease-in-out"
+                        enterFrom="opacity-0"
+                        leave="transition ease-in-out"
+                        leaveTo="opacity-0"
+                    >
+                        <p>Saved</p>
+                    </Transition>
+                    </Box>
                 </Grid>
             </form>
         </>
