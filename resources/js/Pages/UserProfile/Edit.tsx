@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid2";
 import { Roles, PagePropsData } from "@/types";
 import BorrowerProfile from "./Partials/borrower-profile";
 import ImageUploadForm from "./Partials/image-upload-form";
-import DocumentUpload from "@/Components/uploads/document-upload";
+import DocumentUpload from "@/Components/uploads/document-upload-new";
 import StatusChip from "./Partials/status-chip";
 import { Head } from "@inertiajs/react";
 import { usePage } from "@inertiajs/react";
