@@ -8,6 +8,7 @@ import {
     InputLabel,
     TextareaAutosize,
 } from "@mui/material";
+import { PhoneInputField } from "./phone-input";
 
 import InputError from "@/Components/InputError";
 
@@ -17,6 +18,10 @@ import {
 } from "@/Layouts/dashboard/config-nav-workspace";
 
 const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
+    const handlePhoneChange = (value) => {
+        handleChange({ target: { name: "phone", value: value } });
+    };
+
     return (
         <>
             <Grid size={{ xs: 12, md: 6 }}>
@@ -36,6 +41,7 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                     <InputError>{errors.last_name}</InputError>
                 )}
             </Grid>
+
             <Grid size={{ xs: 12, md: 6 }}>
                 <TextField
                     fullWidth
@@ -90,13 +96,17 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
-                <TextField
+                {/* <TextField
                     fullWidth
                     label="Phone Number"
                     name="phone"
                     value={data.phone}
                     onChange={handleChange}
                     required
+                /> */}
+                <PhoneInputField
+                    value={data.phone}
+                    onChange={handlePhoneChange}
                 />
                 {errors.phone && <InputError>{errors.phone}</InputError>}
             </Grid>
