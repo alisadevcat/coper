@@ -2,13 +2,16 @@ import { Label } from "@/Components/label";
 import { SvgColor } from "@/Components/svg-color";
 import { Iconify } from "@/Components/iconify";
 import { route } from "ziggy-js";
+import dashboardIcon from "assets/icons/navbar/ic-analytics.svg";
+import profileIcon from "assets/icons/navbar/ic-user.svg";
+
 // ----------------------------------------------------------------------
 
 const icon = (name: string) => (
     <SvgColor
         width="100%"
         height="100%"
-        src={`/assets/icons/navbar/${name}.svg`}
+        src={name}
     />
 );
 
@@ -16,7 +19,7 @@ export const defaultNavData = [
     {
         title: "Dashboard",
         path: "/dashboard",
-        icon: icon("ic-analytics"),
+        icon: icon(dashboardIcon),
     },
     // {
     //   title: 'User',
@@ -61,12 +64,12 @@ export const dashBoardLenderNavLinks: NavData[] = [
     {
         title: "Dashboardr",
         path: "/dashboard",
-        icon: icon("ic-analytics"),
+        icon: icon(dashboardIcon),
     },
     {
         title: "Profile",
         path: "/profile",
-        icon: icon("ic-blog"),
+        icon: icon(profileIcon),
     },
     // {
     //     title: "Messages",
@@ -84,12 +87,12 @@ export const dashBoardBorrowerNavLinks: NavData[] = [
     {
         title: "Dashboard",
         path: "/dashboard",
-        icon: icon("ic-analytics"),
+        icon: icon(dashboardIcon),
     },
     {
         title: "Profile",
         path: "/profile",
-        icon: icon("ic-blog"),
+        icon: icon(profileIcon),
     },
     // {
     //     title: "Messages",
@@ -107,12 +110,12 @@ export const dashBoardModeratorNavLinks: NavData[] = [
     {
         title: "Dashboard",
         path: "/dashboard",
-        icon: icon("ic-analytics"),
+        icon: icon(dashboardIcon ),
     },
     {
         title: "Profile",
         path: "/profile",
-        icon: icon("ic-blog"),
+        icon: icon(profileIcon),
     },
     // {
     //     title: "Messages",
