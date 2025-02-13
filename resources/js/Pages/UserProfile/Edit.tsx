@@ -5,9 +5,9 @@ import { Typography, Box, Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { usePage } from "@inertiajs/react";
 import { Roles, PagePropsData } from "@/types";
-import BorrowerProfile from "@/sections/profile/BorrowerProfile";
-import ImageUploadForm from "@/sections/profile/image-upload-form";
-import StatusChip from "@/sections/profile/status-chip";
+import BorrowerProfile from "./Partials/BorrowerProfile";
+import ImageUploadForm from "./Partials/image-upload-form";
+import StatusChip from "./Partials/status-chip";
 import DocumentUpload from "@/Components/uploads/upload-input";
 
 // ----------------------------------------------------------------------

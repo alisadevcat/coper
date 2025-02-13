@@ -33,7 +33,6 @@ const PreviewCard = styled(Card)({
 });
 
 
-
 const validateFile = (file) => {
     const validTypes = [".pdf", ".jpg", ".jpeg", ".png"];
     const maxSize = 5 * 1024 * 1024; // 5MB

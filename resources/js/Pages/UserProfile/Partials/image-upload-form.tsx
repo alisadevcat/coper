@@ -1,6 +1,6 @@
 import { useForm } from "@inertiajs/react";
 import { route } from "ziggy-js";
-import { ImageUpload } from "../../Components/uploads/image-upload";
+import { ImageUpload } from "@/Components/uploads/image-upload";
 import { Button, Box } from "@mui/material";
 import { usePage } from "@inertiajs/react";
 import { FlashMessageType } from "@/types";

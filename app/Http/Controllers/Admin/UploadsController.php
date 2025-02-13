@@ -80,6 +80,7 @@ class UploadsController extends Controller
             $filename = "XaYPfty10" . $user->id . '.' . $file->getClientOriginalExtension(); // Create a unique filename
 
             $path = $file->store('images', 'public');
+
             Upload::create([
                 'user_id' => $user->id,
                 'file_path' => $path,
@@ -94,7 +95,7 @@ class UploadsController extends Controller
     }
 }
 
-     // public function uploadDocumentAsOriginal(Request $request)
+     // public function uploadDocumentAsDraft(Request $request)
         // {
         //     $request->validate([
         //         'file' => 'required|file|max:2048',  // Adjust validation for document files if necessary
@@ -108,8 +109,8 @@ class UploadsController extends Controller
         //     $upload = Upload::create([
         //         'user_id' => $user->id,
         //         'file_path' => $filePath,
-        //         'type' => 'id_document',  // Or another document type
-        //         'status' => 'original',
+        //         'file_type' => 'id_document',  // Or another document type
+        //         'status' => 'draft',
         //     ]);
 
         //     return response()->json(['message' => 'Document uploaded as original', 'file' => $upload]);

@@ -8,12 +8,14 @@ import {
     TextareaAutosize,
 } from "@mui/material";
 
+import InputError from "@/Components/InputError";
+
 import {
     countries,
     currencies,
 } from "@/Layouts/dashboard/config-nav-workspace";
 
-const BorrowerProfileFormFields = ({ data, handleChange }) => {
+const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
     return (
         <>
             <Grid size={{ xs: 12, md: 6 }}>
@@ -27,7 +29,11 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     slotProps={{
                         inputLabel: { shrink: true },
                     }}
+                    required
                 />
+                {errors.last_name && (
+                    <InputError>{errors.last_name}</InputError>
+                )}
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
                 <TextField
@@ -40,7 +46,11 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     slotProps={{
                         inputLabel: { shrink: true },
                     }}
+                    required
                 />
+                {errors.first_name && (
+                    <InputError>{errors.first_name}</InputError>
+                )}
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
                 <FormControl fullWidth>
@@ -56,6 +66,7 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                         <MenuItem value="female">Female</MenuItem>
                         <MenuItem value="other">Other</MenuItem>
                     </Select>
+                    {errors.gender && <InputError>{errors.gender}</InputError>}
                 </FormControl>
             </Grid>
 
@@ -70,7 +81,11 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     slotProps={{
                         inputLabel: { shrink: true },
                     }}
+                    required
                 />
+                {errors.birth_date && (
+                    <InputError>{errors.birth_date}</InputError>
+                )}
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
@@ -80,7 +95,9 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     name="phone"
                     value={data.phone}
                     onChange={handleChange}
+                    required
                 />
+                {errors.phone && <InputError>{errors.phone}</InputError>}
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
@@ -96,6 +113,7 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                         ))}
                     </Select>
                 </FormControl>
+                {errors.country && <InputError>{errors.country}</InputError>}
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
@@ -106,6 +124,7 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     value={data.state}
                     onChange={handleChange}
                 />
+                {errors.state && <InputError>{errors.state}</InputError>}
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
@@ -116,6 +135,7 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     value={data.city}
                     onChange={handleChange}
                 />
+                {errors.city && <InputError>{errors.city}</InputError>}
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
                 <TextField
@@ -125,6 +145,7 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     value={data.address}
                     onChange={handleChange}
                 />
+                {errors.address && <InputError>{errors.address}</InputError>}
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
                 <TextField
@@ -134,6 +155,7 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     value={data.zip_code}
                     onChange={handleChange}
                 />
+                {errors.zip_code && <InputError>{errors.zip_code}</InputError>}
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
@@ -144,6 +166,9 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     value={data.job_title}
                     onChange={handleChange}
                 />
+                {errors.job_title && (
+                    <InputError>{errors.job_title}</InputError>
+                )}
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
@@ -154,6 +179,9 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     value={data.bank_account_number}
                     onChange={handleChange}
                 />
+                {errors.bank_account_number && (
+                    <InputError>{errors.bank_account_number}</InputError>
+                )}
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
@@ -164,6 +192,7 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     value={data.iban}
                     onChange={handleChange}
                 />
+                {errors.iban && <InputError>{errors.iban}</InputError>}
             </Grid>
 
             <Grid size={{ xs: 12, md: 6 }}>
@@ -174,6 +203,7 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     value={data.swift}
                     onChange={handleChange}
                 />
+                {errors.swift && <InputError>{errors.swift}</InputError>}
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
                 <TextField
@@ -183,6 +213,9 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                     value={data.crypto_wallet}
                     onChange={handleChange}
                 />
+                {errors.crypto_wallet && (
+                    <InputError>{errors.crypto_wallet}</InputError>
+                )}
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
                 <FormControl fullWidth>
@@ -197,6 +230,7 @@ const BorrowerProfileFormFields = ({ data, handleChange }) => {
                         ))}
                     </Select>
                 </FormControl>
+                {errors.currency && <InputError>{errors.currency}</InputError>}
             </Grid>
 
             {data.status === "rejected" && (

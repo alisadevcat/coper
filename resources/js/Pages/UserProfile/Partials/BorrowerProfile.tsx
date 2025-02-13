@@ -63,6 +63,7 @@ const BorrowerProfile = ({ profileData }) => {
                     <BorrowerProfileFormFields
                         data={data}
                         handleChange={handleChange}
+                        errors={errors}
                     />
 
                     {data.status === "rejected" && (

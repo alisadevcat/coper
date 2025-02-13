@@ -10,7 +10,7 @@ import {
 import { styled } from "@mui/system";
 import { useDropzone } from "react-dropzone";
 import { Iconify } from "@/Components/iconify";
-import defaultImg from "../../../assets/images/blank-profile-picture.webp";
+import defaultImg from "assets/images/blank-profile-picture.webp";
 
 const UploadCard = styled(Card)({
     maxWidth: 500,

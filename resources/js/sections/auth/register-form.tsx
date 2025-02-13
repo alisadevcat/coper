@@ -65,10 +65,9 @@ export const SignupForm = () => {
         });
     };
 
-    const { roles, flesh } = usePage<RolesProps>().props;
+    const { roles, flash } = usePage<RolesProps>().props;
     const options = roles?.options;
 
-    console.log(flesh);
 
     return (
         <>
