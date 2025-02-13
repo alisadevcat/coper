@@ -1,7 +1,6 @@
 import { Button, Box } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { Transition } from "@headlessui/react";
-import DocumentUpload from "@/Components/uploads/upload-input";
 import { route } from "ziggy-js";
 import { usePage } from "@inertiajs/react";
 import { AuthData, FlashMessageType } from "@/types";
@@ -40,7 +39,6 @@ const BorrowerProfile = ({ profileData }) => {
     const {
         data,
         setData,
-        post,
         patch,
         processing,
         errors,
@@ -101,7 +99,7 @@ const BorrowerProfile = ({ profileData }) => {
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p>Saved</p>
+                        <p>Your data is saved.</p>
                     </Transition>
                     </Box>
                 </Grid>

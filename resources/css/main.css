@@ -119,10 +119,10 @@ body {
     margin-bottom: 8px;
   }
   &.borrow {
-    background-image: url(../assets/borrow_sign.svg);
+    background-image: url(../assets/home/borrow_sign.svg);
   }
   &.lend {
-    background-image: url(../assets/lend_sign.svg);
+    background-image: url(../assets/home/lend_sign.svg);
   }
 }
 

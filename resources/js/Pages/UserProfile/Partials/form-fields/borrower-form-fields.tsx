@@ -10,7 +10,7 @@ import {
     Typography,
 } from "@mui/material";
 import { PhoneInputField } from "./phone-input";
-
+import { NameInputField } from "./name-input";
 import InputError from "@/Components/InputError";
 
 import {
@@ -19,51 +19,41 @@ import {
 } from "@/Layouts/dashboard/config-nav-workspace";
 
 const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
-    const handlePhoneChange = (value) => {
+    const handlePhoneChange = (value:string) => {
         handleChange({ target: { name: "phone", value: value } });
     };
-
+    const handleNameChange = (name:string, value:string) => {
+        handleChange({ target: { name: name, value: value } });
+    };
     return (
         <>
             <Grid container spacing={2}>
                 <Grid size={{ xs: 12 }}>
                     <Typography variant="h4" paddingBottom={"1rem"}>
-                        Banking & Crypto Details
+                        Personal Details
                     </Typography>
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
-                    <TextField
-                        fullWidth
-                        label="First Name"
-                        type="first_name"
+                    <NameInputField
                         name="first_name"
+                        label="First Name"
                         value={data.first_name}
-                        onChange={handleChange}
-                        slotProps={{
-                            inputLabel: { shrink: true },
-                        }}
-                        required
+                        handleNameChange={handleNameChange}
                     />
-                    {errors.last_name && (
-                        <InputError>{errors.last_name}</InputError>
+                    {errors.first_name && (
+                        <InputError>{errors.first_name}</InputError>
                     )}
                 </Grid>
 
                 <Grid size={{ xs: 12, md: 6 }}>
-                    <TextField
-                        fullWidth
-                        label="Last Name"
-                        type="last_name"
+                    <NameInputField
                         name="last_name"
+                        label="Last Name"
                         value={data.last_name}
-                        onChange={handleChange}
-                        slotProps={{
-                            inputLabel: { shrink: true },
-                        }}
-                        required
+                        handleNameChange={handleNameChange}
                     />
-                    {errors.first_name && (
-                        <InputError>{errors.first_name}</InputError>
+                    {errors.last_name && (
+                        <InputError>{errors.last_name}</InputError>
                     )}
                 </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
@@ -191,34 +181,34 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                     )}
                 </Grid>
                 <Grid size={{ xs: 12 }}>
-                <FormControl fullWidth>
-                    <FormLabel htmlFor="purpose">Purpose</FormLabel>
-                    <TextareaAutosize
-                        minRows={3}
-                        placeholder="Purpose"
-                        name="purpose"
-                        value={data.purpose}
-                        onChange={handleChange}
-                        style={{ width: "100%", padding: 8 }}
-                    />
-                </FormControl>
-            </Grid>
+                    <FormControl fullWidth>
+                        <FormLabel htmlFor="purpose">Purpose</FormLabel>
+                        <TextareaAutosize
+                            minRows={3}
+                            placeholder="Purpose"
+                            name="purpose"
+                            value={data.purpose}
+                            onChange={handleChange}
+                            style={{ width: "100%", padding: 8 }}
+                        />
+                    </FormControl>
+                </Grid>
 
-            <Grid size={{ xs: 12 }}>
-                <FormControl fullWidth>
-                    <FormLabel htmlFor="additional-info">
-                        Additional Info
-                    </FormLabel>
-                    <TextareaAutosize
-                        minRows={3}
-                        placeholder="Additional Info"
-                        name="additional_info"
-                        value={data.additional_info}
-                        onChange={handleChange}
-                        style={{ width: "100%", padding: 8 }}
-                    />
-                </FormControl>
-            </Grid>
+                <Grid size={{ xs: 12 }}>
+                    <FormControl fullWidth>
+                        <FormLabel htmlFor="additional-info">
+                            Additional Info
+                        </FormLabel>
+                        <TextareaAutosize
+                            minRows={3}
+                            placeholder="Additional Info"
+                            name="additional_info"
+                            value={data.additional_info}
+                            onChange={handleChange}
+                            style={{ width: "100%", padding: 8 }}
+                        />
+                    </FormControl>
+                </Grid>
             </Grid>
             <Grid container spacing={2} paddingY={"1rem"}>
                 <Grid size={{ xs: 12 }}>

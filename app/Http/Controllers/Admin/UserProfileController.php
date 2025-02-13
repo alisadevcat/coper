@@ -10,6 +10,7 @@ use App\Models\Upload;
 use Inertia\Inertia;
 use Inertia\Response;
 use App\Http\Requests\UserProfileUpdateRequest;
+use Illuminate\Support\Facades\Redirect;
 
 
 class UserProfileController extends Controller
@@ -19,13 +20,30 @@ class UserProfileController extends Controller
         // $userProfile = UserProfile::where('user_id', $request->user()->id)->first();
 
         $userProfile = auth()->user()->profile;
-        $imageFile = Upload::where('user_id', $request->user()->id)
-            ->where('file_type', 'photo')
-            ->whereIn('status', ['approved', 'original'])->orderBy('created_at', 'desc')->first();
+
+        // $imageFile = Upload::where('user_id', $request->user()->id)
+        //     ->where('file_type', 'photo')
+        //     ->whereIn('status', ['approved', 'original'])->orderBy('created_at', 'desc')->first();
+
+        // $documentFile = Upload::where('user_id', $request->user()->id)
+        //     ->where('file_type', 'document')
+        //     ->whereIn('status', ['approved', 'original'])
+        //     ->orderBy('created_at', 'desc')->first();
+
+        $imageFile = Upload::where([
+            ['user_id', $request->user()->id],
+            ['file_type', 'photo']
+        ])
+            ->whereIn('status', ['approved', 'original'])
+            ->latest('created_at') // Equivalent to orderBy('created_at', 'desc')
+            ->first();
 
 
-        $documentFile = Upload::where('user_id', $request->user()->id)
-            ->where('file_type', 'document')
+
+        $documentFile = Upload::where([
+            ['user_id', $request->user()->id],
+            ['file_type', 'document']
+        ])
             ->whereIn('status', ['approved', 'original'])
             ->orderBy('created_at', 'desc')->first();
 
@@ -62,6 +80,13 @@ class UserProfileController extends Controller
             $profileData
         );
 
-        return redirect()->back()->with('message', 'Profile data updated successfully.');
+      return redirect()->back()->with('message', 'Profile data updated successfully.');
+        // return Inertia::render('UserProfile/Edit', [
+        //     'profileData' =>  $validatedData,
+        //     'imageUrl' => $imageUrl,
+        //     'documentUrl' => $documentUrl,
+        //     'status' => session('status'),
+        // ]);
+        // return Redirect::route('userprofile.edit');
     }
 }
