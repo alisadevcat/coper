@@ -27,12 +27,12 @@ class UserProfileController extends Controller
         ->orderBy('created_at', 'desc')->first();
 
         $imageUrl = $imageFile ? asset('storage/' . $imageFile->file_path) : '';
-        $documentFile= $documentFile ? asset('storage/' . $documentFile->file_path) : '';
+        $documentUrl = $documentFile ? asset('storage/' . $documentFile->file_path) : '';
 
         return Inertia::render('UserProfile/Edit', [
             'profileData' => $userProfile,
             'imageUrl' => $imageUrl,
-            'documentFile' => $documentFile,
+            'documentUrl' => $documentUrl,
             'status' => session('status'),
         ]);
     }

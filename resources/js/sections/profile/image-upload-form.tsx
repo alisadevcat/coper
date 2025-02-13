@@ -1,36 +1,31 @@
-import React, { useState } from "react";
 import { useForm } from "@inertiajs/react";
 import { route } from "ziggy-js";
-import { ImageUpload } from "./image-upload";// Adjust the import path
+import { ImageUpload } from "../../Components/uploads/image-upload";
 import { Button, Box } from "@mui/material";
-import defaultImg from "../../../assets/images/blank-profile-picture.webp";
-import { router } from '@inertiajs/react'
+import { usePage } from "@inertiajs/react";
+import { FlashMessageType } from "@/types";
 
-const ImageUploadForm = ({ photoFile }) => {
-    // const previewImage = photoFile ? photoFile : defaultImg;
-    const [preview, setPreview] = useState(defaultImg);
+type imageUrlType = {
+    imageUrl: string;
+};
 
-    // Initialize Inertia's useForm
+const ImageUploadForm = ({ imageUrl }: imageUrlType) => {
+    const { flash } = usePage<{ flash: FlashMessageType }>().props;
     const { data, setData, post, processing, errors } = useForm({
-        image: null, // This will hold the uploaded file
+        image: null,
     });
 
-    // Handle file change in the ImageUpload component
     const handleImageChange = (file) => {
-        setData("image", file); // Update the form data with the new file
-        setPreview(URL.createObjectURL(file)); // Set the preview URL
+        setData("image", file);
     };
 
-    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
         post(route("upload-image"), {
             onSuccess: () => {
-                // Handle success (e.g., show a success message)
                 console.log("Image uploaded successfully!");
             },
             onError: (errors) => {
-                // Handle errors (e.g., display validation errors)
                 console.error("Error uploading image:", errors);
             },
         });
@@ -40,7 +35,7 @@ const ImageUploadForm = ({ photoFile }) => {
         <form onSubmit={handleSubmit}>
             <ImageUpload
                 handleImageChange={handleImageChange}
-                photoFile={photoFile}
+                imageUrl={imageUrl}
             />
             <Button
                 type="submit"
@@ -51,6 +46,7 @@ const ImageUploadForm = ({ photoFile }) => {
             >
                 {processing ? "Uploading..." : "Upload Image"}
             </Button>
+            {flash.message && <div>{flash.message}</div>}
         </form>
     );
 };

@@ -1,15 +1,11 @@
 import { Button } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { ProfileFormFields } from "@/sections/profile/ProfileFormFields";
-import { ImageUpload } from "@/sections/profile/image-upload";
 import DocumentUpload from "@/Components/uploads/upload-input";
-import StatusChip from "@/sections/profile/status-chip";
 import { route } from "ziggy-js";
 import { usePage } from "@inertiajs/react";
-import { AuthData, FlashMessageType } from "@/types";
+import { AuthData } from "@/types";
 import { useForm } from "@inertiajs/react";
-import ImageUploadForm from "@/sections/profile/image-upload-form";
-import ImageUploadFormTest from "./upload-test";
+import BorrowerProfileFormFields from "./form-fields/borrower-form-fields";
 
 export const defaultProfileData = (user, profileData) => {
     return {
@@ -36,13 +32,12 @@ export const defaultProfileData = (user, profileData) => {
     };
 };
 
-const BorrowerProfile = ({ profileData, imageUrl, documentFile }) => {
+const BorrowerProfile = ({ profileData, imageUrl, documentUrl }) => {
     const { user } = usePage<{ auth: AuthData }>().props.auth;
-    const { flash } = usePage<{ flash: FlashMessageType }>().props;
+
     const { data, setData, post, put, processing, errors } = useForm(
         defaultProfileData(user, profileData)
     );
-    console.log(imageUrl);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -62,34 +57,12 @@ const BorrowerProfile = ({ profileData, imageUrl, documentFile }) => {
         });
     };
 
-    console.log(flash);
     return (
         <>
-            <Grid container spacing={3}>
-                <Grid size={{ xs: 12, sm: 4 }}>
-                    <StatusChip status={profileData.status} />
-                    {/* <ImageUpload data={data} setData={setData} handleImageChange={handleImageChange}/> */}
-                    {/* <ImageUploadForm imageUrl={imageUrl}/> */}
-                    <ImageUploadFormTest imageUrl={imageUrl} />
-                    {/* <div style={{ color: 'green' }}>{message}</div> */}
-                    {flash.message && (
-                        <div className="alert">{flash.message}</div>
-                    )}
-                </Grid>
-
-                <Grid
-                    size={{ xs: 12, sm: 8 }}
-                    sx={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
-                >
                     <form onSubmit={handleSubmit}>
                         <Grid container spacing={2}>
-                            <ProfileFormFields
+                            <BorrowerProfileFormFields
                                 data={data}
-                                setData={setData}
                                 handleChange={handleChange}
                             />
 
@@ -99,11 +72,6 @@ const BorrowerProfile = ({ profileData, imageUrl, documentFile }) => {
                                 </Grid>
                             )}
                         </Grid>
-                        {/* <Grid>
-                <DocumentUpload
-                    documentFile={documentFile}
-                />
-            </Grid> */}
                         <Grid size={{ xs: 12 }}>
                             <Button
                                 variant="contained"
@@ -114,8 +82,6 @@ const BorrowerProfile = ({ profileData, imageUrl, documentFile }) => {
                             </Button>
                         </Grid>
                     </form>
-                </Grid>
-            </Grid>
         </>
     );
 };

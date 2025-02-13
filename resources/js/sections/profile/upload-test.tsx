@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "@inertiajs/react";
 import { route } from "ziggy-js";
-import { ImageUpload } from "./image-upload";// Adjust the import path
+import { ImageUpload } from "../../Components/uploads/image-upload";// Adjust the import path
 import { Button, Box } from "@mui/material";
 import defaultImg from "../../../assets/images/blank-profile-picture.webp";
 import { router } from '@inertiajs/react'

@@ -10,7 +10,6 @@ import {
 import { styled } from "@mui/system";
 import { useDropzone } from "react-dropzone";
 import { Iconify } from "@/Components/iconify";
-// import defaultImg from "../../../assets/images/blank-profile-picture.webp";
 import defaultImg from "../../../assets/images/blank-profile-picture.webp";
 
 const UploadCard = styled(Card)({
@@ -39,9 +38,8 @@ const PreviewContainer = styled(Box)({
     },
 });
 
-export const ImageUpload = ({ handleImageChange, photoFile }) => {
-    // const previewImage = photoFile ? photoFile : defaultImg;
-    const [preview, setPreview] = useState(defaultImg);
+export const ImageUpload = ({ handleImageChange, imageUrl }) => {
+    const [preview, setPreview] = useState(imageUrl || defaultImg);
     const [error, setError] = useState<string | null>(null);
 
     const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
