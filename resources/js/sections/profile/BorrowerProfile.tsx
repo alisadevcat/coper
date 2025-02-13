@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid2";
 import DocumentUpload from "@/Components/uploads/upload-input";
 import { route } from "ziggy-js";
 import { usePage } from "@inertiajs/react";
-import { AuthData } from "@/types";
+import { AuthData, FlashMessageType } from "@/types";
 import { useForm } from "@inertiajs/react";
 import BorrowerProfileFormFields from "./form-fields/borrower-form-fields";
 
@@ -32,10 +32,11 @@ export const defaultProfileData = (user, profileData) => {
     };
 };
 
-const BorrowerProfile = ({ profileData, imageUrl, documentUrl }) => {
+const BorrowerProfile = ({ profileData }) => {
     const { user } = usePage<{ auth: AuthData }>().props.auth;
+    const { flash } = usePage<{ flash: FlashMessageType }>().props;
 
-    const { data, setData, post, put, processing, errors } = useForm(
+    const { data, setData, post, patch, processing, errors } = useForm(
         defaultProfileData(user, profileData)
     );
 
@@ -47,41 +48,38 @@ const BorrowerProfile = ({ profileData, imageUrl, documentUrl }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        put(route("profile.update"), {
-            onSuccess: () => {
-                // Success handler if needed
-            },
-            onError: () => {
-                // Error handler if needed
-            },
+        patch(route("userprofile.update"), {
+            preserveScroll: true,
+            data,
+            onSuccess: (response) => console.log("Success:", response),
+            onError: (errors) => console.error("Errors:", errors),
         });
     };
 
     return (
         <>
-                    <form onSubmit={handleSubmit}>
-                        <Grid container spacing={2}>
-                            <BorrowerProfileFormFields
-                                data={data}
-                                handleChange={handleChange}
-                            />
+            <form onSubmit={handleSubmit}>
+                <Grid container spacing={2}>
+                    <BorrowerProfileFormFields
+                        data={data}
+                        handleChange={handleChange}
+                    />
 
-                            {data.status === "rejected" && (
-                                <Grid size={{ xs: 12 }}>
-                                    {data.rejection_reason}
-                                </Grid>
-                            )}
-                        </Grid>
-                        <Grid size={{ xs: 12 }}>
-                            <Button
-                                variant="contained"
-                                type="submit"
-                                disabled={processing}
-                            >
-                                Save Changes
-                            </Button>
-                        </Grid>
-                    </form>
+                    {data.status === "rejected" && (
+                        <Grid size={{ xs: 12 }}>{data.rejection_reason}</Grid>
+                    )}
+                </Grid>
+                <Grid size={{ xs: 12 }}>
+                    <Button
+                        variant="contained"
+                        type="submit"
+                        disabled={processing}
+                    >
+                        Save Changes
+                    </Button>
+                    {flash.message && <div>{flash.message}</div>}
+                </Grid>
+            </form>
         </>
     );
 };

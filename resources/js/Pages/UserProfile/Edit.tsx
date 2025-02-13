@@ -13,7 +13,7 @@ import DocumentUpload from "@/Components/uploads/upload-input";
 // ----------------------------------------------------------------------
 
 export default function Page({ profileData, imageUrl, documentUrl }) {
-    console.log(profileData, imageUrl, documentUrl, "ewrger");
+    // console.log(profileData, imageUrl, documentUrl, "ewrger");
     const { roles } = usePage<PagePropsData>().props;
     const roleSlugs: Roles = roles?.user_roles ? roles.user_roles : [];
 
