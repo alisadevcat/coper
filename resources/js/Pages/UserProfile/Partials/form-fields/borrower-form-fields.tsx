@@ -4,6 +4,7 @@ import {
     Select,
     MenuItem,
     FormControl,
+    FormLabel,
     InputLabel,
     TextareaAutosize,
 } from "@mui/material";
@@ -248,25 +249,33 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
             )}
 
             <Grid size={{ xs: 12 }}>
-                <TextareaAutosize
-                    minRows={3}
-                    placeholder="Purpose"
-                    name="purpose"
-                    value={data.purpose}
-                    onChange={handleChange}
-                    style={{ width: "100%", padding: 8 }}
-                />
+                <FormControl fullWidth>
+                    <FormLabel htmlFor="purpose">Purpose</FormLabel>
+                    <TextareaAutosize
+                        minRows={3}
+                        placeholder="Purpose"
+                        name="purpose"
+                        value={data.purpose}
+                        onChange={handleChange}
+                        style={{ width: "100%", padding: 8 }}
+                    />
+                </FormControl>
             </Grid>
 
             <Grid size={{ xs: 12 }}>
-                <TextareaAutosize
-                    minRows={3}
-                    placeholder="Additional Info"
-                    name="additional_info"
-                    value={data.additional_info}
-                    onChange={handleChange}
-                    style={{ width: "100%", padding: 8 }}
-                />
+                <FormControl fullWidth>
+                    <FormLabel htmlFor="additional-info">
+                        Additional Info
+                    </FormLabel>
+                    <TextareaAutosize
+                        minRows={3}
+                        placeholder="Additional Info"
+                        name="additional_info"
+                        value={data.additional_info}
+                        onChange={handleChange}
+                        style={{ width: "100%", padding: 8 }}
+                    />
+                </FormControl>
             </Grid>
         </>
     );
