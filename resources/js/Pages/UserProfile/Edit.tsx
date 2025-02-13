@@ -1,14 +1,14 @@
 import { DashboardLayout } from "@/Layouts/dashboard";
-import { Head } from "@inertiajs/react";
 import { DashboardContent } from "@/Layouts/dashboard";
-import { Typography, Box, Button } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { usePage } from "@inertiajs/react";
 import { Roles, PagePropsData } from "@/types";
 import BorrowerProfile from "./Partials/borrower-profile";
 import ImageUploadForm from "./Partials/image-upload-form";
+import DocumentUpload from "@/Components/uploads/document-upload";
 import StatusChip from "./Partials/status-chip";
-import DocumentUpload from "@/Components/uploads/upload-input";
+import { Head } from "@inertiajs/react";
+import { usePage } from "@inertiajs/react";
 
 // ----------------------------------------------------------------------
 
@@ -55,13 +55,6 @@ export default function Page({ profileData, imageUrl, documentUrl }) {
                                     />
                                 )}
                                 <Grid size={{ xs: 12 }}>
-                                    <Typography
-                                        variant="h4"
-                                        paddingTop={"1rem"}
-                                    >
-                                        Your Documents
-                                    </Typography>
-
                                     <DocumentUpload documentUrl={documentUrl} />
                                 </Grid>
                             </Grid>

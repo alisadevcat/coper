@@ -15,7 +15,6 @@ import {
 } from "@mui/material";
 import { useDropzone } from "react-dropzone";
 import { Iconify } from "../iconify";
-import defaultmg from "../../../assets/images/blank-profile-picture.webp";
 
 const UploadBox = styled(Box)({
     border: "2px dashed #ccc",

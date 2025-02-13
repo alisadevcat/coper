@@ -60,8 +60,8 @@
 /*-----------my code-------------*/
 body {
   /* background-color: var(--dark-bg); */
-  color: var(--white);
-  font-family: 'Darker Grotesque', sans-serif;
+  /* color: var(--white); */
+ font-family: 'Darker Grotesque', sans-serif;
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;

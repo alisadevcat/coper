@@ -70,7 +70,6 @@ class UploadsController extends Controller
 
         $user = $request->user(); // Get the authenticated user
 
-
         if ($request->hasFile('image')) {
             $request->validate([
                 'image' => 'required|image|max:3072', // max size of 3MB
@@ -85,6 +84,35 @@ class UploadsController extends Controller
                 'user_id' => $user->id,
                 'file_path' => $path,
                 'file_type' => 'photo',
+                'status' => 'original',
+            ]);
+
+            return redirect()->back()->with('message', 'Profile image updated successfully.');
+        }
+
+        return redirect()->back()->with(['message' => 'Please upload an image.']);
+    }
+
+
+    public function uploadDocument(Request $request)
+    {
+
+        $user = $request->user(); // Get the authenticated user
+
+        if ($request->hasFile('file')) {
+            $request->validate([
+                'file' => 'required|mimes:pdf,jpg,jpeg,png|max:5120'
+            ]);
+
+            $file = $request->file('file');
+            $filename = "XaYPfty10" . $user->id . '.' . $file->getClientOriginalExtension();
+
+            $path = $file->store('docs', 'public');
+
+            Upload::create([
+                'user_id' => $user->id,
+                'file_path' => $path,
+                'file_type' => 'document',
                 'status' => 'original',
             ]);
 
