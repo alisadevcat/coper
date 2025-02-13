@@ -65,7 +65,7 @@ export const dashBoardLenderNavLinks: NavData[] = [
     },
     {
         title: "Profile",
-        path: route("userprofile.edit"),
+        path: "/profile",
         icon: icon("ic-blog"),
     },
     // {
@@ -88,7 +88,7 @@ export const dashBoardBorrowerNavLinks: NavData[] = [
     },
     {
         title: "Profile",
-        path: route("userprofile.edit"),
+        path: "/profile",
         icon: icon("ic-blog"),
     },
     // {
@@ -111,7 +111,7 @@ export const dashBoardModeratorNavLinks: NavData[] = [
     },
     {
         title: "Profile",
-        path: route("userprofile.edit"),
+        path: "/profile",
         icon: icon("ic-blog"),
     },
     // {

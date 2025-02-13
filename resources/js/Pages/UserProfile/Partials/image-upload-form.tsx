@@ -40,25 +40,35 @@ const ImageUploadForm = ({ imageUrl }: imageUrlType) => {
                 handleImageChange={handleImageChange}
                 imageUrl={imageUrl}
             />
-               <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
-            <Button
-                type="submit"
-                variant="contained"
-                color="primary"
-                disabled={processing}
-                sx={{ mt: 2 }}
-            >
-                {processing ? "Uploading..." : "Upload Image"}
-            </Button>
-            <Transition
-                show={recentlySuccessful}
-                enter="transition ease-in-out"
-                enterFrom="opacity-0"
-                leave="transition ease-in-out"
-                leaveTo="opacity-0"
-            >
-                <p>Photo Uploaded</p>
-            </Transition>
+            <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        gap: 4,
+                    }}
+                >
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        disabled={processing}
+                        sx={{ mt: 2 }}
+                    >
+                        {processing ? "Uploading..." : "Upload Image"}
+                    </Button>
+                    <Transition
+                        show={recentlySuccessful}
+                        enter="transition ease-in-out"
+                        enterFrom="opacity-0"
+                        leave="transition ease-in-out"
+                        leaveTo="opacity-0"
+                    >
+                        <p>Image Uploaded</p>
+                    </Transition>
+                </Box>
             </Grid>
         </form>
     );
