@@ -63,6 +63,7 @@ export const PhoneInputField: React.FC<MUIPhoneProps> = ({
 
     return (
         <TextField
+        fullWidth
             variant="outlined"
             label="Phone number"
             color="primary"
