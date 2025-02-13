@@ -36,12 +36,13 @@ export const defaultProfileData = (user, profileData) => {
     };
 };
 
-const BorrowerProfile = ({ profileData, photoFile, documentFile }) => {
+const BorrowerProfile = ({ profileData, imageUrl, documentFile }) => {
     const { user } = usePage<{ auth: AuthData }>().props.auth;
     const { flash } = usePage<{ flash: FlashMessageType }>().props;
     const { data, setData, post, put, processing, errors } = useForm(
         defaultProfileData(user, profileData)
     );
+    console.log(imageUrl);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -68,8 +69,8 @@ const BorrowerProfile = ({ profileData, photoFile, documentFile }) => {
                 <Grid size={{ xs: 12, sm: 4 }}>
                     <StatusChip status={profileData.status} />
                     {/* <ImageUpload data={data} setData={setData} handleImageChange={handleImageChange}/> */}
-                    {/* <ImageUploadForm photoFile={photoFile}/> */}
-                    <ImageUploadFormTest photoFile={photoFile} />
+                    {/* <ImageUploadForm imageUrl={imageUrl}/> */}
+                    <ImageUploadFormTest imageUrl={imageUrl} />
                     {/* <div style={{ color: 'green' }}>{message}</div> */}
                     {flash.message && (
                         <div className="alert">{flash.message}</div>

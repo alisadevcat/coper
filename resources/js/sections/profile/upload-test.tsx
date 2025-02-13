@@ -6,8 +6,8 @@ import { Button, Box } from "@mui/material";
 import defaultImg from "../../../assets/images/blank-profile-picture.webp";
 import { router } from '@inertiajs/react'
 
-const ImageUploadFormTest = ({ photoFile }) => {
-
+const ImageUploadFormTest = ({ imageUrl }) => {
+ console.log(imageUrl, 'regrd')
     const { data, setData, post, progress } = useForm({
       image: null,
     })
@@ -19,6 +19,7 @@ const ImageUploadFormTest = ({ photoFile }) => {
 
     return (
       <form onSubmit={submit}>
+        <img src={imageUrl} alt="" />
         <input type="file" onChange={e => setData('image', e.target.files[0])} />
         {progress && (
           <progress value={progress.percentage} max="100">

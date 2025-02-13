@@ -83,7 +83,7 @@ class UploadsController extends Controller
             Upload::create([
                 'user_id' => $user->id,
                 'file_path' => $path,
-                'type' => 'photo',
+                'file_type' => 'photo',
                 'status' => 'original',
             ]);
 

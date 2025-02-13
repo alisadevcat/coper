@@ -12,6 +12,13 @@ class Upload extends Model
 
     protected $fillable = ['user_id', 'file_path', 'file_type', 'status'];
 
+    protected $appends = ['image_url'];
+
+    public function getImageUrlAttribute()
+    {
+        return asset('storage/' . $this->file_path);
+    }
+
     public function user(): BelongsTo
     {
 

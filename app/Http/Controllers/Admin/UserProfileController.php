@@ -20,17 +20,18 @@ class UserProfileController extends Controller
         ->where('file_type', 'photo')
         ->whereIn('status', ['approved', 'original'])->orderBy('created_at', 'desc')->first();
 
+
         $documentFile = Upload::where('user_id', $request->user()->id)
         ->where('file_type', 'document')
         ->whereIn('status', ['approved', 'original'])
         ->orderBy('created_at', 'desc')->first();
 
-        $photoFile = $imageFile ? $imageFile->file_path : '';
-        $documentFile= $documentFile ?  $documentFile->file_path : '';
+        $imageUrl = $imageFile ? asset('storage/' . $imageFile->file_path) : '';
+        $documentFile= $documentFile ? asset('storage/' . $documentFile->file_path) : '';
 
         return Inertia::render('UserProfile/Edit', [
             'profileData' => $userProfile,
-            'photoFile' => $photoFile,
+            'imageUrl' => $imageUrl,
             'documentFile' => $documentFile,
             'status' => session('status'),
         ]);
