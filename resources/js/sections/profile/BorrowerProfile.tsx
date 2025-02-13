@@ -6,9 +6,10 @@ import DocumentUpload from "@/Components/uploads/upload-input";
 import StatusChip from "@/sections/profile/status-chip";
 import { route } from "ziggy-js";
 import { usePage } from "@inertiajs/react";
-import { AuthData } from "@/types";
+import { AuthData, FlashMessageType } from "@/types";
 import { useForm } from "@inertiajs/react";
 import ImageUploadForm from "@/sections/profile/image-upload-form";
+import ImageUploadFormTest from "./upload-test";
 
 export const defaultProfileData = (user, profileData) => {
     return {
@@ -35,10 +36,11 @@ export const defaultProfileData = (user, profileData) => {
     };
 };
 
-const BorrowerProfile = ({ profileData, photoPath, documentPath }) => {
+const BorrowerProfile = ({ profileData, photoFile, documentFile }) => {
     const { user } = usePage<{ auth: AuthData }>().props.auth;
+    const { flash } = usePage<{ flash: FlashMessageType }>().props;
     const { data, setData, post, put, processing, errors } = useForm(
-        defaultProfileData(user, profileData, photoPath)
+        defaultProfileData(user, profileData)
     );
 
     const handleChange = (e) => {
@@ -59,13 +61,19 @@ const BorrowerProfile = ({ profileData, photoPath, documentPath }) => {
         });
     };
 
+    console.log(flash);
     return (
         <>
             <Grid container spacing={3}>
                 <Grid size={{ xs: 12, sm: 4 }}>
                     <StatusChip status={profileData.status} />
                     {/* <ImageUpload data={data} setData={setData} handleImageChange={handleImageChange}/> */}
-                    <ImageUploadForm />
+                    {/* <ImageUploadForm photoFile={photoFile}/> */}
+                    <ImageUploadFormTest photoFile={photoFile} />
+                    {/* <div style={{ color: 'green' }}>{message}</div> */}
+                    {flash.message && (
+                        <div className="alert">{flash.message}</div>
+                    )}
                 </Grid>
 
                 <Grid
@@ -92,7 +100,7 @@ const BorrowerProfile = ({ profileData, photoPath, documentPath }) => {
                         </Grid>
                         {/* <Grid>
                 <DocumentUpload
-                    documentPath={documentPath}
+                    documentFile={documentFile}
                 />
             </Grid> */}
                         <Grid size={{ xs: 12 }}>

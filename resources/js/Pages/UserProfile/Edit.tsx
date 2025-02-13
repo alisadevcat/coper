@@ -8,8 +8,8 @@ import BorrowerProfile from "@/sections/profile/BorrowerProfile";
 
 // ----------------------------------------------------------------------
 
-export default function Page({ profileData, photoPath, documentPath }) {
-    console.log(profileData, photoPath, documentPath, "ewrger");
+export default function Page({ profileData, photoFile, documentFile }) {
+    console.log(profileData, photoFile, documentFile, "ewrger");
     const { roles } = usePage<PagePropsData>().props;
     const roleSlugs: Roles = roles?.user_roles ? roles.user_roles : [];
 
@@ -37,8 +37,8 @@ export default function Page({ profileData, photoPath, documentPath }) {
                         {roleSlugs[0] === "borrower" && (
                             <BorrowerProfile
                                 profileData={profileData}
-                                photoPath={photoPath}
-                                documentPath={documentPath}
+                                photoFile={photoFile}
+                                documentFile={documentFile}
                             />
                         )}
                     </Box>

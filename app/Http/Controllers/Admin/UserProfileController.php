@@ -16,18 +16,22 @@ class UserProfileController extends Controller
     public function edit(Request $request): Response
     {
         $userProfile = UserProfile::where('user_id', $request->user()->id)->first();
-        // $imageFile = Upload::where('user_id', $request->user()->id)->where('file_type', 'photo')->latest()->first();
-        $imageFile = Upload::where('user_id', $request->user()->id)->where('file_type', 'photo')->orderBy('created_at', 'desc')
-        ->first();
-        $documentFile = Upload::where('user_id', $request->user()->id)->where('file_type', 'document')->orderBy('created_at', 'desc')
-        ->first();
-        $photoPath = $imageFile ? $imageFile->file_path : '';
-        $documentPath = $documentFile ?  $documentFile->file_path : '';
+        $imageFile = Upload::where('user_id', $request->user()->id)
+        ->where('file_type', 'photo')
+        ->whereIn('status', ['approved', 'original'])->orderBy('created_at', 'desc')->first();
+
+        $documentFile = Upload::where('user_id', $request->user()->id)
+        ->where('file_type', 'document')
+        ->whereIn('status', ['approved', 'original'])
+        ->orderBy('created_at', 'desc')->first();
+
+        $photoFile = $imageFile ? $imageFile->file_path : '';
+        $documentFile= $documentFile ?  $documentFile->file_path : '';
 
         return Inertia::render('UserProfile/Edit', [
             'profileData' => $userProfile,
-            'photoPath' => $photoPath,
-            'documentPath' => $documentPath,
+            'photoFile' => $photoFile,
+            'documentFile' => $documentFile,
             'status' => session('status'),
         ]);
     }

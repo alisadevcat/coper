@@ -4,6 +4,11 @@ export type AuthData = {
     user: AuthenticatedUserData;
 };
 
+export type FlashMessageType = {
+    message: string;
+};
+
+
 export type AuthenticatedUserData = {
     id: number;
     email: string;

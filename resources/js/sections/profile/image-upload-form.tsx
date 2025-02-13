@@ -4,8 +4,10 @@ import { route } from "ziggy-js";
 import { ImageUpload } from "./image-upload";// Adjust the import path
 import { Button, Box } from "@mui/material";
 import defaultImg from "../../../assets/images/blank-profile-picture.webp";
+import { router } from '@inertiajs/react'
 
-const ImageUploadForm = () => {
+const ImageUploadForm = ({ photoFile }) => {
+    // const previewImage = photoFile ? photoFile : defaultImg;
     const [preview, setPreview] = useState(defaultImg);
 
     // Initialize Inertia's useForm
@@ -13,10 +15,8 @@ const ImageUploadForm = () => {
         image: null, // This will hold the uploaded file
     });
 
-    console.log(preview, 'preview');
     // Handle file change in the ImageUpload component
     const handleImageChange = (file) => {
-        console.log(file);
         setData("image", file); // Update the form data with the new file
         setPreview(URL.createObjectURL(file)); // Set the preview URL
     };
@@ -37,9 +37,10 @@ const ImageUploadForm = () => {
     };
 
     return (
-        <Box component="form" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
             <ImageUpload
                 handleImageChange={handleImageChange}
+                photoFile={photoFile}
             />
             <Button
                 type="submit"
@@ -50,7 +51,7 @@ const ImageUploadForm = () => {
             >
                 {processing ? "Uploading..." : "Upload Image"}
             </Button>
-        </Box>
+        </form>
     );
 };
 

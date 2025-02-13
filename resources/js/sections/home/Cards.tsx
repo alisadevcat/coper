@@ -34,8 +34,8 @@ export const Cards = () => {
                             },
                         }}
                     >
-                        {cardsData.map((card) => (
-                            <Card card={card} />
+                        {cardsData.map((card, index) => (
+                            <Card card={card} key={index}/>
                         ))}
                     </Box>
                 </Box>
