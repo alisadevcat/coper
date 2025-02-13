@@ -71,6 +71,7 @@ export const PhoneInputField: React.FC<MUIPhoneProps> = ({
             value={inputValue}
             onChange={handlePhoneValueChange}
             type="tel"
+            required
             inputRef={inputRef}
             slotProps={{
                 input: {

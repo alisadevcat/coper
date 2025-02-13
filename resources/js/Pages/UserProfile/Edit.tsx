@@ -53,12 +53,18 @@ export default function Page({ profileData, imageUrl, documentUrl }) {
                                 {roleSlugs[0] === "borrower" && (
                                     <BorrowerProfile
                                         profileData={profileData}
-                                        imageUrl={imageUrl}
-                                        documentUrl={documentUrl}
                                     />
                                 )}
+                                <Grid size={{ xs: 12 }}>
+                                    <Typography
+                                        variant="h4"
+                                        paddingTop={"1rem"}
+                                    >
+                                        Your Documents
+                                    </Typography>
 
-                                <DocumentUpload documentUrl={documentUrl}/>
+                                    <DocumentUpload documentUrl={documentUrl} />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Box>
