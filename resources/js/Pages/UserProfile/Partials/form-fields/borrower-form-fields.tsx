@@ -305,8 +305,6 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                     />
                 </Grid>
             )}
-
-
         </>
     );
 };
