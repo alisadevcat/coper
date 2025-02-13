@@ -19,7 +19,7 @@ const ImageUploadFormTest = ({ imageUrl }) => {
 
     return (
       <form onSubmit={submit}>
-        <img src={imageUrl} alt="" />
+        <img src={imageUrl || defaultImg} alt="" />
         <input type="file" onChange={e => setData('image', e.target.files[0])} />
         {progress && (
           <progress value={progress.percentage} max="100">
