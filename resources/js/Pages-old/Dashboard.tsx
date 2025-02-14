@@ -15,7 +15,6 @@ export const dashBoardComponents = {
 export default function Dashboard() {
     const { roles } = usePage().props;
     const roleSlugs = roles.user_roles ? roles.user_roles : [];
-    console.log(roles);
 
     return (
         <AuthenticatedLayout

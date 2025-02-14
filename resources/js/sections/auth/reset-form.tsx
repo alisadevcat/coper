@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Button } from "@mui/material";
-import InputAdornment from "@mui/material/InputAdornment";
-import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
-import Box from "@mui/material/Box";
+import {
+    Button,
+    InputAdornment,
+    TextField,
+    IconButton,
+    Box,
+} from "@mui/material";
 import { useForm } from "@inertiajs/react";
 import { Iconify } from "@/Components/iconify";
 import { Alert } from "@mui/material";
@@ -43,7 +45,6 @@ export const ResetForm = ({ token, email }: ResetPasswordProps) => {
                         label="Email address"
                         value={data.email}
                         autoComplete="username"
-                        defaultValue="hello@gmail.com"
                         slotProps={{ inputLabel: { shrink: true } }}
                         sx={{ mb: 3, backgroundColor: "transparent" }}
                         onChange={(e) => setData("email", e.target.value)}
@@ -54,7 +55,7 @@ export const ResetForm = ({ token, email }: ResetPasswordProps) => {
                         id="password"
                         name="password"
                         label="Password"
-                        defaultValue="@demo1234"
+                        value={data.password}
                         type={showPassword ? "text" : "password"}
                         slotProps={{
                             input: {
@@ -89,7 +90,7 @@ export const ResetForm = ({ token, email }: ResetPasswordProps) => {
                         id="password_confirmation"
                         name="password_confirmation"
                         label="Confirm Password"
-                        defaultValue="@demo1234"
+                        value={data.password_confirmation}
                         type={showPassword ? "text" : "password"}
                         slotProps={{
                             input: {

@@ -1,3 +1,4 @@
+
 export const HandshakeIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
     return (
         <svg
@@ -15,3 +16,4 @@ export const HandshakeIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) =>
         </svg>
     );
 };
+

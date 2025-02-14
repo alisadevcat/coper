@@ -1,6 +1,4 @@
-import Box from "@mui/material/Box";
-import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
+import { Box, Divider, Typography } from "@mui/material";
 import { SignupForm } from "./register-form";
 import { Link } from "@inertiajs/react";
 import { route } from "ziggy-js";

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('file_type', ['document', 'photo'])->default('document');
             $table->string('file_path');
+            $table->enum('status', ['original', 'approved', 'draft'])->default('original');
             $table->timestamps();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
         });

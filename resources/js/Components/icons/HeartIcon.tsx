@@ -16,3 +16,4 @@ export const HeartIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
         </svg>
     );
 };
+

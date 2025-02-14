@@ -20,12 +20,10 @@ export default function Page() {
                 header={{
                     sx: {
                         backgroundColor: "var(--ultra-dark)",
-                        // px: "var(--s3)",
-                        // py: "var(--s4)",
-
+                        color:"var(--white)"
                     },
                 }}
-                sx={{ backgroundColor: "#1f2a36" }}
+                sx={{ backgroundColor: "var(--dark-bg)", color:"var(--white)" }}
             >
                 <Hero />
                 <Cards />

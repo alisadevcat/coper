@@ -1,10 +1,10 @@
-import img from "../../../assets/phone_splash.svg";
-import bgImg from "../../../assets/background/home-hero.svg";
+
+import img from "assets/home/phone_splash.svg";
+import bgImg from "assets/background/home-hero.svg";
 import ApplicationLogo from "@/Components/icons/ApplicationLogo";
-import { Box, Button, Typography } from "@mui/material";
-import Container from "@mui/material";
+import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { ClassNames } from "@emotion/react";
+// import { ClassNames } from "@emotion/react";
 
 export const Hero = () => {
     const theme = useTheme();

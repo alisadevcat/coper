@@ -1,9 +1,8 @@
-import { Head, Link } from "@inertiajs/react";
-import { usePage } from "@inertiajs/react";
-import { Roles, PagePropsData } from "@/types";
 import { DashboardLayout } from "@/Layouts/dashboard";
-import { Typography } from "@mui/material";
 import { DashboardContent } from "@/Layouts/dashboard";
+import { Typography } from "@mui/material";
+import { Head, usePage } from "@inertiajs/react";
+import { Roles, PagePropsData } from "@/types";
 
 export default function Dashboard() {
     const { roles } = usePage<PagePropsData>().props;
@@ -38,30 +37,4 @@ export default function Dashboard() {
         </>
     );
 }
-
-//    <Head title="Dashboard" />
-
-// <div className="mx-auto flex">
-//     <div className="h-screen w-full max-w-64 bg-primary text-white">
-//         {roleSlugs.map((role) =>
-//             dashBoardComponents[role as keyof DashboardComponentsType] ? (
-//                 <div key={role}>{dashBoardComponents[role as keyof DashboardComponentsType]}</div>
-//             ) : null
-//         )}
-//     </div>
-//     <div className="py-12 w-full max-w-2/3">
-//         <div className="">
-//             <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-//                 <div className="p-6 text-gray-900">
-//                     You're logged in!
-//                     <p>
-//                         your role is{" "}
-//                         {roleSlugs.map((item) => ` ${item}`)}
-//                     </p>
-//                 </div>
-//                 <OverviewAnalyticsView />
-//         </div>
-//    </div>
-//  </div>
-// </div>
 

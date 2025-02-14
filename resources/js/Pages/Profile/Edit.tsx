@@ -1,10 +1,11 @@
-import { Head } from "@inertiajs/react";
+
 import { DashboardLayout } from "@/Layouts/dashboard";
-import UpdatePasswordForm from "@/sections/settings/UpdatePasswordForm";
-import UpdateProfileInformationForm from "@/sections/settings/UpdateProfileInformationForm";
-import { Box, Typography } from "@mui/material";
 import { DashboardContent } from "@/Layouts/dashboard";
+import UpdatePasswordForm from "@/Pages/Profile/Partials/UpdatePasswordForm";
+import UpdateProfileInformationForm from "@/Pages/Profile/Partials/UpdateProfileInformationForm";
+import { Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import { Head } from "@inertiajs/react";
 
 export default function Edit({ mustVerifyEmail, status }) {
     return (

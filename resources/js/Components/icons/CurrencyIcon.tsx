@@ -16,3 +16,4 @@ export const CurrencyIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => 
         </svg>
     );
 };
+

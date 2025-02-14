@@ -10,7 +10,7 @@ class Upload extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['file_path'];
+    protected $fillable = ['user_id', 'file_path', 'file_type', 'status'];
 
     public function user(): BelongsTo
     {

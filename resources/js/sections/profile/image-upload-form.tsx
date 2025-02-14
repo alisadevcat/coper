@@ -13,10 +13,9 @@ const ImageUploadForm = () => {
         image: null, // This will hold the uploaded file
     });
 
-    console.log(preview, 'preview');
     // Handle file change in the ImageUpload component
     const handleImageChange = (file) => {
-        console.log(file);
+        // console.log(file);
         setData("image", file); // Update the form data with the new file
         setPreview(URL.createObjectURL(file)); // Set the preview URL
     };

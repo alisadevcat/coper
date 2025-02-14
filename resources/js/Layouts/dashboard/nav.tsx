@@ -1,5 +1,4 @@
 import type { Theme, SxProps, Breakpoint } from "@mui/material/styles";
-import { usePage } from "@inertiajs/react";
 import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import { useTheme } from "@mui/material/styles";
@@ -7,11 +6,10 @@ import Drawer, { drawerClasses } from "@mui/material/Drawer";
 import { varAlpha } from "@/theme/styles";
 import ApplicationLogoBlack from "@/Components/icons/ApplicationLogoBlack";
 import { Scrollbar } from "@/Components/scrollbar";
-import { Link } from "@inertiajs/react";
+import { Link, usePage} from "@inertiajs/react";
 
 import { NavUpgrade } from "../components/nav-upgrade";
 // import { WorkspacesPopover } from "../components/workspaces-popover";
-
 
 import type { WorkspacesPopoverProps } from "../components/workspaces-popover";
 import DashboardNavList from "./nav-list";

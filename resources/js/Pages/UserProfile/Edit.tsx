@@ -1,19 +1,19 @@
 import { DashboardLayout } from "@/Layouts/dashboard";
-import { Head } from "@inertiajs/react";
 import { DashboardContent } from "@/Layouts/dashboard";
-import { Typography, Box, Button } from "@mui/material";
-import { usePage } from "@inertiajs/react";
+import { Typography, Box } from "@mui/material";
 import { Roles, PagePropsData } from "@/types";
-import BorrowerProfile from "@/sections/profile/BorrowerProfile";
+import BorrowerProfile from "./Partials/borrower-profile";
+import ImageUploadForm from "./Partials/image-upload-form";
+import DocumentUpload from "@/Components/uploads/document-upload-new";
+import StatusChip from "./Partials/status-chip";
+import { Head, usePage } from "@inertiajs/react";
+import Grid from "@mui/material/Grid2";
 
 // ----------------------------------------------------------------------
 
-export default function Page({ profileData, photoPath, documentPath }) {
-    console.log(profileData, photoPath, documentPath, "ewrger");
+export default function Page({ profileData, imageUrl, documentUrl }) {
     const { roles } = usePage<PagePropsData>().props;
     const roleSlugs: Roles = roles?.user_roles ? roles.user_roles : [];
-
-    console.log(roleSlugs[0]);
 
     return (
         <>
@@ -34,13 +34,30 @@ export default function Page({ profileData, photoPath, documentPath }) {
                             borderRadius: 2,
                         }}
                     >
-                        {roleSlugs[0] === "borrower" && (
-                            <BorrowerProfile
-                                profileData={profileData}
-                                photoPath={photoPath}
-                                documentPath={documentPath}
-                            />
-                        )}
+                        <Grid container spacing={3}>
+                            <Grid size={{ xs: 12, sm: 4 }}>
+                                <StatusChip status={profileData.status} />
+                                <ImageUploadForm imageUrl={imageUrl} />
+                            </Grid>
+
+                            <Grid
+                                size={{ xs: 12, sm: 8 }}
+                                sx={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                }}
+                            >
+                                {roleSlugs[0] === "borrower" && (
+                                    <BorrowerProfile
+                                        profileData={profileData}
+                                    />
+                                )}
+                                {/* <Grid size={{ xs: 12 }}>
+                                    <DocumentUpload documentUrl={documentUrl} />
+                                </Grid> */}
+                            </Grid>
+                        </Grid>
                     </Box>
                 </DashboardContent>
             </DashboardLayout>

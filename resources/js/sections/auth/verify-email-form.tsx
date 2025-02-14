@@ -1,9 +1,8 @@
 import { Link, useForm } from "@inertiajs/react";
 import { route } from "ziggy-js";
-import { Typography } from "@mui/material";
-import { Button } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 
-export const VerifyEmailForm = ({ status } : {status: string}) => {
+export const VerifyEmailForm = ({ status }: { status: string }) => {
     const { post, processing } = useForm({});
 
     const submit = (e: React.FormEvent) => {
@@ -30,7 +29,6 @@ export const VerifyEmailForm = ({ status } : {status: string}) => {
 
             <form onSubmit={submit}>
                 <div className="mt-4 flex items-center justify-between">
-
                     <Button
                         fullWidth
                         size="large"
@@ -39,15 +37,10 @@ export const VerifyEmailForm = ({ status } : {status: string}) => {
                         variant="contained"
                         disabled={processing}
                     >
-                         Resend Verification Email
+                        Resend Verification Email
                     </Button>
 
-                    <Link
-                        href={route("logout")}
-                        method="post"
-                        as="button"
-                        className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    >
+                    <Link href={route("logout")} method="post" as="button">
                         Log Out
                     </Link>
                 </div>

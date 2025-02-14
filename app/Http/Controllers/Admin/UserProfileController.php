@@ -9,25 +9,51 @@ use App\Models\UserProfile;
 use App\Models\Upload;
 use Inertia\Inertia;
 use Inertia\Response;
+use App\Http\Requests\UserProfileUpdateRequest;
+use Illuminate\Support\Facades\Redirect;
 
 
 class UserProfileController extends Controller
 {
     public function edit(Request $request): Response
     {
-        $userProfile = UserProfile::where('user_id', $request->user()->id)->first();
-        // $imageFile = Upload::where('user_id', $request->user()->id)->where('file_type', 'photo')->latest()->first();
-        $imageFile = Upload::where('user_id', $request->user()->id)->where('file_type', 'photo')->orderBy('created_at', 'desc')
-        ->first();
-        $documentFile = Upload::where('user_id', $request->user()->id)->where('file_type', 'document')->orderBy('created_at', 'desc')
-        ->first();
-        $photoPath = $imageFile ? $imageFile->file_path : '';
-        $documentPath = $documentFile ?  $documentFile->file_path : '';
+        // $userProfile = UserProfile::where('user_id', $request->user()->id)->first();
+
+        $userProfile = auth()->user()->profile;
+
+        // $imageFile = Upload::where('user_id', $request->user()->id)
+        //     ->where('file_type', 'photo')
+        //     ->whereIn('status', ['approved', 'original'])->orderBy('created_at', 'desc')->first();
+
+        // $documentFile = Upload::where('user_id', $request->user()->id)
+        //     ->where('file_type', 'document')
+        //     ->whereIn('status', ['approved', 'original'])
+        //     ->orderBy('created_at', 'desc')->first();
+
+        $imageFile = Upload::where([
+            ['user_id', $request->user()->id],
+            ['file_type', 'photo']
+        ])
+            ->whereIn('status', ['approved', 'original'])
+            ->latest('created_at') // Equivalent to orderBy('created_at', 'desc')
+            ->first();
+
+
+
+        $documentFile = Upload::where([
+            ['user_id', $request->user()->id],
+            ['file_type', 'document']
+        ])
+            ->whereIn('status', ['approved', 'original'])
+            ->orderBy('created_at', 'desc')->first();
+
+        $imageUrl = $imageFile ? asset('storage/' . $imageFile->file_path) : '';
+        $documentUrl = $documentFile ? asset('storage/' . $documentFile->file_path) : '';
 
         return Inertia::render('UserProfile/Edit', [
             'profileData' => $userProfile,
-            'photoPath' => $photoPath,
-            'documentPath' => $documentPath,
+            'imageUrl' => $imageUrl,
+            'documentUrl' => $documentUrl,
             'status' => session('status'),
         ]);
     }
@@ -35,29 +61,32 @@ class UserProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(Request $request): RedirectResponse
+    public function update(UserProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $validatedData = $request->validated();
 
-        // if ($request->user()->isDirty('email')) {
-        //     $request->user()->email_verified_at = null;
-        // }
+        $userData = [
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+        ];
 
-        // $validated = $request->validate([
-        //     'current_password' => ['required', 'current_password'],
-        //     'password' => ['required', Password::defaults(), 'confirmed'],
+        $profileData = collect($validatedData)->except(['first_name', 'last_name'])->toArray();
+
+        $user = $request->user();
+        $user->update($userData);
+
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profileData
+        );
+
+      return redirect()->back()->with('message', 'Profile data updated successfully.');
+        // return Inertia::render('UserProfile/Edit', [
+        //     'profileData' =>  $validatedData,
+        //     'imageUrl' => $imageUrl,
+        //     'documentUrl' => $documentUrl,
+        //     'status' => session('status'),
         // ]);
-
-        // $request->validate([
-        //     'file' => 'required|file|mimes:pdf,jpg|max:2048',
-        // ]);
-
-        // $file = $request->file('file');
-        // $path = $file->store('uploads', 'public');
-
-        // return back()->with('success', 'File uploaded successfully!');
-        $request->user()->save();
-
-        return Redirect::route('userprofile.edit');
+        // return Redirect::route('userprofile.edit');
     }
 }

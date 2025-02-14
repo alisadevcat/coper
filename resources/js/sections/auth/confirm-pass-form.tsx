@@ -1,18 +1,8 @@
 import { useState } from "react";
-import { Button } from "@mui/material";
-import InputAdornment from "@mui/material/InputAdornment";
 import { route } from "ziggy-js";
-import TextField from "@mui/material/TextField";
-import IconButton from "@mui/material/IconButton";
-import Box from "@mui/material/Box";
+import { Box, IconButton, TextField, Button, InputAdornment, Alert } from "@mui/material";
 import { useForm } from "@inertiajs/react";
 import { Iconify } from "../../Components/iconify";
-
-import { Alert } from "@mui/material";
-
-type ConfirmPassData = {
-    password: string;
-};
 
 export const ConfirmPassForm = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -41,7 +31,7 @@ export const ConfirmPassForm = () => {
                         id="password"
                         name="password"
                         label="Password"
-                        defaultValue="@demo1234"
+                        value={data.password}
                         type={showPassword ? "text" : "password"}
                         slotProps={{
                             input: {

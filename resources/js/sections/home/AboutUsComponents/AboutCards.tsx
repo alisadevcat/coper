@@ -1,7 +1,7 @@
 
-import Person1 from "../../../../assets/zakh.jpg";
-import Person2 from "../../../../assets/bvoice.jpg";
-import Person3 from "../../../../assets/odo.jpg";
+import Person1 from "assets/home/zakh.jpg";
+import Person2 from "assets/home/bvoice.jpg";
+import Person3 from "assets/home/odo.jpg";
 import { Box } from "@mui/material";
 import { AboutUsDots } from "./AboutUsDots";
 import { useTheme } from "@mui/material/styles";

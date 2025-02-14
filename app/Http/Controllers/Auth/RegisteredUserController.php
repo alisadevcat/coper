@@ -32,8 +32,8 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'first_name' => 'required|string|max:255|regex:/^[a-zA-Z]+$/',
-            'last_name' => 'required|string|max:255|regex:/^[a-zA-Z]+$/',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255|',
             'email' => 'required|string|lowercase|email|max:255|unique:' . User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
@@ -58,9 +58,9 @@ class RegisteredUserController extends Controller
             event(new Registered($user));
 
             Auth::login($user);
-            return redirect(route('dashboard', absolute: false))->with('success', 'Form submitted successfully');
+            return redirect(route('dashboard', absolute: false))->with('message', 'Form submitted successfully');
         } catch (\Exception $e) {
-            return redirect(route('register', absolute: false))->with('error', 'Operation failed: ' . $e->getMessage());
+            return redirect(route('register', absolute: false))->with('message', 'Operation failed: ' . $e->getMessage());
         }
     }
 }

@@ -1,5 +1,4 @@
-import { Box, Typography } from "@mui/material";
-
+import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { cardsData } from "@/_data";
 import { Card } from "./Card";
@@ -34,8 +33,9 @@ export const Cards = () => {
                             },
                         }}
                     >
-                        {cardsData.map((card) => (
-                            <Card card={card} />
+
+                        {cardsData.map((card, index) => (
+                            <Card card={card} key={index}/>
                         ))}
                     </Box>
                 </Box>

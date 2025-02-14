@@ -1,7 +1,7 @@
-import React from "react";
-import phone1 from "../../../assets/ph_screen1.svg";
-import phone2 from "../../../assets/ph_screen2.svg";
-import phone3 from "../../../assets/ph_screen3.svg";
+
+import phone1 from "assets/home/ph_screen1.svg";
+import phone2 from "assets/home/ph_screen2.svg";
+import phone3 from "assets/home/ph_screen3.svg";
 import { Box, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
