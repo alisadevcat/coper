@@ -68,6 +68,7 @@ export const RenderedForm = ({ status, canResetPassword }: LoginProps) => {
                         id="password"
                         name="password"
                         label="Password"
+                        value={data.password}
                         type={showPassword ? "text" : "password"}
                         slotProps={{
                             input: {

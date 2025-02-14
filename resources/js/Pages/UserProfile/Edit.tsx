@@ -54,9 +54,9 @@ export default function Page({ profileData, imageUrl, documentUrl }) {
                                         profileData={profileData}
                                     />
                                 )}
-                                <Grid size={{ xs: 12 }}>
+                                {/* <Grid size={{ xs: 12 }}>
                                     <DocumentUpload documentUrl={documentUrl} />
-                                </Grid>
+                                </Grid> */}
                             </Grid>
                         </Grid>
                     </Box>

@@ -9,8 +9,8 @@ import {
     TextareaAutosize,
     Typography,
 } from "@mui/material";
-import { PhoneInputField } from "./phone-input";
-import { NameInputField } from "./name-input";
+import { PhoneInputField } from "@/Components/inputs/phone-input";
+import { NameInputField } from "@/Components/inputs/name-input";
 import InputError from "@/Components/InputError";
 
 import {

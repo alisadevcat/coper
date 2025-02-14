@@ -2,7 +2,7 @@ import { Label } from "@/Components/label";
 import { SvgColor } from "@/Components/svg-color";
 import { Iconify } from "@/Components/iconify";
 import { route } from "ziggy-js";
-import dashboardIcon from "assets/icons/navbar/ic-analytics.svg";
+import dashboardIcon from "assets/icons/navbar/ic-dashboard.svg";
 import profileIcon from "assets/icons/navbar/ic-user.svg";
 
 // ----------------------------------------------------------------------

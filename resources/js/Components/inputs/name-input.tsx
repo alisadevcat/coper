@@ -4,7 +4,7 @@ export const NameInputField = ({ name, label, value, handleNameChange }) => {
 
     const onNamesChange = (e) => {
         const newValue = e.target.value;
-        const filteredValue = newValue.replace(/[^a-zA-Z]/g, ""); // Remove non-Latin characters
+        const filteredValue = newValue.replace(/[^A-Za-zÀ-ÖØ-öø-ÿ'’ -]/g, ""); // Remove non-Latin characters
         handleNameChange(name, filteredValue);
     };
 

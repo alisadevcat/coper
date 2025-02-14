@@ -70,8 +70,8 @@ export const ImageUpload = ({ handleImageChange, imageUrl }) => {
                 <PreviewContainer>
                     <img src={preview} alt="Preview" />
                 </PreviewContainer>
-                <Typography variant="h6" gutterBottom>
-                    Upload Photo
+                <Typography variant="h6" paddingY="0.5rem">
+                    Upload Your Photo
                 </Typography>
                 <Typography
                     variant="caption"

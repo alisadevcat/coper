@@ -9,10 +9,11 @@ import {
     IconButton,
     InputAdornment,
 } from "@mui/material";
-import { RolesData } from "@/types";
+import { RolesData, FlashMessageType } from "@/types";
 import { Iconify } from "@/Components/iconify";
 import InputError from "@/Components/InputError";
 import { useForm, usePage } from "@inertiajs/react";
+import { NameInputField } from "@/Components/inputs/name-input";
 import { route } from "ziggy-js";
 
 type RegisterFormData = {
@@ -46,29 +47,24 @@ export const SignupForm = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [showConfrimedPassword, setShowConfrimedPassword] = useState(false);
 
-    const handleNameChange = (e) => {
-        const newValue = e.target.value;
-        const filteredValue = newValue.replace(/[^a-zA-Z]/g, ""); // Remove non-Latin characters
-        setData("first_name", filteredValue);
-    };
-    const handleLastNameChange = (e) => {
-        const newValue = e.target.value;
-        const filteredValue = newValue.replace(/[^a-zA-Z]/g, ""); // Remove non-Latin characters
-        setData("last_name", filteredValue);
+    const handleNameChange = (name: keyof RegisterFormData, value: string) => {
+        setData(name, value);
     };
 
     const submit = (e: React.FormEvent) => {
         e.preventDefault();
+        console.log(data, "data");
 
         post(route("register"), {
             onFinish: () => reset("password", "password_confirmation"),
         });
     };
 
-    const { roles, flash } = usePage<RolesProps>().props;
+    const { roles } = usePage<RolesProps>().props;
+    const { flash } = usePage<{ flash: FlashMessageType }>().props;
     const options = roles?.options;
-
-
+    console.log(flash);
+    console.log(data);
     return (
         <>
             <form onSubmit={submit}>
@@ -77,33 +73,21 @@ export const SignupForm = () => {
                     flexDirection="column"
                     alignItems="flex-end"
                 >
-                    <TextField
-                        fullWidth
-                        id="first_name"
+                    <NameInputField
                         name="first_name"
                         label="First Name"
                         value={data.first_name}
-                        slotProps={{ inputLabel: { shrink: true } }}
-                        sx={{ mb: 3, backgroundColor: "transparent" }}
-                        onChange={handleNameChange}
-                        autoComplete="first_name"
-                        required
+                        handleNameChange={handleNameChange}
                     />
                     {errors.first_name && (
                         <InputError>{errors.first_name}</InputError>
                     )}
 
-                    <TextField
-                        fullWidth
-                        id="last_name"
+                    <NameInputField
                         name="last_name"
                         label="Last Name"
                         value={data.last_name}
-                        slotProps={{ inputLabel: { shrink: true } }}
-                        sx={{ mb: 3, backgroundColor: "transparent" }}
-                        onChange={handleLastNameChange}
-                        autoComplete="last_name"
-                        required
+                        handleNameChange={handleNameChange}
                     />
                     {errors.last_name && (
                         <InputError>{errors.last_name}</InputError>
@@ -128,7 +112,7 @@ export const SignupForm = () => {
                         fullWidth
                         name="password"
                         label="Password"
-                        defaultValue=""
+                        value={data.password}
                         type={showPassword ? "text" : "password"}
                         slotProps={{
                             inputLabel: { shrink: true },
@@ -155,7 +139,7 @@ export const SignupForm = () => {
                         }}
                         sx={{ mb: 3 }}
                         onChange={(e) => setData("password", e.target.value)}
-                        autoComplete="current-password"
+                        autoComplete="new-password"
                         required
                     />
 

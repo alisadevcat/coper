@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('user_profiles', function (Blueprint $table) {
-            $table->renameColumn('purpose', 'company_name');
-            $table->string('company_name', 255)->nullable()->change();
+              // Drop the 'purpose' column
+              $table->dropColumn('purpose');
+
+              // Add a new 'company_name' column as a nullable string
+              $table->string('company_name', 255)->nullable();
         });
     }
 
@@ -23,8 +26,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('user_profiles', function (Blueprint $table) {
-            $table->string('company_name', 255)->change(); // Revert the type change first
-            $table->renameColumn('company_name', 'purpose'); // Then revert the column name
+            $table->dropColumn('company_name');
+            $table->string('purpose', 255)->nullable();
         });
     }
 };

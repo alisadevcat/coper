@@ -41,7 +41,7 @@ export const ConfirmPassForm = () => {
                         id="password"
                         name="password"
                         label="Password"
-                        defaultValue="@demo1234"
+                        value={data.password}
                         type={showPassword ? "text" : "password"}
                         slotProps={{
                             input: {

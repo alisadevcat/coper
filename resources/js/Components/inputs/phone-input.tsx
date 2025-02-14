@@ -1,22 +1,3 @@
-// import React from "react";
-// import { useState } from "react";
-// import { PhoneInput } from "react-international-phone";
-// import "react-international-phone/style.css";
-
-// export const PhoneInputField = ({ handlePhoneChange, data }) => {
-//     const [phone, setPhone] = useState("");
-//     console.log(phone);
-
-//     return (
-//         <PhoneInput
-//             defaultCountry="fr"
-//             name="phone"
-//             value={data.phone}
-//             onChange={(phone) => handlePhoneChange(phone)}
-//         />
-//     );
-// };
-
 import "react-international-phone/style.css";
 
 import {

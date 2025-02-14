@@ -36,14 +36,8 @@ const BorrowerProfile = ({ profileData }) => {
     const { user } = usePage<{ auth: AuthData }>().props.auth;
     const { flash } = usePage<{ flash: FlashMessageType }>().props;
 
-    const {
-        data,
-        setData,
-        patch,
-        processing,
-        errors,
-        recentlySuccessful,
-    } = useForm(defaultProfileData(user, profileData));
+    const { data, setData, patch, processing, errors, recentlySuccessful } =
+        useForm(defaultProfileData(user, profileData));
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -76,31 +70,31 @@ const BorrowerProfile = ({ profileData }) => {
                     )}
                 </Grid>
                 <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
-                <Box
-                    sx={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        flexDirection: "column",
-                        gap: 4,
-                    }}
-                >
-                    <Button
-                        variant="contained"
-                        type="submit"
-                        disabled={processing}
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexDirection: "column",
+                            gap: 4,
+                        }}
                     >
-                        Save Changes
-                    </Button>
-                    <Transition
-                        show={recentlySuccessful}
-                        enter="transition ease-in-out"
-                        enterFrom="opacity-0"
-                        leave="transition ease-in-out"
-                        leaveTo="opacity-0"
-                    >
-                        <p>Your data is saved.</p>
-                    </Transition>
+                        <Button
+                            variant="contained"
+                            type="submit"
+                            disabled={processing}
+                        >
+                            Save Changes
+                        </Button>
+                        <Transition
+                            show={recentlySuccessful}
+                            enter="transition ease-in-out"
+                            enterFrom="opacity-0"
+                            leave="transition ease-in-out"
+                            leaveTo="opacity-0"
+                        >
+                            <p>Profile data updated successfully.</p>
+                        </Transition>
                     </Box>
                 </Grid>
             </form>

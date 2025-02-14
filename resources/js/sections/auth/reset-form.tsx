@@ -43,7 +43,6 @@ export const ResetForm = ({ token, email }: ResetPasswordProps) => {
                         label="Email address"
                         value={data.email}
                         autoComplete="username"
-                        defaultValue="hello@gmail.com"
                         slotProps={{ inputLabel: { shrink: true } }}
                         sx={{ mb: 3, backgroundColor: "transparent" }}
                         onChange={(e) => setData("email", e.target.value)}
@@ -54,7 +53,7 @@ export const ResetForm = ({ token, email }: ResetPasswordProps) => {
                         id="password"
                         name="password"
                         label="Password"
-                        defaultValue="@demo1234"
+                        value={data.password}
                         type={showPassword ? "text" : "password"}
                         slotProps={{
                             input: {
@@ -89,7 +88,7 @@ export const ResetForm = ({ token, email }: ResetPasswordProps) => {
                         id="password_confirmation"
                         name="password_confirmation"
                         label="Confirm Password"
-                        defaultValue="@demo1234"
+                        value={data.password_confirmation}
                         type={showPassword ? "text" : "password"}
                         slotProps={{
                             input: {
