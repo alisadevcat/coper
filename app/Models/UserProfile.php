@@ -9,7 +9,7 @@ class UserProfile extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'gender', 'address', 'country', 'zip_code', 'currency', 'city', 'state', 'birth_date', 'phone', 'crypto_wallet', 'bank_account_number', 'iban', 'swift', 'job_title', 'purpose', 'additional_info', 'status'];
+    protected $fillable = ['user_id', 'gender', 'address', 'country', 'zip_code', 'currency', 'city', 'state', 'birth_date', 'phone', 'crypto_wallet', 'bank_account_number', 'iban', 'swift', 'job_title', 'company_name', 'additional_info', 'status'];
 
     public function user()
     {

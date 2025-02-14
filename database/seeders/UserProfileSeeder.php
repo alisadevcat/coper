@@ -27,26 +27,6 @@ class UserProfileSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
-            [
-                'user_id' => 2,
-                'gender'=>'male',
-                'phone' => '+7200000888888',
-                'address' => '456 Maple Avenue, Townsville',
-                'birth_date' => '1985-05-15',
-                'bank_account_number' => 'Loves hiking and outdoor adventures.',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
-            [
-                'user_id' => 3,
-                'gender'=>'male',
-                'phone' => '+9200000888888',
-                'address' => '789 Oak Lane, Villagetown',
-                'birth_date' => '1992-08-20',
-                'bank_account_number' => 'Avid reader and aspiring author.',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ],
         ]);
     }
 }

@@ -25,7 +25,7 @@ export const defaultProfileData = (user, profileData) => {
         iban: profileData?.iban || "",
         swift: profileData?.swift || "",
         job_title: profileData?.job_title || "",
-        purpose: profileData?.purpose || "",
+        company_name: profileData?.company_name || "",
         additional_info: profileData?.additional_info || "",
         status: profileData?.status || "not verified",
         rejection_reason: profileData?.rejection_reason || "",

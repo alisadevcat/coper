@@ -19,10 +19,10 @@ import {
 } from "@/Layouts/dashboard/config-nav-workspace";
 
 const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
-    const handlePhoneChange = (value:string) => {
+    const handlePhoneChange = (value: string) => {
         handleChange({ target: { name: "phone", value: value } });
     };
-    const handleNameChange = (name:string, value:string) => {
+    const handleNameChange = (name: string, value: string) => {
         handleChange({ target: { name: name, value: value } });
     };
     return (
@@ -128,6 +128,7 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                         label="State/Region"
                         name="state"
                         value={data.state}
+                        slotProps={{ inputLabel: { shrink: true } }}
                         onChange={handleChange}
                     />
                     {errors.state && <InputError>{errors.state}</InputError>}
@@ -139,6 +140,7 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                         label="City"
                         name="city"
                         value={data.city}
+                        slotProps={{ inputLabel: { shrink: true } }}
                         onChange={handleChange}
                     />
                     {errors.city && <InputError>{errors.city}</InputError>}
@@ -149,6 +151,7 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                         label="Address"
                         name="address"
                         value={data.address}
+                        slotProps={{ inputLabel: { shrink: true } }}
                         onChange={handleChange}
                     />
                     {errors.address && (
@@ -161,6 +164,7 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                         label="Zip Code"
                         name="zip_code"
                         value={data.zip_code}
+                        slotProps={{ inputLabel: { shrink: true } }}
                         onChange={handleChange}
                     />
                     {errors.zip_code && (
@@ -171,27 +175,25 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                 <Grid size={{ xs: 12, md: 6 }}>
                     <TextField
                         fullWidth
-                        label="Job Title"
+                        label="Position"
                         name="job_title"
                         value={data.job_title}
+                        slotProps={{ inputLabel: { shrink: true } }}
                         onChange={handleChange}
                     />
                     {errors.job_title && (
                         <InputError>{errors.job_title}</InputError>
                     )}
                 </Grid>
-                <Grid size={{ xs: 12 }}>
-                    <FormControl fullWidth>
-                        <FormLabel htmlFor="purpose">Purpose</FormLabel>
-                        <TextareaAutosize
-                            minRows={3}
-                            placeholder="Purpose"
-                            name="purpose"
-                            value={data.purpose}
-                            onChange={handleChange}
-                            style={{ width: "100%", padding: 8 }}
-                        />
-                    </FormControl>
+                <Grid size={{ xs: 12, md: 6 }}>
+                    <TextField
+                        fullWidth
+                        label="Company Name"
+                        name="company_name"
+                        value={data.company_name}
+                        slotProps={{ inputLabel: { shrink: true } }}
+                        onChange={handleChange}
+                    />
                 </Grid>
 
                 <Grid size={{ xs: 12 }}>
@@ -219,11 +221,12 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                 <Grid size={{ xs: 12, md: 6 }}>
                     <TextField
                         fullWidth
+                        type="number"
                         label="Bank Account Number"
                         name="bank_account_number"
                         value={data.bank_account_number}
+                        slotProps={{ inputLabel: { shrink: true } }}
                         onChange={handleChange}
-                        type="number"
                     />
                     {errors.bank_account_number && (
                         <InputError>{errors.bank_account_number}</InputError>
@@ -236,6 +239,7 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                         label="IBAN"
                         name="iban"
                         value={data.iban}
+                        slotProps={{ inputLabel: { shrink: true } }}
                         onChange={handleChange}
                     />
                     {errors.iban && <InputError>{errors.iban}</InputError>}
@@ -247,6 +251,7 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                         label="SWIFT"
                         name="swift"
                         value={data.swift}
+                        slotProps={{ inputLabel: { shrink: true } }}
                         onChange={handleChange}
                     />
                     {errors.swift && <InputError>{errors.swift}</InputError>}
@@ -257,6 +262,7 @@ const BorrowerProfileFormFields = ({ data, handleChange, errors }) => {
                         label="Crypto Wallet"
                         name="crypto_wallet"
                         value={data.crypto_wallet}
+                        slotProps={{ inputLabel: { shrink: true } }}
                         onChange={handleChange}
                     />
                     {errors.crypto_wallet && (
