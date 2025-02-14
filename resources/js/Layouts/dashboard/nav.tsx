@@ -14,14 +14,10 @@ import { NavUpgrade } from "../components/nav-upgrade";
 import type { WorkspacesPopoverProps } from "../components/workspaces-popover";
 import DashboardNavList from "./nav-list";
 // ----------------------------------------------------------------------
+import { NavItemDataType } from "./config-nav-dashboard";
 
 export type NavContentProps = {
-    data: {
-        path: string;
-        title: string;
-        icon: React.ReactNode;
-        info?: React.ReactNode;
-    }[];
+    data: NavItemDataType[];
     slots?: {
         topArea?: React.ReactNode;
         bottomArea?: React.ReactNode;
