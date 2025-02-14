@@ -53,10 +53,9 @@ class UserProfileController extends Controller
         $documentUrl = $documentFile ? asset('storage/' . $documentFile->file_path) : '';
 
         return Inertia::render('UserProfile/Edit', [
-            'profileData' => $userProfile,
+            'userProfileData' => json_encode($userProfile),
             'imageUrl' => $imageUrl,
             'documentUrl' => $documentUrl,
-            'status' => session('status'),
         ]);
     }
 

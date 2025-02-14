@@ -11,9 +11,10 @@ import Grid from "@mui/material/Grid2";
 
 // ----------------------------------------------------------------------
 
-export default function Page({ profileData, imageUrl, documentUrl }) {
+export default function Page({ userProfileData, imageUrl, documentUrl }) {
     const { roles } = usePage<PagePropsData>().props;
     const roleSlugs: Roles = roles?.user_roles ? roles.user_roles : [];
+    const profileData = JSON.parse(userProfileData);
 
     return (
         <>
