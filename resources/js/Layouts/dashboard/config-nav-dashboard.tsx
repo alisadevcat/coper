@@ -5,20 +5,25 @@ import { route } from "ziggy-js";
 import dashboardIcon from "assets/icons/navbar/ic-dashboard.svg";
 import profileIcon from "assets/icons/navbar/ic-user.svg";
 
+export type NavItemDataType = {
+    title: string;
+    path: string;
+    activePath: string;
+    icon: React.ReactNode;
+    info?: React.ReactNode;
+};
+
 // ----------------------------------------------------------------------
 
 const icon = (name: string) => (
-    <SvgColor
-        width="100%"
-        height="100%"
-        src={name}
-    />
+    <SvgColor width="100%" height="100%" src={name} />
 );
 
 export const defaultNavData = [
     {
         title: "Dashboard",
         path: "/dashboard",
+        activePath: "/dashboard",
         icon: icon(dashboardIcon),
     },
     // {
@@ -53,22 +58,17 @@ export const defaultNavData = [
     // },
 ];
 
-type NavData = {
-        path: string;
-        title: string;
-        icon: React.ReactNode;
-        info?: React.ReactNode;
-};
-
-export const dashBoardLenderNavLinks: NavData[] = [
+export const dashBoardLenderNavLinks: NavItemDataType[] = [
     {
-        title: "Dashboardr",
+        title: "Dashboard",
         path: "/dashboard",
+        activePath: "/dashboard",
         icon: icon(dashboardIcon),
     },
     {
         title: "Profile",
-        path: "/profile",
+        path: route("userprofile.edit"),
+        activePath: "/profile",
         icon: icon(profileIcon),
     },
     // {
@@ -83,15 +83,17 @@ export const dashBoardLenderNavLinks: NavData[] = [
     // },
 ];
 
-export const dashBoardBorrowerNavLinks: NavData[] = [
+export const dashBoardBorrowerNavLinks: NavItemDataType[] = [
     {
         title: "Dashboard",
         path: "/dashboard",
+        activePath: "/dashboard",
         icon: icon(dashboardIcon),
     },
     {
         title: "Profile",
-        path: "/profile",
+        path: route("userprofile.edit"),
+        activePath: "/profile",
         icon: icon(profileIcon),
     },
     // {
@@ -106,15 +108,17 @@ export const dashBoardBorrowerNavLinks: NavData[] = [
     // },
 ];
 
-export const dashBoardModeratorNavLinks: NavData[] = [
+export const dashBoardModeratorNavLinks: NavItemDataType[] = [
     {
         title: "Dashboard",
         path: "/dashboard",
-        icon: icon(dashboardIcon ),
+        activePath: "/dashboard",
+        icon: icon(dashboardIcon),
     },
     {
         title: "Profile",
-        path: "/profile",
+        path: route("userprofile.edit"),
+        activePath: "/profile",
         icon: icon(profileIcon),
     },
     // {
@@ -150,7 +154,7 @@ export const topNavLinks = [
 type DashboardRoles = "lender" | "borrower" | "moderator";
 
 export type DashboardNavType = {
-    [key in DashboardRoles]: NavData[];
+    [key in DashboardRoles]: NavItemDataType[];
 };
 
 export const dashBoardNavs: DashboardNavType = {

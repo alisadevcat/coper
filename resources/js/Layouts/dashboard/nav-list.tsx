@@ -1,23 +1,17 @@
 import React from "react";
-import { Box, ListItem, ListItemButton } from "@mui/material";
 import { usePage } from "@inertiajs/react";
+import { Box, ListItem, ListItemButton } from "@mui/material";
+import { NavItemDataType } from "./config-nav-dashboard";
 
-type DataItemProp = {
-    path: string;
-    title: string;
-    icon: React.ReactNode;
-    info?: React.ReactNode;
-};
-
-type DataProps = { data: DataItemProp[] };
+type DataProps = { data: NavItemDataType[] };
 
 const DashboardNavList = ({ data }: DataProps) => {
     const pathname = usePage().url;
 
     return (
         <>
-            {data.map((item: DataItemProp) => {
-                const isActived = item.path === pathname;
+            {data.map((item: NavItemDataType) => {
+                const isActived = item.activePath === pathname;
 
                 return (
                     <ListItem disableGutters disablePadding key={item.title}>
@@ -35,12 +29,13 @@ const DashboardNavList = ({ data }: DataProps) => {
                                 color: "var(--layout-nav-item-color)",
                                 minHeight: "var(--layout-nav-item-height)",
                                 ...(isActived && {
-                                  fontWeight: 'fontWeightSemiBold',
-                                  bgcolor: 'var(--layout-nav-item-active-bg)',
-                                  color: 'var(--layout-nav-item-active-color)',
-                                  '&:hover': {
-                                    bgcolor: 'var(--layout-nav-item-hover-bg)',
-                                  },
+                                    fontWeight: "fontWeightSemiBold",
+                                    bgcolor: "var(--layout-nav-item-active-bg)",
+                                    color: "var(--layout-nav-item-active-color)",
+                                    "&:hover": {
+                                        bgcolor:
+                                            "var(--layout-nav-item-hover-bg)",
+                                    },
                                 }),
                             }}
                         >
