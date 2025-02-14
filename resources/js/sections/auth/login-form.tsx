@@ -58,11 +58,11 @@ export const RenderedForm = ({ status, canResetPassword }: LoginProps) => {
                         onChange={(e) => setData("email", e.target.value)}
                     />
 
-                    {canResetPassword && (
+                    {/* {canResetPassword && (
                         <Link href={route("password.request")}>
                             Forgot your password?
                         </Link>
-                    )}
+                    )} */}
                     <TextField
                         fullWidth
                         id="password"

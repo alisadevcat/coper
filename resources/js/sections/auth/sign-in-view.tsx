@@ -24,10 +24,14 @@ export function SignInView({ status, canResetPassword }: LoginProps) {
                 </Box>
 
                 <Typography variant="h5">Sign in</Typography>
-                <Typography variant="body2" color="text.secondary">
-                    Don’t have an account?
-                    <Link href={route("register")}>Get started</Link>
-                </Typography>
+                <Box display="flex" gap="2px">
+                    <Typography variant="body2" color="text.secondary">
+                        Don’t have an account?
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                    <Link href={route("register")}>Get started!</Link>
+                    </Typography>
+                </Box>
             </Box>
 
             <RenderedForm status={status} canResetPassword={canResetPassword} />
