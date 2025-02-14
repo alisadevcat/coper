@@ -24,7 +24,7 @@ const ImageUploadForm = ({ imageUrl }: imageUrlType) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("upload-image"), {
+        post(route("upload.image"), {
             onSuccess: () => {
                 console.log("Image uploaded successfully!");
             },
