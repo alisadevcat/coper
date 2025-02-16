@@ -20,6 +20,7 @@ const ImageUploadForm = ({ imageData }) => {
             image: null,
         });
     const { file_url } = imageData;
+
     const handleImageChange = (file) => {
         setData("image", file);
     };

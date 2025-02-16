@@ -43,11 +43,12 @@ export default function Page({ userProfileData, imageData, documentData }) {
                         }}
                     >
                         <Grid container spacing={3}>
+                            {/* Image upload */}
                             <Grid size={{ xs: 12, sm: 4 }}>
                                 <StatusChip status={profileData.status} />
                                 <ImageUploadForm imageData={imageData} />
                             </Grid>
-
+{/* Main Data fields */}
                             <Grid
                                 size={{ xs: 12, sm: 8 }}
                                 sx={{
@@ -61,6 +62,7 @@ export default function Page({ userProfileData, imageData, documentData }) {
                                         profileData={profileData}
                                     />
                                 )}
+                                {/* Document upload */}
                                 <Grid size={{ xs: 12 }}>
                                     <DocumentUploadForm documentData={documentData} />
                                 </Grid>

@@ -34,7 +34,6 @@ class UserProfileController extends Controller
         // Get the latest photo and document
         $imageFile = $uploads->get('photo')[0] ?? null;
         $documentFile = $uploads->get('document')[0] ?? null;
-        $documentName = str_replace( $documentFile->file_path,"docs/","");
 
         Log::info('uploads', $uploads->toArray());
 

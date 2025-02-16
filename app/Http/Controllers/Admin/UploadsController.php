@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Upload;
 use Illuminate\Support\Facades\Redirect;
-
+use Illuminate\Support\Facades\Log;
 
 class UploadsController extends Controller
 {
@@ -49,7 +49,13 @@ class UploadsController extends Controller
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $filename = $file->getClientOriginalName();
+            // $filename = $file->getClientOriginalName();
+
+            $date = date('Y-m-d_H-i-s'); // Get the current date and time in a specific format
+            $originalName = $file->getClientOriginalName();
+
+            $filename = pathinfo($originalName, PATHINFO_FILENAME) . pathinfo($originalName, PATHINFO_EXTENSION);
+
             $path = $file->storeAs('docs', $filename, 'public');
 
             Upload::create([

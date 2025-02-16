@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, memo } from "react";
 import {
     Box,
     Card,
@@ -38,22 +38,25 @@ const PreviewContainer = styled(Box)({
     },
 });
 
-export const ImageUpload = ({ handleImageChange, imageUrl }) => {
+export const ImageUpload = memo(({ handleImageChange, imageUrl }) => {
     const [preview, setPreview] = useState(imageUrl || defaultImg);
     const [error, setError] = useState<string | null>(null);
 
-    const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
-        if (rejectedFiles.length > 0) {
-            setError("Please upload a valid file under 3MB");
-            return;
-        }
-        if (acceptedFiles.length > 0) {
-            const file = acceptedFiles[0];
-            const previewUrl = URL.createObjectURL(file);
-            setPreview(previewUrl);
-            handleImageChange(file); // Pass the file to the parent component
-        }
-    }, [handleImageChange]);
+    const onDrop = useCallback(
+        (acceptedFiles, rejectedFiles) => {
+            if (rejectedFiles.length > 0) {
+                setError("Please upload a valid file under 3MB");
+                return;
+            }
+            if (acceptedFiles.length > 0) {
+                const file = acceptedFiles[0];
+                const previewUrl = URL.createObjectURL(file);
+                setPreview(previewUrl);
+                handleImageChange(file); // Pass the file to the parent component
+            }
+        },
+        [handleImageChange]
+    );
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
@@ -109,4 +112,4 @@ export const ImageUpload = ({ handleImageChange, imageUrl }) => {
             </CardContent>
         </UploadCard>
     );
-};
+});
