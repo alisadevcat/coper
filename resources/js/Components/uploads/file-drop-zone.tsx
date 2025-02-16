@@ -17,7 +17,7 @@ const UploadBox = styled(Box)({
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const VALID_FILE_TYPES = ["pdf", "jpg", "jpeg", "png"];
 
-const FileDropzone = ({ onFilesSelected, onError }) => {
+const FileDropzone = ({ onFileSelected, onError }) => {
     const onDrop = useCallback((acceptedFiles) => {
         try {
             const newFiles = acceptedFiles.map((file) => {
@@ -34,14 +34,24 @@ const FileDropzone = ({ onFilesSelected, onError }) => {
                     preview: file.type.startsWith("image/") ? URL.createObjectURL(file) : null,
                 };
             });
+            if (newFiles.length > 0) {
+                const file = newFiles[0];
+                onFileSelected(file);
+            }
 
-            onFilesSelected(newFiles);
         } catch (error) {
             onError(error.message); // Pass error to the parent component
         }
     }, [onFilesSelected, onError]);
 
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, multiple: true });
+    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop,  accept: {
+        "image/jpeg": [".jpg", ".jpeg"],
+        "image/png": [".png"],
+        "application/pdf": [".pdf"],
+    },
+    maxSize: 5 * 1024 * 1024, // 5MB
+    multiple: false
+});
 
     return (
         <UploadBox {...getRootProps()} sx={{ mb: 3 }}>

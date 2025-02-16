@@ -1,3 +1,4 @@
+
 import { DashboardLayout } from "@/Layouts/dashboard";
 import { DashboardContent } from "@/Layouts/dashboard";
 import { Typography, Box } from "@mui/material";
@@ -5,13 +6,19 @@ import { Roles, PagePropsData } from "@/types";
 import BorrowerProfile from "./Partials/borrower-profile";
 import ImageUploadForm from "./Partials/image-upload-form";
 import DocumentUpload from "@/Components/uploads/document-upload-new";
+import DocumentUploadForm from "./Partials/document-upload-form";
 import StatusChip from "./Partials/status-chip";
 import { Head, usePage } from "@inertiajs/react";
 import Grid from "@mui/material/Grid2";
 
+export type DocumentFileType = {
+    file_url: string;
+    file_path: string;
+};
+
 // ----------------------------------------------------------------------
 
-export default function Page({ userProfileData, imageUrl, documentUrl }) {
+export default function Page({ userProfileData, imageData, documentData }) {
     const { roles } = usePage<PagePropsData>().props;
     const roleSlugs: Roles = roles?.user_roles ? roles.user_roles : [];
     const profileData = JSON.parse(userProfileData);
@@ -38,7 +45,7 @@ export default function Page({ userProfileData, imageUrl, documentUrl }) {
                         <Grid container spacing={3}>
                             <Grid size={{ xs: 12, sm: 4 }}>
                                 <StatusChip status={profileData.status} />
-                                <ImageUploadForm imageUrl={imageUrl} />
+                                <ImageUploadForm imageData={imageData} />
                             </Grid>
 
                             <Grid
@@ -54,9 +61,9 @@ export default function Page({ userProfileData, imageUrl, documentUrl }) {
                                         profileData={profileData}
                                     />
                                 )}
-                                {/* <Grid size={{ xs: 12 }}>
-                                    <DocumentUpload documentUrl={documentUrl} />
-                                </Grid> */}
+                                <Grid size={{ xs: 12 }}>
+                                    <DocumentUploadForm documentData={documentData} />
+                                </Grid>
                             </Grid>
                         </Grid>
                     </Box>

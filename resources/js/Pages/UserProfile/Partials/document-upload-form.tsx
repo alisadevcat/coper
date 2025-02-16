@@ -1,46 +1,49 @@
-import { memo } from "react";
+
+import { useMemo } from "react";
 import { route } from "ziggy-js";
 import Grid from "@mui/material/Grid2";
-import { ImageUpload } from "@/Components/uploads/image-upload";
+import FileUpload from "./file-upload";
 import { Button, Box } from "@mui/material";
 import { usePage, useForm } from "@inertiajs/react";
 import { FlashMessageType } from "@/types";
 import { Transition } from "@headlessui/react";
+import { DocumentFileType } from "../Edit";
 
-type imageDataType = {
-    imageData: {
-        file_url: string;
-    };
+export type DocumentUploadFormProps = {
+    documentData: DocumentFileType;
 };
-
-const ImageUploadForm = ({ imageData }) => {
+const DocumentUploadForm = ({ documentData }: DocumentUploadFormProps) => {
     const { flash } = usePage<{ flash: FlashMessageType }>().props;
     const { data, setData, post, processing, errors, recentlySuccessful } =
         useForm({
-            image: null,
+            file: null,
         });
-    const { file_url } = imageData;
-    const handleImageChange = (file) => {
-        setData("image", file);
+    const handleFileChange = (file) => {
+        console.log(file, "file1", data);
+        setData("file", file);
     };
+
+    console.log(documentData);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route("upload.image"), {
+        post(route("upload.document"), {
+            preserveScroll: true,
+            forceFormData: true,
             onSuccess: () => {
-                console.log("Image uploaded successfully!");
+                console.log("File uploaded successfully!");
             },
             onError: (errors) => {
-                console.error("Error uploading image:", errors);
+                console.error("Error uploading file:", errors);
             },
         });
     };
 
     return (
         <form onSubmit={handleSubmit}>
-            <ImageUpload
-                handleImageChange={handleImageChange}
-                imageUrl={file_url}
+            <FileUpload
+                handleFileChange={handleFileChange}
+                documentFile={documentData}
             />
             <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
                 <Box
@@ -68,7 +71,7 @@ const ImageUploadForm = ({ imageData }) => {
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p>Image Uploaded</p>
+                        <p>File Uploaded</p>
                     </Transition>
                 </Box>
             </Grid>
@@ -76,4 +79,4 @@ const ImageUploadForm = ({ imageData }) => {
     );
 };
 
-export default memo(ImageUploadForm);
+export default DocumentUploadForm;

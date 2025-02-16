@@ -6,64 +6,11 @@ use App\Models\Uploads;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Upload;
+use Illuminate\Support\Facades\Redirect;
+
 
 class UploadsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Uploads $uploads)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Uploads $uploads)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Uploads $uploads)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Uploads $uploads)
-    {
-        //
-    }
 
     public function uploadImage(Request $request)
     {
@@ -76,9 +23,10 @@ class UploadsController extends Controller
             ]);
 
             $file = $request->file('image');
-            $filename = "XaYPfty10" . $user->id . '.' . $file->getClientOriginalExtension(); // Create a unique filename
+            // $filename = "XaYPfty10" . $user->id . '.' . $file->getClientOriginalExtension(); // Create a unique filename
 
-            $path = $file->store('images', 'public');
+            $filename = $file->getClientOriginalName();
+            $path = $file->storeAs('images', $filename, 'public');
 
             Upload::create([
                 'user_id' => $user->id,
@@ -86,11 +34,11 @@ class UploadsController extends Controller
                 'file_type' => 'photo',
                 'status' => 'original',
             ]);
+            return Redirect::route('userprofile.edit')->with('message', 'File uploaded successfully.');
 
-            return redirect()->back()->with('message', 'Profile image updated successfully.');
         }
 
-        return redirect()->back()->with(['message' => 'Please upload an image.']);
+        return Redirect::route('userprofile.edit')->with(['message' => 'Please upload an file.']);
     }
 
 
@@ -100,14 +48,9 @@ class UploadsController extends Controller
         $user = $request->user(); // Get the authenticated user
 
         if ($request->hasFile('file')) {
-            $request->validate([
-                'file' => 'required|mimes:pdf,jpg,jpeg,png|max:5120'
-            ]);
-
             $file = $request->file('file');
-            $filename = "XaYPfty10" . $user->id . '.' . $file->getClientOriginalExtension();
-
-            $path = $file->store('docs', 'public');
+            $filename = $file->getClientOriginalName();
+            $path = $file->storeAs('docs', $filename, 'public');
 
             Upload::create([
                 'user_id' => $user->id,
@@ -116,10 +59,10 @@ class UploadsController extends Controller
                 'status' => 'original',
             ]);
 
-            return redirect()->back()->with('message', 'Profile image updated successfully.');
+            return Redirect::route('userprofile.edit')->with('message', 'File uploaded successfully.');
         }
 
-        return redirect()->back()->with(['message' => 'Please upload an image.']);
+      return Redirect::route('userprofile.edit')->with(['message' => 'Please upload an file.']);
     }
 }
 

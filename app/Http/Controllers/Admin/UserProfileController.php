@@ -11,51 +11,37 @@ use Inertia\Inertia;
 use Inertia\Response;
 use App\Http\Requests\UserProfileUpdateRequest;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
 
 
 class UserProfileController extends Controller
 {
+
     public function edit(Request $request): Response
     {
-        $userProfile = UserProfile::where('user_id', $request->user()->id)->first();
 
-        if (!$userProfile) {
-            abort(404, 'Profile not found.');
-        }
+        $user = $request->user();
+        $userProfile =  $user->profile()->firstOrFail();
 
-        $imageFile = Upload::where([
-            ['user_id', $request->user()->id],
-            ['file_type', 'photo']
-        ])
+        // Fetch both photo and document uploads in a single query
+        $uploads =  $user->uploads()
+            ->whereIn('file_type', ['photo', 'document'])
             ->whereIn('status', ['approved', 'original'])
-            ->latest('created_at') // Equivalent to orderBy('created_at', 'desc')
-            ->first();
+            ->orderByDesc('created_at')
+            ->get()
+            ->groupBy('file_type');
 
-        $documentFile = Upload::where([
-            ['user_id', $request->user()->id],
-            ['file_type', 'document']
-        ])
-            ->whereIn('status', ['approved', 'original'])
-            ->latest('created_at') // Equivalent to orderBy('created_at', 'desc')
-            ->first();
+        // Get the latest photo and document
+        $imageFile = $uploads->get('photo')[0] ?? null;
+        $documentFile = $uploads->get('document')[0] ?? null;
+        $documentName = str_replace( $documentFile->file_path,"docs/","");
 
-
-        // Debugging
-        // if (!$imageFile) {
-        //     \Log::info('No image file found for user: ' . $request->user()->id);
-        // }
-
-        // if (!$documentFile) {
-        //     \Log::info('No document file found for user: ' . $request->user()->id);
-        // }
-
-        $imageUrl = $imageFile ? asset('storage/' . $imageFile->file_path) : '';
-        $documentUrl = $documentFile ? asset('storage/' . $documentFile->file_path) : '';
+        Log::info('uploads', $uploads->toArray());
 
         return Inertia::render('UserProfile/Edit', [
             'userProfileData' => json_encode($userProfile),
-            'imageUrl' => $imageUrl,
-            'documentUrl' => $documentUrl,
+            'imageData' => $imageFile ? $imageFile->only('file_url') : '',
+            'documentData' => $documentFile ? $documentFile->only('file_url', 'file_path') : '',
         ]);
     }
 
@@ -81,23 +67,6 @@ class UserProfileController extends Controller
             $profileData
         );
 
-        return redirect()->back()->with('message', 'Profile data updated successfully.');
-        // return Inertia::render('UserProfile/Edit', [
-        //     'profileData' =>  $validatedData,
-        //     'imageUrl' => $imageUrl,
-        //     'documentUrl' => $documentUrl,
-        //     'status' => session('status'),
-        // ]);
-        // return Redirect::route('userprofile.edit');
+        return Redirect::route('userprofile.edit')->with('message', 'Profile data updated successfully.');
     }
 }
-
-
-     // $imageFile = Upload::where('user_id', $request->user()->id)
-        //     ->where('file_type', 'photo')
-        //     ->whereIn('status', ['approved', 'original'])->orderBy('created_at', 'desc')->first();
-
-        // $documentFile = Upload::where('user_id', $request->user()->id)
-        //     ->where('file_type', 'document')
-        //     ->whereIn('status', ['approved', 'original'])
-        //     ->orderBy('created_at', 'desc')->first();
