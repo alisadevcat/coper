@@ -13,9 +13,9 @@ import { Iconify } from "@/Components/iconify";
 import defaultImg from "assets/images/blank-profile-picture.webp";
 
 const UploadCard = styled(Card)({
-    maxWidth: 500,
-    margin: "1rem auto",
-    padding: "1rem",
+    // maxWidth: 500,
+    // margin: "1rem auto",
+    // padding: "1rem",
 });
 
 const DropZone = styled(Box)(({ theme, isDragActive }) => ({

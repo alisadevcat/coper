@@ -11,6 +11,7 @@ import { styled } from "@mui/system";
 import { useDropzone } from "react-dropzone";
 import { Iconify } from "@/Components/iconify";
 import { PreviewCard } from "./document-preview-card";
+import Grid from "@mui/material/Grid2";
 
 const UploadCard = styled(Card)({
     // maxWidth: 500,
@@ -112,7 +113,10 @@ const FileUpload = memo(({ handleFileChange, documentFile }) => {
                     open={!!error}
                     autoHideDuration={4000}
                     onClose={() => setError(null)}
-                    anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                    anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "center",
+                    }}
                 >
                     <Alert
                         onClose={() => setError(null)}
