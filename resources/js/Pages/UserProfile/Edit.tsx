@@ -1,4 +1,3 @@
-
 import { DashboardLayout } from "@/Layouts/dashboard";
 import { DashboardContent } from "@/Layouts/dashboard";
 import { Typography, Box } from "@mui/material";
@@ -48,7 +47,7 @@ export default function Page({ userProfileData, imageData, documentData }) {
                                 <StatusChip status={profileData.status} />
                                 <ImageUploadForm imageData={imageData} />
                             </Grid>
-{/* Main Data fields */}
+                            {/* Main Data fields */}
                             <Grid
                                 size={{ xs: 12, sm: 8 }}
                                 sx={{
@@ -64,7 +63,9 @@ export default function Page({ userProfileData, imageData, documentData }) {
                                 )}
                                 {/* Document upload */}
                                 <Grid size={{ xs: 12 }}>
-                                    <DocumentUploadForm documentData={documentData} />
+                                    <DocumentUploadForm
+                                        documentData={documentData}
+                                    />
                                 </Grid>
                             </Grid>
                         </Grid>
