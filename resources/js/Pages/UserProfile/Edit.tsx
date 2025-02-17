@@ -3,7 +3,7 @@ import { DashboardLayout } from "@/Layouts/dashboard";
 import { DashboardContent } from "@/Layouts/dashboard";
 import { Roles, PagePropsData } from "@/types";
 import ImageUploadForm from "./Partials/ImageUploadForm";
-import StatusChip from "./Partials/status-chip";
+import StatusChip from "./Partials/StatusChip";
 import { Head, usePage, Link } from "@inertiajs/react";
 import { Box, Typography, Button, Card, Tabs, Tab } from "@mui/material";
 import PersonalDetails from "./Partials/PersonalDetails";
@@ -50,7 +50,7 @@ export default function Page({ userProfileData, imageData, documentData }) {
                     <Grid
                         container
                         spacing={3}
-                        sx={{ margin: "auto", padding: 3 }}
+                        sx={{ padding: 3 }}
                     >
                         {/* Sidebar */}
                         <Grid size={{ xs: 12, sm: 4 }}>
@@ -62,7 +62,7 @@ export default function Page({ userProfileData, imageData, documentData }) {
                                 My Profile
                             </Typography>
                             <Box display="flex" gap="1rem">
-                                <Link href="/verify">Verify</Link>
+                                <Link href="/verify">Verify you profile</Link>
                             </Box>
                             {/* Tabs */}
                             <Card
