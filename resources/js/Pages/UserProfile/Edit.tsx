@@ -38,16 +38,15 @@ export default function Page({ userProfileData, imageData, documentData }) {
                         sx={{ margin: "auto", padding: 3 }}
                     >
                         {/* Sidebar */}
-                        <Grid size={{ xs: 12, sm: 3 }}>
+                        <Grid size={{ xs: 12, sm: 4 }}>
                             <ImageUploadForm imageData={imageData} />
                         </Grid>
-                        <Grid size={{ xs: 12, sm: 9 }}>
+                        <Grid size={{ xs: 12, sm: 8 }}>
                             {/* Header */}
                             <Typography variant="h4" sx={{ mb: 3 }}>
                                 My Profile
                             </Typography>
                             <Box display="flex" gap="1rem">
-                                <StatusChip status={profileData.status} />
                                 <Link href="/verify">Verify</Link>
                             </Box>
                             {/* Tabs */}
@@ -57,7 +56,7 @@ export default function Page({ userProfileData, imageData, documentData }) {
                                     borderRadius: 2,
                                     boxShadow: 2,
                                     mt: 3,
-                                    padding: 3,
+                                    padding: 3
                                 }}
                             >
                                 <Tabs
@@ -70,17 +69,6 @@ export default function Page({ userProfileData, imageData, documentData }) {
                                     <Tab label="Banking & Crypto Details" />
                                     <Tab label="Documents" />
                                 </Tabs>
-                                {/* </Card> */}
-                                {/* Content Sections */}
-                                {/* <Card
-                                sx={{
-                                    mt: 3,
-                                    padding: 3,
-                                    backgroundColor: "white",
-                                    borderRadius: 2,
-                                    boxShadow: 2,
-                                }}
-                            > */}
                                 <Box sx={{ mt: 3 }}>
                                     {tabIndex === 0 && (
                                         <PersonalDetails
@@ -97,9 +85,6 @@ export default function Page({ userProfileData, imageData, documentData }) {
                                             documentData={documentData}
                                         />
                                     )}
-                                    {/* {tabIndex === 3 && (
-                                <ImageUploadForm imageData={imageData} />
-                            )} */}
                                 </Box>
                             </Card>
                         </Grid>
@@ -109,48 +94,3 @@ export default function Page({ userProfileData, imageData, documentData }) {
         </>
     );
 }
-
-{
-    /* <Typography variant="h4" sx={{ mb: { xs: 3, md: 5 } }}>
-My Profile
-</Typography>
-<Box
-sx={{
-    margin: "auto",
-    padding: 3,
-    backgroundColor: "var(--palette-background-paper)",
-    borderRadius: 2,
-}}
->
-<Grid container spacing={3}>
-    {/* Image upload */
-}
-// <Grid size={{ xs: 12, sm: 4 }}>
-//     <StatusChip status={profileData.status} />
-//     <ImageUploadForm imageData={imageData} />
-// </Grid>
-{
-    /* Main Data fields */
-}
-//     <Grid
-//         size={{ xs: 12, sm: 8 }}
-//         sx={{
-//             display: "flex",
-//             flexDirection: "column",
-//             alignItems: "center",
-//         }}
-//     >
-//         {roleSlugs[0] === "borrower" && (
-//             <BorrowerProfile
-//                 profileData={profileData}
-//             />
-//         )}
-//         {/* Document upload */}
-//         <Grid size={{ xs: 12 }}>
-//             <DocumentUploadForm
-//                 documentData={documentData}
-//             />
-//         </Grid>
-//     </Grid>
-// </Grid>
-// </Box> */}

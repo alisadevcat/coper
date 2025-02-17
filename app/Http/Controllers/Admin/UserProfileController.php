@@ -12,7 +12,7 @@ use Inertia\Response;
 use App\Http\Requests\UserProfileUpdateRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log;
-
+use App\Http\Requests\BankingDetailsRequest;
 
 class UserProfileController extends Controller
 {
@@ -67,5 +67,42 @@ class UserProfileController extends Controller
         );
 
         return Redirect::route('userprofile.edit')->with('message', 'Profile data updated successfully.');
+    }
+
+
+    public function updatePersonalDetails(UserProfileUpdateRequest $request): RedirectResponse
+    {
+        $validatedData = $request->validated();
+
+        $userData = [
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+        ];
+
+        $profileData = collect($validatedData)->except(['first_name', 'last_name'])->toArray();
+
+        $user = $request->user();
+        $user->update($userData);
+
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $profileData
+        );
+
+        return Redirect::route('userprofile.edit')->with('message', 'Profile data updated successfully.');
+    }
+
+    public function updateBankingDetails(BankingDetailsRequest $request): RedirectResponse
+    {
+        $validatedData = $request->validated();
+
+        $user = $request->user();
+
+        $user->profile()->updateOrCreate(
+            ['user_id' => $user->id],
+            $validatedData
+        );
+
+        return Redirect::route('userprofile.edit')->with('message', 'Banking details updated successfully.');
     }
 }

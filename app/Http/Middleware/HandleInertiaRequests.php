@@ -37,6 +37,7 @@ class HandleInertiaRequests extends Middleware
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user()? $request->user() : null,
+                'user_status'=> $request->user()? $request->user()->profile()->pluck('status'): ''
             ],
             'roles' => [
                 'user_roles' => $request->user()?->id ? User::find($request->user()->id)->roles->pluck('slug') : [],

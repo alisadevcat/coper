@@ -34,7 +34,7 @@ const BankingDetails = ({ profileData }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        patch(route("userprofile.update"), {
+        patch(route("update.banking_details"), {
             preserveScroll: true,
             data,
             onSuccess: (response) => console.log("Success:", response),
@@ -76,7 +76,7 @@ const BankingDetails = ({ profileData }) => {
                                 leave="transition ease-in-out"
                                 leaveTo="opacity-0"
                             >
-                                <p>Profile data updated successfully.</p>
+                                <p>Banking details updated successfully.</p>
                             </Transition>
                         </Box>
                     </Grid>

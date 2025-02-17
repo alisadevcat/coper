@@ -18,8 +18,8 @@ const getStatusProps = (status: Status) => {
 const StatusChip = ({ status }: { status: Status }) => {
   const { label, color } = getStatusProps(status);
   return (
-    <Stack direction="row" alignItems="center" spacing={1}>
-      <Typography>Your status is:</Typography>
+    <Stack direction="row" alignItems="center" justifyContent="flex-end" spacing={1}>
+      {/* <Typography>Your status is:</Typography> */}
       <Chip label={label} color={color as any} />
     </Stack>
   );

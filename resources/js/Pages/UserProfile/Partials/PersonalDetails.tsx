@@ -15,7 +15,6 @@ import {
     Alert,
 } from "@mui/material";
 
-
 export const defaultProfileData = (user, profileData) => {
     return {
         first_name: user.first_name || "",
@@ -49,7 +48,7 @@ const PersonalDetails = ({ profileData }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        patch(route("userprofile.update"), {
+        patch(route("update.personal_details"), {
             preserveScroll: true,
             data,
             onSuccess: (response) => console.log("Success:", response),
@@ -59,43 +58,44 @@ const PersonalDetails = ({ profileData }) => {
 
     return (
         <>
+            <form onSubmit={handleSubmit}>
+                <PersonalDetailsFields
+                    data={data}
+                    handleChange={handleChange}
+                    errors={errors}
+                />
 
-                <form onSubmit={handleSubmit}>
-                    <PersonalDetailsFields
-                        data={data}
-                        handleChange={handleChange}
-                        errors={errors}
-                    />
-
-                    <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
-                        <Box
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flexDirection: "column",
-                                gap: 4,
-                            }}
+                <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexDirection: "column",
+                            gap: 4,
+                        }}
+                    >
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            disabled={processing}
+                            sx={{ mt: 2 }}
                         >
-                            <Button
-                                variant="contained"
-                                type="submit"
-                                disabled={processing}
-                            >
-                                Save Changes
-                            </Button>
-                            <Transition
-                                show={recentlySuccessful}
-                                enter="transition ease-in-out"
-                                enterFrom="opacity-0"
-                                leave="transition ease-in-out"
-                                leaveTo="opacity-0"
-                            >
-                                <p>Profile data updated successfully.</p>
-                            </Transition>
-                        </Box>
-                    </Grid>
-                </form>
+                            Save changes
+                        </Button>
+                        <Transition
+                            show={recentlySuccessful}
+                            enter="transition ease-in-out"
+                            enterFrom="opacity-0"
+                            leave="transition ease-in-out"
+                            leaveTo="opacity-0"
+                        >
+                            <p>Profile data updated successfully.</p>
+                        </Transition>
+                    </Box>
+                </Grid>
+            </form>
         </>
     );
 };

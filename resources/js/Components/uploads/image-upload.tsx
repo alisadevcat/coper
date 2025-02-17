@@ -11,6 +11,8 @@ import { styled } from "@mui/system";
 import { useDropzone } from "react-dropzone";
 import { Iconify } from "@/Components/iconify";
 import defaultImg from "assets/images/blank-profile-picture.webp";
+import { usePage } from "@inertiajs/react";
+import StatusChip from "@/sections/profile/status-chip";
 
 const UploadCard = styled(Card)({
     // maxWidth: 500,
@@ -41,6 +43,7 @@ const PreviewContainer = styled(Box)({
 export const ImageUpload = memo(({ handleImageChange, imageUrl }) => {
     const [preview, setPreview] = useState(imageUrl || defaultImg);
     const [error, setError] = useState<string | null>(null);
+    const userStatus = usePage().props.auth.user_status[0];
 
     const onDrop = useCallback(
         (acceptedFiles, rejectedFiles) => {
@@ -70,6 +73,7 @@ export const ImageUpload = memo(({ handleImageChange, imageUrl }) => {
     return (
         <UploadCard>
             <CardContent>
+                <StatusChip status={userStatus} />
                 <PreviewContainer>
                     <img src={preview} alt="Preview" />
                 </PreviewContainer>
