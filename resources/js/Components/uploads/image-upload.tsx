@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, memo } from "react";
 import {
     Box,
     Card,
@@ -11,11 +11,13 @@ import { styled } from "@mui/system";
 import { useDropzone } from "react-dropzone";
 import { Iconify } from "@/Components/iconify";
 import defaultImg from "assets/images/blank-profile-picture.webp";
+import { usePage } from "@inertiajs/react";
+import StatusChip from "@/sections/profile/status-chip";
 
 const UploadCard = styled(Card)({
-    maxWidth: 500,
-    margin: "1rem auto",
-    padding: "1rem",
+    // maxWidth: 500,
+    // margin: "1rem auto",
+    // padding: "1rem",
 });
 
 const DropZone = styled(Box)(({ theme, isDragActive }) => ({
@@ -38,22 +40,26 @@ const PreviewContainer = styled(Box)({
     },
 });
 
-export const ImageUpload = ({ handleImageChange, imageUrl }) => {
+export const ImageUpload = memo(({ handleImageChange, imageUrl }) => {
     const [preview, setPreview] = useState(imageUrl || defaultImg);
     const [error, setError] = useState<string | null>(null);
+    const userStatus = usePage().props.auth.user_status[0];
 
-    const onDrop = useCallback((acceptedFiles, rejectedFiles) => {
-        if (rejectedFiles.length > 0) {
-            setError("Please upload a valid file under 3MB");
-            return;
-        }
-        if (acceptedFiles.length > 0) {
-            const file = acceptedFiles[0];
-            const previewUrl = URL.createObjectURL(file);
-            setPreview(previewUrl);
-            handleImageChange(file); // Pass the file to the parent component
-        }
-    }, [handleImageChange]);
+    const onDrop = useCallback(
+        (acceptedFiles, rejectedFiles) => {
+            if (rejectedFiles.length > 0) {
+                setError("Please upload a valid file under 3MB");
+                return;
+            }
+            if (acceptedFiles.length > 0) {
+                const file = acceptedFiles[0];
+                const previewUrl = URL.createObjectURL(file);
+                setPreview(previewUrl);
+                handleImageChange(file); // Pass the file to the parent component
+            }
+        },
+        [handleImageChange]
+    );
 
     const { getRootProps, getInputProps, isDragActive } = useDropzone({
         onDrop,
@@ -67,6 +73,7 @@ export const ImageUpload = ({ handleImageChange, imageUrl }) => {
     return (
         <UploadCard>
             <CardContent>
+                <StatusChip status={userStatus} />
                 <PreviewContainer>
                     <img src={preview} alt="Preview" />
                 </PreviewContainer>
@@ -109,4 +116,4 @@ export const ImageUpload = ({ handleImageChange, imageUrl }) => {
             </CardContent>
         </UploadCard>
     );
-};
+});

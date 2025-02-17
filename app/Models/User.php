@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\hasOne;
+use Illuminate\Database\Eloquent\Relations\hasMany;
 
 class User extends Authenticatable
 {
@@ -52,7 +53,7 @@ class User extends Authenticatable
 
     public function profile(): hasOne
     {
-        return $this->hasOne(UserProfile::class);
+        return $this->hasOne(UserProfile::class, 'user_id');
     }
 
     public function roles(): BelongsToMany
@@ -60,9 +61,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'users_roles');
     }
 
-    public function uploads()
+    public function uploads(): HasMany
     {
 
-        return $this->hasMany(Upload::class);
+        return $this->hasMany(Upload::class, 'user_id');
     }
 }

@@ -6,33 +6,20 @@ import { usePage } from "@inertiajs/react";
 import { AuthData, FlashMessageType } from "@/types";
 import { useForm } from "@inertiajs/react";
 import BorrowerProfileFormFields from "./form-fields/borrower-form-fields";
+import PersonalDetailsFields from "./form-fields/PersonalDetailsFields";
+import BankingDetailsFields from "./form-fields/BankingDetailsFields";
 
 export const defaultProfileData = (user, profileData) => {
     return {
-        first_name: user.first_name || "",
-        last_name: user.last_name || "",
-        gender: profileData?.gender || "male",
-        country: profileData?.country || "",
-        city: profileData?.city,
-        state: profileData?.state,
-        zip_code: profileData?.zip_code,
-        address: profileData?.address || "",
-        birth_date: profileData?.birth_date || "",
-        phone: profileData?.phone || "",
         crypto_wallet: profileData?.crypto_wallet || "",
         currency: profileData?.currency || "",
         bank_account_number: profileData?.bank_account_number || "",
         iban: profileData?.iban || "",
         swift: profileData?.swift || "",
-        job_title: profileData?.job_title || "",
-        company_name: profileData?.company_name || "",
-        additional_info: profileData?.additional_info || "",
-        status: profileData?.status || "not verified",
-        rejection_reason: profileData?.rejection_reason || "",
     };
 };
 
-const BorrowerProfile = ({ profileData }) => {
+const BankingDetails = ({ profileData }) => {
     const { user } = usePage<{ auth: AuthData }>().props.auth;
     const { flash } = usePage<{ flash: FlashMessageType }>().props;
 
@@ -47,7 +34,7 @@ const BorrowerProfile = ({ profileData }) => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        patch(route("userprofile.update"), {
+        patch(route("update.banking_details"), {
             preserveScroll: true,
             data,
             onSuccess: (response) => console.log("Success:", response),
@@ -58,17 +45,12 @@ const BorrowerProfile = ({ profileData }) => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <Grid container spacing={2}>
-                    <BorrowerProfileFormFields
-                        data={data}
-                        handleChange={handleChange}
-                        errors={errors}
-                    />
+                <BankingDetailsFields
+                    data={data}
+                    handleChange={handleChange}
+                    errors={errors}
+                />
 
-                    {data.status === "rejected" && (
-                        <Grid size={{ xs: 12 }}>{data.rejection_reason}</Grid>
-                    )}
-                </Grid>
                 <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
                     <Box
                         sx={{
@@ -79,10 +61,12 @@ const BorrowerProfile = ({ profileData }) => {
                             gap: 4,
                         }}
                     >
-                        <Button
-                            variant="contained"
+                          <Button
                             type="submit"
+                            variant="contained"
+                            color="primary"
                             disabled={processing}
+                            sx={{ mt: 2 }}
                         >
                             Save Changes
                         </Button>
@@ -93,7 +77,7 @@ const BorrowerProfile = ({ profileData }) => {
                             leave="transition ease-in-out"
                             leaveTo="opacity-0"
                         >
-                            <p>Profile data updated successfully.</p>
+                            <p>Banking details updated successfully.</p>
                         </Transition>
                     </Box>
                 </Grid>
@@ -102,4 +86,4 @@ const BorrowerProfile = ({ profileData }) => {
     );
 };
 
-export default BorrowerProfile;
+export default BankingDetails;

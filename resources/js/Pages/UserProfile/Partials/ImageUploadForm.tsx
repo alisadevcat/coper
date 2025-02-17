@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { route } from "ziggy-js";
 import Grid from "@mui/material/Grid2";
 import { ImageUpload } from "@/Components/uploads/image-upload";
@@ -6,16 +7,19 @@ import { usePage, useForm } from "@inertiajs/react";
 import { FlashMessageType } from "@/types";
 import { Transition } from "@headlessui/react";
 
-type imageUrlType = {
-    imageUrl: string;
+type imageDataType = {
+    imageData: {
+        file_url: string;
+    };
 };
 
-const ImageUploadForm = ({ imageUrl }: imageUrlType) => {
+const ImageUploadForm = ({ imageData }) => {
     const { flash } = usePage<{ flash: FlashMessageType }>().props;
     const { data, setData, post, processing, errors, recentlySuccessful } =
         useForm({
             image: null,
         });
+    const { file_url } = imageData;
 
     const handleImageChange = (file) => {
         setData("image", file);
@@ -37,7 +41,7 @@ const ImageUploadForm = ({ imageUrl }: imageUrlType) => {
         <form onSubmit={handleSubmit}>
             <ImageUpload
                 handleImageChange={handleImageChange}
-                imageUrl={imageUrl}
+                imageUrl={file_url}
             />
             <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
                 <Box
@@ -73,4 +77,4 @@ const ImageUploadForm = ({ imageUrl }: imageUrlType) => {
     );
 };
 
-export default ImageUploadForm;
+export default memo(ImageUploadForm);

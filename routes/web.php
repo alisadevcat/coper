@@ -27,7 +27,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [UserProfileController::class, 'edit'])->name('userprofile.edit');
     Route::post('/upload-image', [UploadsController::class, 'uploadImage'])->name('upload.image');
     Route::post('/upload-document', [UploadsController::class, 'uploadDocument'])->name('upload.document');
-    Route::patch('/update-profile', [UserProfileController::class, 'update'])->name('userprofile.update');
+    Route::patch('/update-profile', [UserProfileController::class, 'updatePersonalDetails'])->name('update.personal_details');
+    Route::patch('/profile/banking', [UserProfileController::class, 'updateBankingDetails'])->name('update.banking_details');
+
+    // Route::get('/profile/{tab}', [UserProfileController::class, 'getTabContent'])->name('userprofile.tabs');
+    // Route::patch('/profile/personal', [UserProfileController::class, 'editPersonalDetails'])->name('edit.personal_details');
+
+    // Route::get('/profile/documents', [UserProfileController::class, 'editDocuments'])->name('edit.documents');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
