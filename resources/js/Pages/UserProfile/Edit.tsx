@@ -61,9 +61,9 @@ export default function Page({ userProfileData, imageData, documentData }) {
                             <Typography variant="h4" sx={{ mb: 3 }}>
                                 My Profile
                             </Typography>
-                            <Box display="flex" gap="1rem">
+                            {/* <Box display="flex" gap="1rem">
                                 <Link href="/verify">Verify you profile</Link>
-                            </Box>
+                            </Box> */}
                             {/* Tabs */}
                             <Card
                                 sx={{
