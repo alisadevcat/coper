@@ -19,11 +19,6 @@ const BankingDetailsFields = ({ data, handleChange, errors }) => {
     return (
         <>
             <Grid container spacing={2}>
-                <Grid size={{ xs: 12 }} paddingY={"1rem"}>
-                    <Typography variant="h5">
-                        Banking & Crypto Details
-                    </Typography>
-                </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
                     <TextField
                         fullWidth

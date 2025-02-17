@@ -37,14 +37,84 @@ sx={{ margin: "auto", padding: 3 }}
         </Tabs>
         <Box sx={{ mt: 3 }}>
             {tabIndex === 0 && (
-                <PersonalDetails
-                    profileData={profileData}
-                />
+                  <form onSubmit={handleSubmit}>
+                  <PersonalDetailsFields
+                      data={data}
+                      handleChange={handleChange}
+                      errors={errors}
+                  />
+
+                  <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
+                      <Box
+                          sx={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              flexDirection: "column",
+                              gap: 4,
+                          }}
+                      >
+                          <Button
+                              type="submit"
+                              variant="contained"
+                              color="primary"
+                              disabled={processing}
+                              sx={{ mt: 2 }}
+                          >
+                              Save changes
+                          </Button>
+                          <Transition
+                              show={recentlySuccessful}
+                              enter="transition ease-in-out"
+                              enterFrom="opacity-0"
+                              leave="transition ease-in-out"
+                              leaveTo="opacity-0"
+                          >
+                              <p>Profile data updated successfully.</p>
+                          </Transition>
+                      </Box>
+                  </Grid>
+              </form>
             )}
             {tabIndex === 1 && (
-                <BankingDetails
-                    profileData={profileData}
-                />
+                  <Grid container spacing={2} size={{ xs: 12 }}>
+                  <form onSubmit={handleSubmit}>
+                      <BankingDetailsFields
+                          data={data}
+                          handleChange={handleChange}
+                          errors={errors}
+                      />
+
+                      <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
+                          <Box
+                              sx={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                  flexDirection: "column",
+                                  gap: 4,
+                              }}
+                          >
+                              <Button
+                                  variant="contained"
+                                  type="submit"
+                                  disabled={processing}
+                              >
+                                  Save Changes
+                              </Button>
+                              <Transition
+                                  show={recentlySuccessful}
+                                  enter="transition ease-in-out"
+                                  enterFrom="opacity-0"
+                                  leave="transition ease-in-out"
+                                  leaveTo="opacity-0"
+                              >
+                                  <p>Banking details updated successfully.</p>
+                              </Transition>
+                          </Box>
+                      </Grid>
+                  </form>
+              </Grid>
             )}
             {tabIndex === 2 && (
                 <DocumentUpload

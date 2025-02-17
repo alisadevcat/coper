@@ -28,11 +28,6 @@ const PersonalDetailsFields = ({ data, handleChange, errors }) => {
     return (
         <>
             <Grid container spacing={2}>
-                <Grid size={{ xs: 12 }}>
-                    <Typography variant="h5" paddingBottom="1rem">
-                        Personal Details
-                    </Typography>
-                </Grid>
                 <Grid size={{ xs: 12, md: 6 }}>
                     <NameInputField
                         name="first_name"

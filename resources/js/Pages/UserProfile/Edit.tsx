@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DashboardLayout } from "@/Layouts/dashboard";
 import { DashboardContent } from "@/Layouts/dashboard";
 import { Roles, PagePropsData } from "@/types";
@@ -23,6 +23,21 @@ export default function Page({ userProfileData, imageData, documentData }) {
     const { roles } = usePage<PagePropsData>().props;
     const roleSlugs: Roles = roles?.user_roles ? roles.user_roles : [];
     const profileData = JSON.parse(userProfileData);
+
+     // Load the tab index from localStorage when the component mounts
+     useEffect(() => {
+        const savedTabIndex = localStorage.getItem('activeTabIndex');
+        if (savedTabIndex !== null) {
+            setTabIndex(Number(savedTabIndex));
+        }
+    }, []);
+
+    // Save the tab index to localStorage whenever it changes
+    const handleTabChange = (e, newIndex) => {
+        setTabIndex(newIndex);
+        localStorage.setItem('activeTabIndex', newIndex); // Save to localStorage
+    };
+
 
     return (
         <>
@@ -56,20 +71,33 @@ export default function Page({ userProfileData, imageData, documentData }) {
                                     borderRadius: 2,
                                     boxShadow: 2,
                                     mt: 3,
-                                    padding: 3
+                                    padding: 3,
+                                    width: "100%",
+                                    margin: "0 auto",
                                 }}
                             >
                                 <Tabs
                                     value={tabIndex}
-                                    onChange={(e, newIndex) =>
-                                        setTabIndex(newIndex)
-                                    }
+                                    variant="scrollable"
+                                    centered
+                                    onChange={handleTabChange}
                                 >
                                     <Tab label="Personal Details" />
                                     <Tab label="Banking & Crypto Details" />
                                     <Tab label="Documents" />
                                 </Tabs>
-                                <Box sx={{ mt: 3 }}>
+                                <Box
+                                    sx={{
+                                        flexGrow: 1, // Makes sure the content fills the card
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        justifyContent: "space-between", // Distributes space evenly
+                                        padding: 3,
+                                        overflow: "hidden",
+                                        minHeight: "700px", // Adjust this based on expected content
+                                        width: "100%",
+                                    }}
+                                >
                                     {tabIndex === 0 && (
                                         <PersonalDetails
                                             profileData={profileData}

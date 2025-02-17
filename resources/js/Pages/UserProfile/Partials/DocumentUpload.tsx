@@ -37,50 +37,46 @@ const DocumentUpload = ({ documentData }: DocumentUploadFormProps) => {
     };
 
     return (
-        <Grid size={{ xs: 12 }}>
-            <form onSubmit={handleSubmit}>
-                <Grid container spacing={2}>
-                    <Grid size={{ xs: 12 }}>
-                        <FileUpload
-                            handleFileChange={handleFileChange}
-                            documentFile={documentData}
-                        />
-                    </Grid>
-                    <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
-                        <Box
-                            sx={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                flexDirection: "column",
-                                gap: 4,
-                            }}
-                        >
-                            <Button
-                                type="submit"
-                                variant="contained"
-                                color="primary"
-                                disabled={processing}
-                                sx={{ mt: 2 }}
-                            >
-                                {processing
-                                    ? "Uploading..."
-                                    : "Upload Document"}
-                            </Button>
-                            <Transition
-                                show={recentlySuccessful}
-                                enter="transition ease-in-out"
-                                enterFrom="opacity-0"
-                                leave="transition ease-in-out"
-                                leaveTo="opacity-0"
-                            >
-                                <p>File Uploaded</p>
-                            </Transition>
-                        </Box>
-                    </Grid>
+        <form onSubmit={handleSubmit}>
+            <Grid container spacing={2}>
+                <Grid size={{ xs: 12 }}>
+                    <FileUpload
+                        handleFileChange={handleFileChange}
+                        documentFile={documentData}
+                    />
                 </Grid>
-            </form>
-        </Grid>
+                <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            flexDirection: "column",
+                            gap: 4,
+                        }}
+                    >
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            disabled={processing}
+                            sx={{ mt: 2 }}
+                        >
+                            {processing ? "Uploading..." : "Upload Document"}
+                        </Button>
+                        <Transition
+                            show={recentlySuccessful}
+                            enter="transition ease-in-out"
+                            enterFrom="opacity-0"
+                            leave="transition ease-in-out"
+                            leaveTo="opacity-0"
+                        >
+                            <p>File Uploaded</p>
+                        </Transition>
+                    </Box>
+                </Grid>
+            </Grid>
+        </form>
     );
 };
 

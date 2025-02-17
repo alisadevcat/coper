@@ -38,44 +38,42 @@ const ImageUploadForm = ({ imageData }) => {
     };
 
     return (
-        <Grid size={{ xs: 12 }}>
-            <form onSubmit={handleSubmit}>
-                <ImageUpload
-                    handleImageChange={handleImageChange}
-                    imageUrl={file_url}
-                />
-                <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            flexDirection: "column",
-                            gap: 4,
-                        }}
+        <form onSubmit={handleSubmit}>
+            <ImageUpload
+                handleImageChange={handleImageChange}
+                imageUrl={file_url}
+            />
+            <Grid container justifyContent="flex-end" size={{ xs: 12 }}>
+                <Box
+                    sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexDirection: "column",
+                        gap: 4,
+                    }}
+                >
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        disabled={processing}
+                        sx={{ mt: 2 }}
                     >
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="primary"
-                            disabled={processing}
-                            sx={{ mt: 2 }}
-                        >
-                            {processing ? "Uploading..." : "Upload Image"}
-                        </Button>
-                        <Transition
-                            show={recentlySuccessful}
-                            enter="transition ease-in-out"
-                            enterFrom="opacity-0"
-                            leave="transition ease-in-out"
-                            leaveTo="opacity-0"
-                        >
-                            <p>Image Uploaded</p>
-                        </Transition>
-                    </Box>
-                </Grid>
-            </form>
-        </Grid>
+                        {processing ? "Uploading..." : "Upload Image"}
+                    </Button>
+                    <Transition
+                        show={recentlySuccessful}
+                        enter="transition ease-in-out"
+                        enterFrom="opacity-0"
+                        leave="transition ease-in-out"
+                        leaveTo="opacity-0"
+                    >
+                        <p>Image Uploaded</p>
+                    </Transition>
+                </Box>
+            </Grid>
+        </form>
     );
 };
 
