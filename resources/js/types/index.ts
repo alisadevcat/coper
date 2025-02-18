@@ -2,6 +2,7 @@ import { SyntheticEvent } from "react";
 
 export type AuthData = {
     user: AuthenticatedUserData;
+    user_status: string;
 };
 
 export type FlashMessageType = {
