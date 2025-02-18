@@ -10,6 +10,7 @@ import PersonalDetails from "./Partials/PersonalDetails";
 import BankingDetails from "./Partials/BankingDetails";
 import DocumentUpload from "./Partials/DocumentUpload";
 import Grid from "@mui/material/Grid2";
+import ProfileStatusMessage from "./Partials/ProfileStatusMessage";
 
 export type DocumentFileType = {
     file_url: string;
@@ -58,13 +59,10 @@ export default function Page({ userProfileData, imageData, documentData }) {
                         </Grid>
                         <Grid size={{ xs: 12, sm: 8 }}>
                             {/* Header */}
-                            <Typography variant="h4" sx={{ mb: 3 }}>
+                            <Typography variant="h4" sx={{ pb: 3 }}>
                                 My Profile
                             </Typography>
-                            {/* <Box display="flex" gap="1rem">
-                                <Link href="/verify">Verify you profile</Link>
-                            </Box> */}
-                            {/* Tabs */}
+                            <ProfileStatusMessage/>
                             <Card
                                 sx={{
                                     backgroundColor: "white",
